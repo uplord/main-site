@@ -1,0 +1,28 @@
+{
+  "title": "<span>Hi, I'm Michael</span> A Front End Developer",
+  "subtitle": "With 9 years in the industry creating websites",
+  "buttons": [
+    {
+      "label": "Get in touch",
+      "href": "mailto:michael@uplord.co.uk",
+      "size": "lg",
+      "variant": "primary",
+      "className": "button"
+    },
+    {
+      "label": "Download CV",
+      "href": "/michael-allen-cv.pdf",
+      "target": "_blank",
+      "size": "xl",
+      "variant": "text",
+      "className": "button link"
+    }
+  ],
+  "image": {
+    "src": "/images/me.jpeg",
+    "alt": "Hi, I'm Michael",
+    "sizes": "(max-width: 1024px) 140px, 500px",
+    "width": 500,
+    "height": 499
+  }
+}

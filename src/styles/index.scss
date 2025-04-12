@@ -1,0 +1,26 @@
+@use './forward' as *;
+@use './normalize';
+
+html {
+  overflow-y: scroll;
+}
+
+.light {
+  background: $color-light;
+  color: $color-text;
+}
+
+.dark {
+  background: $color-dark;
+  color: $color-text-dark;
+}
+
+body {
+  background: $color-light;
+  color: $color-text;
+
+  @include dark-mode {
+    background: $color-dark;
+    color: $color-text-dark;
+  }
+}

@@ -1,0 +1,94 @@
+h1, h2, h3, h4, h5, h6 {
+  color: $color-heading;
+
+  @include dark-mode {
+    color: $color-heading-dark;
+  }
+}
+
+h1 {
+  @include text-4xl;
+  @include text-bold;
+}
+
+h2 {
+  @include text-3xl;
+  @include text-bold;
+}
+
+h3 {
+  @include text-2xl;
+  @include text-bold;
+}
+
+h4 {
+  @include text-xl;
+  @include text-bold;
+}
+
+h5 {
+  @include text-lg;
+  @include text-semibold;
+}
+
+h6 {
+  @include text-md;
+  @include text-semibold;
+}
+
+p {
+  @include text-md;
+  @include text-normal;
+
+  & {
+    color: $color-text;
+
+    @include dark-mode {
+      color: $color-text-dark;
+    }
+  }
+}
+
+a {
+  text-decoration: underline;
+}
+
+ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+li {
+  @include text-md;
+  @include text-normal;
+
+  & {
+    color: $color-text;
+    margin-bottom: 0.5rem;
+
+    @include dark-mode {
+      color: $color-text-dark;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.text-normal {
+  @include text-normal;
+}
+
+.text-semibold {
+  @include text-semibold;
+}
+
+.text-bold {
+  @include text-bold;
+}

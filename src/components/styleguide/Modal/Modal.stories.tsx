@@ -1,0 +1,206 @@
+import type { Meta, StoryObj } from '@storybook/react'
+import NiceModal, { useModal } from '@ebay/nice-modal-react'
+
+import { useEffect } from 'react'
+
+import { Modal as ModalComponent, ModalProps } from './Modal'
+import { Header as HeaderComponent, HeaderProps } from './inc/Header'
+import { Footer as FooterComponent, FooterProps } from './inc/Footer'
+import { Content } from './inc/Content'
+
+import { Button as ButtonComponent, ButtonProps } from '@/components/ui/Button'
+import { Variant, Size } from '@/types/system'
+import { IconOptions, AvailableIcons } from '@/lib/icons'
+
+const meta: Meta = {
+  title: 'Styleguide/Modal',
+  decorators: [
+    (Story) => {
+      return (
+        <NiceModal.Provider>
+          <div className='padding'>
+            <Story />
+          </div>
+        </NiceModal.Provider>
+      )
+    },
+  ],
+  // tags: ['autodocs'],
+}
+
+export default meta
+
+const args = {
+  children: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel augue commodo, scelerisque nibh a, viverra elit. Aenean id nisl ut leo sagittis cursus id non quam. Nam commodo nibh quis dapibus blandit. Pellentesque in ultricies enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan vestibulum vestibulum. Sed ultrices ex ac fringilla imperdiet. Fusce quis lectus egestas, blandit lectus ac, suscipit libero. Integer viverra placerat dui, eu luctus elit egestas at. Curabitur laoreet vestibulum maximus. In euismod lobortis tortor a sodales. Maecenas eleifend justo id dolor ultricies consequat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed finibus ipsum nulla, nec placerat dui pulvinar vel. In suscipit, nulla ut bibendum pellentesque, nunc risus dictum lectus, non blandit mi ipsum at ante.</p>,
+  headerProps: {
+    title: 'Title',
+    subtext: 'Subtext',
+    hasBorder: true,
+    leadingIcon: 'X' as AvailableIcons,
+    leadingText: '',
+    leadingFunction: () => console.log('Leading clicked'),
+    trailingIcon: null,
+    trailingText: 'Action',
+    trailingFunction: () => console.log('Trailing clicked'),
+  },
+  footerProps: {
+    title: '',
+    subtext: '',
+    fullWidth: false,
+    hasBorder: true,
+    hasShadow: false,
+    leadingIcon: null,
+    leadingText: 'Effacer',
+    leadingButton: Variant.Text,
+    leadingFunction: () => console.log('Leading clicked'),
+    trailingIcon: null,
+    trailingText: 'Submit',
+    trailingButton: Variant.Primary,
+    trailingFunction: () => console.log('Trailing clicked'),
+  },
+  mobileDraggable: true,
+}
+
+const TemporaryModal = NiceModal.create((props: ModalProps) => {
+  const modal = useModal()
+
+  return (
+    <ModalComponent
+      {...args}
+      {...props}
+      modal={modal}
+    />
+  )
+})
+
+type HeaderStory = StoryObj<HeaderProps>
+type FooterStory = StoryObj<FooterProps>
+
+const HeaderTemplate: React.FC<HeaderProps> = (args) => {
+  const modal = useModal(TemporaryModal);
+  return <HeaderComponent {...args} modal={modal} />;
+};
+
+export const Header: HeaderStory = {
+  args: {
+    title: 'Title',
+    subtext: 'Subtext',
+    hasBorder: true,
+    leadingIcon: 'X',
+    leadingText: '',
+    leadingButton: Variant.Text,
+    leadingFunction: () => console.log('Leading clicked'),
+    trailingIcon: null,
+    trailingText: 'Action',
+    trailingButton: Variant.Text,
+    trailingFunction: () => console.log('Trailing clicked'),
+  },
+  argTypes: {
+    leadingIcon: {
+      control: { type: 'select' },
+      options: IconOptions,
+    },
+    leadingButton: {
+      control: { type: 'select' },
+      options: Object.values(Variant),
+    },
+    trailingIcon: {
+      control: { type: 'select' },
+      options: IconOptions,
+    },
+    trailingButton: {
+      control: { type: 'select' },
+      options: Object.values(Variant),
+    },
+  },
+  render: (args) => <HeaderTemplate {...args} />,
+}
+
+export const Footer: FooterStory = {
+  args: {
+    title: '',
+    subtext: '',
+    fullWidth: false,
+    hasBorder: true,
+    hasShadow: false,
+    leadingIcon: null,
+    leadingText: 'Effacer',
+    leadingButton: Variant.Text,
+    leadingFunction: () => console.log('Leading clicked'),
+    trailingIcon: null,
+    trailingText: 'Action',
+    trailingButton: Variant.Primary,
+    trailingFunction: () => console.log('Trailing clicked'),
+  },
+  argTypes: {
+    leadingIcon: {
+      control: {
+        type: 'select',
+      },
+      options: IconOptions,
+      if: { arg: 'title', truthy: false },
+      and: { arg: 'subtitle', truthy: false },
+    },
+    leadingText: {
+      if: { arg: 'title', truthy: false },
+      and: { arg: 'subtitle', truthy: false },
+    },
+    leadingButton: {
+      control: {
+        type: 'select',
+      },
+      options: Object.values(Variant),
+      if: { arg: 'title', truthy: false },
+      and: { arg: 'subtitle', truthy: false },
+    },
+    leadingFunction: {
+      table: {
+        disable: true,
+      },
+    },
+    trailingIcon: {
+      control: {
+        type: 'select',
+      },
+      options: IconOptions,
+    },
+    trailingButton: {
+      control: {
+        type: 'select',
+      },
+      options: Object.values(Variant),
+    },
+    trailingFunction: {
+      table: {
+        disable: true,
+      },
+    },
+  },
+  render: (args) => {
+    return <FooterComponent {...args} />
+  },
+}
+
+export const Button: StoryObj<ButtonProps> = {
+  args: {
+    label: 'Open',
+    variant: Variant.Primary,
+    size: Size.Medium,
+    onClick: () => NiceModal.show(TemporaryModal),
+  },
+  parameters: {
+    controls: {
+      disable: true,
+    },
+  },
+  render: (args) => <ButtonComponent {...args} />,
+}
+
+export const Modal: StoryObj = {
+  render: () => {
+    const modal = useModal(TemporaryModal);
+
+    return <Content {...args} modal={modal} />; // No need to return anything as modal.show() will handle the rendering
+  },
+};
+

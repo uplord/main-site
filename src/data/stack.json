@@ -1,0 +1,17 @@
+{
+  "title": "My current stack",
+  "list": [
+    { "icon": "html5", "tooltip": "HTML5" },
+    { "icon": "css", "tooltip": "CSS" },
+    { "icon": "js", "tooltip": "JavaScript" },
+    { "icon": "sass", "tooltip": "Sass" },
+    { "icon": "react", "tooltip": "React" },
+    { "icon": "nextjs", "tooltip": "NextJs" },
+    { "icon": "typescript", "tooltip": "TypeScript" },
+    { "icon": "git", "tooltip": "Git" },
+    { "icon": "github", "tooltip": "Github" },
+    { "icon": "aws", "tooltip": "Amazon Web Services" },
+    { "icon": "netlify", "tooltip": "Netlify" },
+    { "icon": "vscode", "tooltip": "VS Code" }
+  ]
+}

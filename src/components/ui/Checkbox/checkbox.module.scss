@@ -1,0 +1,265 @@
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.checkbox,
+.radio {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+
+  &.is-disabled .input {
+    background: $color-disabled;
+    border-color: transparent;
+
+    @include dark-mode {
+      background: $color-disabled-dark;
+      border-color: transparent;
+    }
+
+    & + label {
+      color: $color-border;
+
+      @include dark-mode {
+        color: $color-border-dark;
+      }
+
+      .title,
+      .total,
+      .content {
+        color: inherit;
+      }
+    }
+  }
+
+  &.is-skeleton .input {
+    border-color: transparent;
+    background-color: $color-skeleton;
+    animation: pulse 1.5s infinite ease-in-out;
+
+    @include dark-mode {
+      background-color: $color-skeleton-dark;
+    }
+
+    &:checked {
+      border-color: transparent;
+
+      & + label:before {
+        display: none;
+      }
+    }
+
+    & + label {
+      .label,
+      .total,
+      .content {
+        background-color: $color-skeleton;
+        animation: pulse 1.5s infinite alternate;
+        height: 1.4375rem;
+        border-radius: 0.25rem;
+
+        @include dark-mode {
+          background-color: $color-skeleton-dark;
+        }
+      }
+
+      .label {
+        width: 10rem;
+      }
+
+      .total {
+        width: 2.8125rem;
+      }
+
+      .content {
+        height: 2.125rem;
+      }
+    }
+  }
+
+  &.is-error:not(.is-ghost) {
+    &.radio .input:checked {
+      background: $color-error;
+    }
+
+    & + .helper {
+      color: $color-error;
+    }
+  
+    .input {
+      border-color: $color-error;
+
+      &:checked {
+        background: $color-error;
+      }
+
+      &:focus-visible,
+      &:not(:placeholder-shown) {
+        border-color: $color-error;
+        outline-color: $color-error;
+      }
+    }
+  }
+}
+
+.input {
+  padding: 0;
+  border: 0;
+  appearance: none;
+  min-width: 1.5rem;
+  aspect-ratio: 1;
+  border: 0.0625rem solid $color-border;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease-in-out;
+
+  @include dark-mode {
+    border-color: $color-border-dark;
+  }
+
+  .radio & {
+    border-radius: 0.75rem;
+  }
+
+  &:checked {
+    background: $color-dark;
+    border-color: $color-dark;
+
+    @include dark-mode {
+      background: $color-light;
+      border-color: $color-light;
+    }
+
+    & + label:before {
+      opacity: 1;
+    }
+  }
+
+  &:hover:not(.is-disabled &) {
+    border-color: $color-dark;
+    cursor: pointer;
+
+    @include dark-mode {
+      border-color: $color-light;
+    }
+
+    & + label {
+      cursor: pointer;
+    }
+  }
+
+  &:focus-visible:not(.is-disabled) {
+    border-color: $color-dark;
+    outline: 0.125rem solid $color-focus;
+    outline-offset: 0.125rem;
+
+    @include dark-mode {
+      border-color: $color-light;
+      outline-color: $color-focus-dark;
+    }
+  }
+
+  & + label {
+    @include text-md;
+    @include text-normal;
+
+    & {
+      flex: 1;
+      margin: 0;
+      padding-left: 0.75rem;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0.25rem;
+      left: 0.5625rem;
+      height: 0.75rem;
+      width: 0.375rem;
+      border-bottom: 0.125rem solid $color-light;
+      border-right: 0.125rem solid $color-light;
+      transform: rotate(45deg);
+      opacity: 0;
+      pointer-events: none;
+
+      @include dark-mode {
+        border-bottom-color: $color-dark;
+        border-right-color: $color-light;
+      }
+
+      .radio & {
+        top: 0.5rem;
+        left: 0.5rem;
+        height: 0.5rem;
+        width: 0.5rem;
+        background: $color-light;
+        border: 0;
+        border-radius: 0.25rem;
+        transform: none;
+
+        @include dark-mode {
+          background: $color-dark;
+        }
+      }
+    }
+  }
+}
+
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 0.25rem;
+  color: $color-text;
+
+  @include dark-mode {
+    color: $color-text-dark;
+  }
+
+  .total {
+    color: $color-placeholder;
+
+    @include dark-mode {
+      color: $color-placeholder-dark;
+    }
+  }
+}
+
+.content {
+  @include text-md;
+  @include text-normal;
+
+  & {
+    color: $color-placeholder;
+    margin-top: 0.25rem;
+
+    @include dark-mode {
+      color: $color-placeholder-dark;
+    }
+  }
+}
+
+.helper {
+  @include text-sm;
+  @include text-normal;
+
+  & {
+    color: $color-placeholder;
+    margin-left: 2.25rem;
+  }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}

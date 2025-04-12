@@ -1,0 +1,365 @@
+@use 'sass:color';
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+
+  select,
+  select:focus {
+    @include text-normal;
+
+    & {
+      padding: 0;
+      background: none;
+      border-radius: 0;
+    }
+  }
+
+  textarea {
+    resize: none;
+  }
+}
+
+.outer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.96875rem 0.96875rem;
+  line-height: 1.4375rem;
+  background-color: $color-bg;
+  border: 0.0625rem solid $color-border;
+  border-radius: 0.5rem;
+  outline: 0.125rem solid transparent;
+  outline-offset: -0.125rem;
+  transition: background-color 0.2s ease-in-out,
+    border-color 0.2s ease-in-out,
+    color 0.2s ease-in-out,
+    outline 0.2s ease-in-out;
+
+  @include dark-mode {
+    background-color: $color-bg-dark;
+    border-color: $color-border-dark;
+  }
+
+  &:hover:not(.is-disabled, .is-error, &:has(.button:hover, .click:hover)) {
+    background-color: $color-hover;
+    cursor: text;
+
+    @include dark-mode {
+      background-color: $color-hover-dark;
+    }
+  }
+
+  &:focus-within:not(:has(.button:focus, .click:focus)) {
+    background-color: $color-hover;
+    outline-color: $color-focus;
+
+    @include dark-mode {
+      background-color: $color-hover-dark;
+      outline-color: $color-focus-dark;
+    }
+  }
+
+  &.is-disabled {
+    background-color: $color-disabled;
+
+    @include dark-mode {
+      background-color: $color-disabled-dark;
+    }
+
+    .input + .placeholder,
+    .icon,
+    .text {
+      color: $color-border;
+
+      @include dark-mode {
+        color: $color-border-dark;
+      }
+    }
+  }
+
+  &.is-loading {
+    position: relative;
+    background-color: transparent;
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 0.5rem;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .inner {
+      opacity: 0;
+    }
+
+    .button,
+    .text,
+    .icon-wrap {
+      display: none;
+    }
+  }
+
+  &.is-skeleton {
+    background-color: $color-skeleton;
+    border-color: $color-skeleton;
+    animation: pulse 1.5s infinite ease-in-out;
+
+    @include dark-mode {
+      background-color: $color-skeleton-dark;
+      border-color: $color-skeleton-dark;
+    }
+
+    .inner {
+      opacity: 0;
+    }
+
+    .button,
+    .text,
+    .icon-wrap {
+      display: none;
+    }
+  }
+
+  &.is-loading {
+    background-color: $color-hover;
+
+    @include dark-mode {
+      background-color: $color-hover-dark;
+    }
+  }
+
+  &.is-error:not(.is-disabled) {
+    background-color: $color-error-02;
+    border-color: $color-error;
+
+    &:focus-within:not(:has(.button:focus, .click:focus)) {
+      background-color: $color-error-02;
+      outline-color: $color-error;
+    }
+
+    & + .helper {
+      color: $color-error;
+    }
+  }
+}
+
+.inner {
+  position: relative;
+  flex: 1;
+}
+
+.input {
+  @include text-md;
+  @include text-normal;
+
+  & {
+    position: relative;
+    width: 100%;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: all 0.2s ease-in-out;
+    color: $color-dark;
+
+    @include dark-mode {
+      color: $color-light;
+    }
+  }
+
+  &:disabled {
+    color: $color-border;
+
+    @include dark-mode {
+      color: $color-border-dark;
+    }
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:focus,
+  &:not(:placeholder-shown) {
+    top: 0.46875rem;
+
+    .no-label & {
+      top: 0;
+    }
+
+    & + .placeholder {
+      font-size: 0.75rem;
+      line-height: 0.875rem;
+      padding: 0;
+      top: -0.40625rem;
+      color: $color-placeholder;
+    }
+  }
+
+  & + .placeholder {
+    @include text-md;
+    @include text-normal;
+
+    & {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 0;
+      color: $color-placeholder;
+      transition: all 0.2s ease-in-out;
+      pointer-events: none;
+    }
+  }
+}
+
+.icon-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  color: $color-icon;
+  transition: color 0.2s ease-in-out;
+
+  @include dark-mode {
+    color: $color-icon-dark;
+  }
+}
+
+.text {
+  @include text-md;
+  @include text-normal;
+
+  & {
+    color: $color-icon;
+    transition: color 0.2s ease-in-out;
+
+    @include dark-mode {
+      color: $color-icon-dark;
+    }
+  }
+}
+
+.button {
+  margin: -0.5625rem -0.5625rem -0.5625rem 0;
+
+  &:not(:disabled):hover {
+    cursor: pointer;
+  }
+}
+
+.click {
+  margin: -1.125rem 0;
+  padding: 1.125rem 0;
+  line-height: 1.4375rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.helper {
+  @include text-xs;
+  @include text-normal;
+
+  & {
+    color: $color-placeholder;
+    transition: color 0.2s ease-in-out;
+
+    @include dark-mode {
+      color: $color-placeholder-dark;
+    }
+  }
+}
+
+.loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 0.5rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    animation: loading 1s infinite;
+
+    @include dark-mode {
+      animation: loading-dark 1s infinite;
+    }
+  }
+}
+
+$color-loading-01: color.change($color-dark, $alpha: 0.15);
+$color-loading-02: color.change($color-dark, $alpha: 0.25);
+$color-loading-03: color.change($color-dark, $alpha: 0.35);
+
+$color-loading-01-dark: color.change($color-light, $alpha: 0.15);
+$color-loading-02-dark: color.change($color-light, $alpha: 0.25);
+$color-loading-03-dark: color.change($color-light, $alpha: 0.35);
+
+@keyframes loading {
+  0% {
+    box-shadow: 0.875rem 0 $color-loading-01, -0.875rem 0 $color-loading-03;
+    background: $color-loading-02;
+  }
+  33% {
+    box-shadow: 0.875rem 0 $color-loading-02, -0.875rem 0 $color-loading-01;
+    background: $color-loading-03;
+  }
+  66% {
+    box-shadow: 0.875rem 0 $color-loading-03, -0.875rem 0 $color-loading-02;
+    background: $color-loading-01;
+  }
+  100% {
+    box-shadow: 0.875rem 0 $color-loading-01, -0.875rem 0 $color-loading-03;
+    background: $color-loading-02;
+  }
+}
+
+@keyframes loading-dark {
+  0% {
+    box-shadow: 0.875rem 0 $color-loading-01-dark, -0.875rem 0 $color-loading-03-dark;
+    background: $color-loading-02-dark;
+  }
+  33% {
+    box-shadow: 0.875rem 0 $color-loading-02-dark, -0.875rem 0 $color-loading-01-dark;
+    background: $color-loading-03-dark;
+  }
+  66% {
+    box-shadow: 0.875rem 0 $color-loading-03-dark, -0.875rem 0 $color-loading-02-dark;
+    background: $color-loading-01-dark;
+  }
+  100% {
+    box-shadow: 0.875rem 0 $color-loading-01-dark, -0.875rem 0 $color-loading-03-dark;
+    background: $color-loading-02-dark;
+  }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}

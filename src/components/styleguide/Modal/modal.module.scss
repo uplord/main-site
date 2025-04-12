@@ -1,0 +1,357 @@
+$background-overlay: rgba(0,0,0,0.5);
+$background-overlay-dark: rgba(0,0,0,0.6);
+$foreground-animation-duration: 0.6s;
+$background-surface: $color-light;
+$background-surface-dark: $color-dark;
+$text-title: blue;
+$text-body: green;
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000000;
+  display: grid;
+  place-items: end;
+  width: 100dvw;
+  height: 100dvh;
+
+  @media (min-width: $breakpoint-md) {
+    place-items: center;
+  }
+
+  &--close-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $background-overlay;
+    border: 0;
+    transition: opacity $foreground-animation-duration ease-in-out;
+    opacity: 0;
+    appearance: none;
+
+    @include dark-mode {
+      background-color: $background-overlay-dark;
+    }
+    
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  &.enter {
+
+    &.modal {
+      .main {
+        transform: translateY(100%);
+
+        @media (min-width: $breakpoint-md) {
+          opacity: 0;
+          transform: none;
+        }
+      }
+    }
+
+    &--done,
+    &--active {
+
+      .backdrop--close-button {
+        opacity: 1;
+      }
+
+      &.modal {
+        .main {
+          transform: translateY(0) !important;
+          transition: transform $foreground-animation-duration ease-in-out;
+
+          @media (min-width: $breakpoint-md) {
+            opacity: 1;
+            transition: opacity $foreground-animation-duration ease-in-out;
+          }
+        }
+      }
+    }
+  }
+
+  &.exit {
+
+    &.modal {
+      .main {
+        transform: translateY(0);
+
+        @media (min-width: $breakpoint-md) {
+          opacity: 1;
+        }
+      }
+    }
+
+    &--done,
+    &--active {
+
+      .backdrop--close-button {
+        opacity: 0;
+      }
+
+      &.modal {
+        .main {
+          transform: translateY(100%) !important;
+          transition: transform $foreground-animation-duration ease-in-out;
+
+          @media (min-width: $breakpoint-md) {
+            opacity: 0;
+            transform: none !important;
+            transition: opacity $foreground-animation-duration ease-in-out;
+          }
+        }
+      }
+    }
+  }
+
+  .main {
+    background-color: $background-surface;
+    border-radius: 1rem 1rem 0 0;
+    box-shadow: 0px 4px 18px 0px #0000002B;
+
+    @include dark-mode {
+      background-color: $background-surface-dark;
+      box-shadow: none;
+    }
+  
+    @media (min-width: $breakpoint-md) {
+      border-radius: 1rem;
+    }
+  }
+}
+
+.main {
+  position: relative;
+  width: 100%;
+  max-height: calc(100dvh - 1rem);
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: $breakpoint-md - 1) {
+    transform: none !important;
+    height: 0;
+    transition: all 0.2s linear;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    max-width: 35.5rem;
+    max-height: calc(100dvh - 5rem);
+  }
+}
+
+.drag {
+  position: relative;
+  padding-top: 0.75rem;
+  user-select: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    cursor: grab;
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0.5rem;
+    left: 50%;
+    width: 2.5rem;
+    height: 0.25rem;
+    border-radius: 0.125rem;
+    transform: translateX(-50%);
+    background-color: rgba(0,0,0,0.2);
+
+    @include dark-mode {
+      background-color: rgba(255,255,255,0.2);
+    }
+
+    @media (min-width: $breakpoint-md) {
+      display: none;
+    }
+  }
+
+  .scroll {
+    flex: 1;
+  }
+}
+
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  min-height: 3rem;
+  padding: 0.25rem 1.5rem;
+
+  @media (min-width: $breakpoint-md) {
+    padding: 0.75rem 1.5rem;
+  }
+
+  &.border {
+    border-bottom: 0.0625rem solid $color-border;
+
+    @include dark-mode {
+      border-color: $color-border-dark;
+    }
+  }
+
+  .top {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .title {
+    @include text-md;
+    @include text-semibold;
+
+    & {
+      color: $color-heading;
+
+      @include dark-mode {
+        color: $color-heading-dark;
+      }
+    }
+  }
+
+  .subtext {
+    @include text-sm;
+    @include text-normal;
+
+    & {
+      color: $color-text;
+
+      @include dark-mode {
+        color: $color-text-dark;
+      }
+    }
+  }
+
+  .left,
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .left .anchor {
+    margin-left: -0.875rem;
+  }
+
+  .right .anchor {
+    margin-right: -0.875rem;
+  }
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  text-align: center;
+  padding: 1rem 1.5rem max(env(safe-area-inset-bottom), 1rem);
+
+  &.full {
+    flex-direction: column-reverse;
+
+    .left,
+    .right {
+      width: 100%;
+
+      .anchor {
+        margin: 0;
+      }
+    }
+
+    .button {
+      width: 100%;
+    }
+  }
+
+  &.border {
+    border-top: 0.0625rem solid $color-border;
+
+    @include dark-mode {
+      border-color: $color-border-dark;
+    }
+  }
+
+  &.shadow {
+    box-shadow: 0px 0px 18px 0px #0000002B;
+  }
+
+  .text {
+    text-align: left;
+  }
+
+  .title {
+    @include text-sm;
+    @include text-semibold;
+
+    & {
+      color: $color-heading;
+
+      @include dark-mode {
+        color: $color-heading-dark;
+      }
+    }
+  }
+
+  .subtext {
+    @include text-sm;
+    @include text-normal;
+
+    & {
+      color: $color-text;
+
+      @include dark-mode {
+        color: $color-text-dark;
+      }
+    }
+  }
+
+  .left,
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .left .anchor {
+    margin-left: -1.5rem;
+  }
+
+  .right .anchor {
+    margin-right: -1.5rem;
+  }
+}
+
+.scroll {
+  padding: 1.5rem;
+  overflow: scroll;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.content {
+
+  p {
+    @include text-md;
+    @include text-normal;
+  }  
+}
