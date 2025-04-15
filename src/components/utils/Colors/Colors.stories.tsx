@@ -23,7 +23,6 @@ const colors = {
     { name: 'Primary', hexCode: '#dd2121' },
     { name: 'Success', hexCode: '#29a027' },
     { name: 'Error', hexCode: '#dd2121' },
-    // { name: 'Error 2', hexCode: '#dd212111' },
     { name: 'Warning', hexCode: '#ffcc00' },
     { name: 'Info', hexCode: '#1164cc' },
     { name: 'Rebecca', hexCode: '#663399' },
@@ -42,7 +41,6 @@ const meta: Meta<ColorsProps> = {
       </div>
     ),
   ],
-  // tags: ['autodocs'],
   argTypes: {
     name: {
       control: { type: 'select' },
@@ -66,13 +64,10 @@ type Story = StoryObj<ColorsProps>
 export const Default: Story = {
   args: colorOptions[0],
   render: ({ name }, { globals }) => {
-    const background = globals.backgrounds.value === '#fff' ? 'light' : 'dark'
+    const background = globals.backgrounds?.value === '#0d0d0d' ? 'dark' : 'light'
     const selectedColor = colorOptions.find((color) => color.name === name) || colorOptions[0]
-    // const name = selectedColor.name
     const className = selectedColor.className
     const hexCode = selectedColor.hexCode
-
-    console.log('selectedColor', selectedColor)
 
     return (
       <div className={styles.colors}>
@@ -89,9 +84,7 @@ export const AllColors: Story = {
     },
   },
   render: (_, { globals }) => {
-    console.log('Globals:', globals)
-    const background = globals.backgrounds.value === '#fff' ? 'light' : 'dark'
-    console.log('background', background)
+    const background = globals.backgrounds?.value === '#0d0d0d' ? 'dark' : 'light'
 
     return (
     <div className={styles.blocks}>
