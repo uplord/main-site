@@ -13,19 +13,16 @@ import { Variant, Size } from '@/types/system'
 import { IconOptions, AvailableIcons } from '@/lib/icons'
 
 const meta: Meta = {
-  title: 'Styleguide/Modal',
+  title: 'Utils/Modal',
   decorators: [
     (Story) => {
       return (
         <NiceModal.Provider>
-          <div className='padding'>
-            <Story />
-          </div>
+          <Story />
         </NiceModal.Provider>
       )
     },
   ],
-  // tags: ['autodocs'],
 }
 
 export default meta
@@ -194,6 +191,15 @@ export const Button: StoryObj<ButtonProps> = {
     },
   },
   render: (args) => <ButtonComponent {...args} />,
+  decorators: [
+    (Story) => {
+      return (
+        <div className="padding">
+          <Story />
+        </div>
+      )
+    },
+  ],
 }
 
 export const Modal: StoryObj = {

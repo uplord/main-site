@@ -11,7 +11,7 @@ import NiceModal, { useModal } from '@ebay/nice-modal-react'
 // import Timeline from '@/components/blocks/Timeline'
 // import Stack from '@/components/blocks/Stack'
 
-import { Modal, ModalProps } from '@/components/styleguide/Modal'
+import { Modal, ModalProps } from '@/components/utils/Modal'
 
 import { Button, ButtonProps } from '@/components/ui/Button'
 import { Variant, Size } from '@/types/system'
