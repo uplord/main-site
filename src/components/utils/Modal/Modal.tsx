@@ -13,18 +13,20 @@ import { Content } from './inc/Content'
 
 export type ModalProps = {
   children: React.ReactNode
+  modal: NiceModalHandler
   headerProps?: HeaderProps
   footerProps?: FooterProps
   mobileDraggable?: boolean
-  modal: NiceModalHandler
+  backdropClose?: boolean
 }
 
 export const Modal = ({
   children,
+  modal,
   headerProps,
   footerProps,
   mobileDraggable = false,
-  modal,
+  backdropClose = true,
 }: ModalProps) => {
   const refMain = useRef<HTMLDivElement>(null)
   const controls = useDragControls()
@@ -35,7 +37,7 @@ export const Modal = ({
     setShowMobile(isMobile)
   }, [isMobile])
 
-  const handleDragEnd = (_, info) => {
+  const handleDragEnd = (_: unknown, info: { offset: { y: number } }) => {
     if (info.offset.y > 150) {
       modal.hide()
     }
@@ -52,7 +54,7 @@ export const Modal = ({
           transition={{ duration: 0.6 }}
         >
           <motion.div
-            onClick={() => modal.hide()}
+            onClick={() => backdropClose && modal.hide()}
             className={styles['backdrop--close-button']}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

@@ -1,14 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import NiceModal, { useModal } from '@ebay/nice-modal-react'
 
-import { useEffect } from 'react'
-
-import { Modal as ModalComponent, ModalProps } from './Modal'
+import { Modal, ModalProps } from './Modal'
 import { Header as HeaderComponent, HeaderProps } from './inc/Header'
 import { Footer as FooterComponent, FooterProps } from './inc/Footer'
 import { Content } from './inc/Content'
 
-import { Button as ButtonComponent, ButtonProps } from '@/components/ui/Button'
+import { Button, ButtonGroup, ButtonProps } from '@/components/ui/Button'
 import { Variant, Size } from '@/types/system'
 import { IconOptions, AvailableIcons } from '@/lib/icons'
 
@@ -28,7 +26,6 @@ const meta: Meta = {
 export default meta
 
 const args = {
-  children: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel augue commodo, scelerisque nibh a, viverra elit. Aenean id nisl ut leo sagittis cursus id non quam. Nam commodo nibh quis dapibus blandit. Pellentesque in ultricies enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan vestibulum vestibulum. Sed ultrices ex ac fringilla imperdiet. Fusce quis lectus egestas, blandit lectus ac, suscipit libero. Integer viverra placerat dui, eu luctus elit egestas at. Curabitur laoreet vestibulum maximus. In euismod lobortis tortor a sodales. Maecenas eleifend justo id dolor ultricies consequat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed finibus ipsum nulla, nec placerat dui pulvinar vel. In suscipit, nulla ut bibendum pellentesque, nunc risus dictum lectus, non blandit mi ipsum at ante.</p>,
   headerProps: {
     title: 'Title',
     subtext: 'Subtext',
@@ -62,11 +59,37 @@ const TemporaryModal = NiceModal.create((props: ModalProps) => {
   const modal = useModal()
 
   return (
-    <ModalComponent
+    <Modal
       {...args}
       {...props}
       modal={modal}
-    />
+    >
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel augue commodo, scelerisque nibh a, viverra elit. Aenean id nisl ut leo sagittis cursus id non quam. Nam commodo nibh quis dapibus blandit. Pellentesque in ultricies enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan vestibulum vestibulum. Sed ultrices ex ac fringilla imperdiet. Fusce quis lectus egestas, blandit lectus ac, suscipit libero. Integer viverra placerat dui, eu luctus elit egestas at. Curabitur laoreet vestibulum maximus. In euismod lobortis tortor a sodales. Maecenas eleifend justo id dolor ultricies consequat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed finibus ipsum nulla, nec placerat dui pulvinar vel. In suscipit, nulla ut bibendum pellentesque, nunc risus dictum lectus, non blandit mi ipsum at ante.</p>
+    </Modal>
+  )
+})
+
+const PreventCloseModal = NiceModal.create((props: ModalProps) => {
+  const modal = useModal()
+
+  return (
+    <Modal
+      modal={modal}
+      mobileDraggable={true}
+      backdropClose={false}
+    >
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel augue commodo, scelerisque nibh a, viverra elit. Aenean id nisl ut leo sagittis cursus id non quam. Nam commodo nibh quis dapibus blandit. Pellentesque in ultricies enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan vestibulum vestibulum. Sed ultrices ex ac fringilla imperdiet. Fusce quis lectus egestas, blandit lectus ac, suscipit libero. Integer viverra placerat dui, eu luctus elit egestas at. Curabitur laoreet vestibulum maximus. In euismod lobortis tortor a sodales. Maecenas eleifend justo id dolor ultricies consequat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed finibus ipsum nulla, nec placerat dui pulvinar vel. In suscipit, nulla ut bibendum pellentesque, nunc risus dictum lectus, non blandit mi ipsum at ante.</p>
+      <ButtonGroup justify="center">
+        <Button
+          label="Close Modal"
+          variant={Variant.Outline}
+          size={Size.Medium}
+          onClick={() => modal.hide()}
+        >
+          Close
+        </Button>
+      </ButtonGroup>
+    </Modal>
   )
 })
 
@@ -178,7 +201,7 @@ export const Footer: FooterStory = {
   },
 }
 
-export const Button: StoryObj<ButtonProps> = {
+export const ButtonOpen: StoryObj<ButtonProps> = {
   args: {
     label: 'Open',
     variant: Variant.Primary,
@@ -190,7 +213,7 @@ export const Button: StoryObj<ButtonProps> = {
       disable: true,
     },
   },
-  render: (args) => <ButtonComponent {...args} />,
+  render: (args) => <Button {...args} />,
   decorators: [
     (Story) => {
       return (
@@ -202,11 +225,37 @@ export const Button: StoryObj<ButtonProps> = {
   ],
 }
 
-export const Modal: StoryObj = {
+export const PreventClose: StoryObj<ButtonProps> = {
+  args: {
+    label: 'Open',
+    variant: Variant.Primary,
+    size: Size.Medium,
+    onClick: () => NiceModal.show(PreventCloseModal),
+  },
+  parameters: {
+    controls: {
+      disable: true,
+    },
+  },
+  render: (args) => <Button {...args} />,
+  decorators: [
+    (Story) => {
+      return (
+        <div className="padding">
+          <Story />
+        </div>
+      )
+    },
+  ],
+}
+
+export const ModalOpen: StoryObj = {
   render: () => {
     const modal = useModal(TemporaryModal);
 
-    return <Content {...args} modal={modal} />; // No need to return anything as modal.show() will handle the rendering
+    return <Content {...args} modal={modal}>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel augue commodo, scelerisque nibh a, viverra elit. Aenean id nisl ut leo sagittis cursus id non quam. Nam commodo nibh quis dapibus blandit. Pellentesque in ultricies enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan vestibulum vestibulum. Sed ultrices ex ac fringilla imperdiet. Fusce quis lectus egestas, blandit lectus ac, suscipit libero. Integer viverra placerat dui, eu luctus elit egestas at. Curabitur laoreet vestibulum maximus. In euismod lobortis tortor a sodales. Maecenas eleifend justo id dolor ultricies consequat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed finibus ipsum nulla, nec placerat dui pulvinar vel. In suscipit, nulla ut bibendum pellentesque, nunc risus dictum lectus, non blandit mi ipsum at ante.</p>
+    </Content>
   },
 };
 

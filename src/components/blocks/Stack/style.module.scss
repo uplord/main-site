@@ -1,0 +1,7 @@
+.Stack {
+  position: relative;
+}
+
+.container {
+  @include container;
+}

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import styles from './button.module.scss'
 
-import { Button, ButtonProps } from './Button'
+import { Button, ButtonGroup, ButtonProps } from './Button'
 import { Variant, Size } from '@/types/system'
 import { IconOptions } from '@/lib/icons'
 
@@ -17,6 +17,7 @@ const meta: Meta<ButtonProps> = {
     variant: Variant.Default,
     leadingIcon: null,
     trailingIcon: null,
+    block: false,
     isDisabled: false,
     isLoading: false,
     isSkeleton: false,
@@ -79,9 +80,11 @@ export const Main: Story = {
     variant: Variant.Primary,
   },
   render: (args: ButtonProps) => (
-    <Button
-      {...args}
-    />
+    <ButtonGroup>
+      <Button
+        {...args}
+      />
+    </ButtonGroup>
   )
 }
 
@@ -92,9 +95,11 @@ export const Icon: Story = {
     leadingIcon: 'ChevronDown',
   },
   render: (args: ButtonProps) => (
-    <Button
-      {...args}
-    />
+    <ButtonGroup>
+      <Button
+        {...args}
+      />
+    </ButtonGroup>
   )
 }
 
@@ -116,7 +121,7 @@ export const Links: Story = {
     },
   },
   render: (args: ButtonProps) => (
-    <div className={styles.group}>
+    <ButtonGroup>
       <Button
         {...args}
         label="Button"
@@ -132,7 +137,7 @@ export const Links: Story = {
         href="https://www.leaseloco.com/"
         target="_blank"
       />
-    </div>
+    </ButtonGroup>
   )
 }
 
@@ -158,7 +163,7 @@ export const Variants: Story = {
     },
   },
   render: (args: ButtonProps) => (
-    <div className={styles.group}>
+    <ButtonGroup>
       <Button
         {...args}
         variant={Variant.Default}
@@ -179,7 +184,7 @@ export const Variants: Story = {
         {...args}
         variant={Variant.Text}
       />
-    </div>
+    </ButtonGroup>
   )
 }
 
@@ -282,7 +287,7 @@ export const Text: Story = {
 const TestButtons = (args: ButtonProps) => {
   return (
     <>
-      <div className={styles.group}>
+      <ButtonGroup>
         <Button
           {...args}
           label="Label"
@@ -317,8 +322,8 @@ const TestButtons = (args: ButtonProps) => {
           label="Label"
           isSkeleton
         />
-      </div>
-      <div className={styles.group}>
+      </ButtonGroup>
+      <ButtonGroup>
         <Button
           {...args}
           leadingIcon="ChevronDown"
@@ -353,8 +358,8 @@ const TestButtons = (args: ButtonProps) => {
           leadingIcon="ChevronDown"
           isSkeleton
         />
-      </div>
-      <div className={styles.group}>
+      </ButtonGroup>
+      <ButtonGroup>
         <Button
           {...args}
           label="Label"
@@ -396,8 +401,8 @@ const TestButtons = (args: ButtonProps) => {
           size={Size.Small}
           isSkeleton
         />
-      </div>
-      <div className={styles.group}>
+      </ButtonGroup>
+      <ButtonGroup>
         <Button
           {...args}
           size={Size.Small}
@@ -439,7 +444,7 @@ const TestButtons = (args: ButtonProps) => {
           leadingIcon="ChevronDown"
           isSkeleton
         />
-      </div>
+      </ButtonGroup>
     </>
   )
 }

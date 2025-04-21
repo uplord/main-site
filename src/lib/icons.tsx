@@ -1,5 +1,5 @@
 import * as icons from 'lucide-react'
-import { IconProps } from '@/components/Icon'
+import { IconProps } from '@/components/utils/Icon'
 
 export const IconOptions = [
   null,

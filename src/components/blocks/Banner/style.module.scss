@@ -1,0 +1,143 @@
+.banner {
+  position: relative;
+}
+
+.container {
+  @include container;
+
+  & {
+    padding: 0;
+    position: relative;
+  }
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  @media (min-width: $breakpoint-md) {
+    justify-content: flex-start;
+    flex-direction: row;
+    height: 800px;
+  }
+
+  @media (max-width: $breakpoint-md - 1) {
+    height: 640px;
+    min-height: 100dvh;
+  }
+}
+
+.image {
+  display: flex;
+  padding: 0 1.5rem;
+
+  @media (min-width: $breakpoint-md) {
+    flex-basis: 50%;
+    justify-content: flex-end;
+    padding-left: 3rem;
+    padding-right: 1.5rem;
+    order: 1;
+  }
+
+  .image-wrap {
+    position: relative;
+    width: 140px;
+
+    @media (min-width: $breakpoint-md) {
+      width: 100%;
+      max-width: 500px;
+    }
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem 0;
+
+  @media (min-width: $breakpoint-md) {
+    flex-basis: 50%;
+    padding: 4rem 1.5rem;
+    text-align: left;
+  }
+
+  h1 {
+    @include text-2xl;
+    @include text-bold;
+
+    & {
+      color: $color-heading;
+
+      @include dark-mode {
+        color: $color-heading-dark;
+      }
+    }
+
+    @media (min-width: $breakpoint-sm) {
+      @include text-2xl;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      @include text-4xl;
+    }
+
+    span {
+      @include text-lg;
+
+      & {
+        display: block;
+        color: $color-primary;
+        margin-bottom: 0.5rem;
+      }
+
+      @media (min-width: $breakpoint-sm) {
+        @include text-xl;
+      }
+  
+      @media (min-width: $breakpoint-lg) {
+        @include text-2xl;
+      }
+    }
+  }
+  
+  h2 {
+    @include text-md;
+    @include text-normal;
+
+    & {
+      color: $color-text;
+
+      @include dark-mode {
+        color: $color-text-dark;
+      }
+    }
+
+    @media (min-width: $breakpoint-sm) {
+      @include text-lg;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      @include text-xl;
+    }
+  }
+}
+
+.button-group {
+  justify-content: center;
+  margin-top: 1.5rem;
+
+  @media (min-width: $breakpoint-md) {
+    justify-content: flex-start;
+  }
+}

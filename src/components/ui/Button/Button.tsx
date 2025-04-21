@@ -19,7 +19,9 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   variant: Variant
   leadingIcon?: IconProps['name']
   trailingIcon?: IconProps['name']
+  block?: boolean
   className?: string
+  isIcon?: boolean
   isDisabled?: boolean
   isLoading?: boolean
   isSkeleton?: boolean
@@ -33,7 +35,9 @@ export const Button = ({
   variant,
   leadingIcon,
   trailingIcon,
+  block = false,
   className = '',
+  isIcon = false,
   isDisabled = false,
   isLoading = false,
   isSkeleton = false,
@@ -58,11 +62,12 @@ export const Button = ({
     styles.button,
     styles[`size-${size}`],
     styles[`variant-${variant}`],
+    block && styles.block,
     className,
     (isDisabled || isLoading || isSkeleton) && styles['is-disabled'],
     isLoading && styles['is-loading'],
     isSkeleton && styles['is-skeleton'],
-    ((leadingIcon || trailingIcon) && !label) && styles['has-icon']
+    ((leadingIcon || trailingIcon) && !label || isIcon) && styles['has-icon']
   )
 
   if (href) {
@@ -92,5 +97,23 @@ export const Button = ({
     >
       {content}
     </button>
+  )
+}
+
+export type ButtonGroupProps = {
+  children: React.ReactNode
+  className?: string
+  justify?: 'center' | 'start' | 'end'
+}
+
+export const ButtonGroup = ({
+  children,
+  className,
+  justify,
+}: ButtonGroupProps) => {
+  return (
+    <div className={clsx(styles.group, className, justify && styles[`justify-${justify}`])}>
+      {children}
+    </div>
   )
 }

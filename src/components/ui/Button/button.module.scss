@@ -6,8 +6,20 @@
   flex-wrap: wrap;
   gap: 1rem;
 
-  & + .group {
-    margin-top: 1rem;
+  &.justify-center {
+    justify-content: center;
+  }
+
+  &.justify-start {
+    justify-content: flex-start;
+  }
+
+  &.justify-end {
+    justify-content: flex-end;
+  }
+
+  .block {
+    width: 100%;
   }
 }
 
@@ -21,6 +33,7 @@
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
+    width: fit-content;
     scale: 1;
     border: 0.0625rem solid transparent;
     transition: background-color 0.2s ease-in-out,
@@ -121,6 +134,10 @@
     &.has-icon {
       padding-left: 0.8125rem;
       padding-right: 0.8125rem;
+
+      span {
+        width: 1.25rem;
+      }
     }
 
     .content {
@@ -139,6 +156,10 @@
     &.has-icon {
       padding-left: 0.5625rem;
       padding-right: 0.5625rem;
+
+      span {
+        width: 1.25rem;
+      }
     }
 
     .content {
@@ -235,6 +256,7 @@
 .content {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
 }
 

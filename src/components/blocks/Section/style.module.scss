@@ -1,0 +1,103 @@
+.section {
+  position: relative;
+}
+
+.container {
+  @include container;
+}
+
+.content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  @media (min-width: $breakpoint-md) {
+    flex-wrap: nowrap;
+    gap: 2rem;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    gap: 5rem;
+  }
+}
+
+.image {
+
+  @media (min-width: $breakpoint-md) {
+    min-width: 36.1272%;
+  }
+
+  .image-wrap {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 240px;
+
+    @media (min-width: $breakpoint-md) {
+      justify-content: center;
+      max-width: 100%;
+    }
+  }
+
+  img {
+    border-radius: 1rem;
+  }
+}
+
+.text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  @media (min-width: $breakpoint-md) {
+    gap: 0.5rem;
+  }
+
+  h3 {
+    @include text-lg;
+    @include text-bold;
+
+    & {
+      color: $color-primary;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      @include text-xl;
+    }
+  }
+
+  h2 {
+    @include text-xl;
+    @include text-bold;
+
+    & {
+      color: $color-heading;
+    }
+
+    @media (min-width: $breakpoint-md) {
+      @include text-2xl;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      @include text-3xl;
+    }
+  }
+
+  p {
+    @include text-md;
+    @include text-normal;
+
+    & {
+      color: $color-text;
+    }
+
+    @media (min-width: $breakpoint-md) {
+      @include text-xm;
+    }
+  }
+
+  .button-group {
+    margin-top: 1.5rem;
+  }
+}

@@ -5,7 +5,7 @@ import NiceModalProvider from '@/context/NiceModalProvider'
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
-  weight: ['400', '500', '700'],
+  weight: ['400', '500', '600', '700'],
   display: 'swap',
 })
 

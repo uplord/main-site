@@ -29,7 +29,7 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ['Components', 'Styleguide', 'Blocks', 'UI', 'Utils'],
+        order: ['Components', 'Styleguide', 'Blocks', 'Navigation', 'UI', 'Utils'],
       }
     },
     chromatic: {
