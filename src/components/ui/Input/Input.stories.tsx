@@ -137,6 +137,11 @@ export const FormikField: Story = {
     placeholder: 'Input',
     helper: 'Formik field',
   },
+  parameters: {
+    controls: {
+      disable: true,
+    },
+  },
   render: (args: InputProps) => (
     <Formik
       initialValues={{

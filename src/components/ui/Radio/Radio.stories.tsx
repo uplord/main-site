@@ -124,16 +124,9 @@ export const Content: Story = {
 }
 
 export const State: Story = {
-  argTypes: {
-    isDisabled: {
-      table: {
-        disable: true,
-      },
-    },
-    isError: {
-      table: {
-        disable: true,
-      },
+  parameters: {
+    controls: {
+      disable: true,
     },
   },
   render: (args: RadioProps) => (
@@ -203,16 +196,9 @@ export const StateText: Story = {
     total: 'X,XXX',
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut metus et erat suscipit facilisis quis eu odio.',
   },
-  argTypes: {
-    isDisabled: {
-      table: {
-        disable: true,
-      },
-    },
-    isError: {
-      table: {
-        disable: true,
-      },
+  parameters: {
+    controls: {
+      disable: true,
     },
   },
   render: (args: RadioProps) => (

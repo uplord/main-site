@@ -71,6 +71,11 @@ export const FormikField: Story = {
     placeholder: 'Label',
     helper: 'Formik field',
   },
+  parameters: {
+    controls: {
+      disable: true,
+    },
+  },
   render: (args: TextareaProps) => (
     <Formik
       initialValues={{

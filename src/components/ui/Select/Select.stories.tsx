@@ -76,6 +76,11 @@ export const FormikField: Story = {
     placeholder: 'Select an option',
     helper: 'Formik field',
   },
+  parameters: {
+    controls: {
+      disable: true,
+    },
+  },
   render: (args: SelectProps) => (
     <Formik
       initialValues={{
