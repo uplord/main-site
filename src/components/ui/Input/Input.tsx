@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useRef, useState } from 'react'
-import { FieldProps } from 'formik'
+
 import clsx from 'clsx'
 import styles from './input.module.scss'
 
@@ -12,6 +12,12 @@ import { Variant, Size } from '@/types/system'
 export type InputProps = {
   type: 'text' | 'email' | 'password' | 'number'
   placeholder?: string
+  name: string
+  id?: string
+  value: string
+  helper?: string
+  className?: string
+
   leadingIcon?: IconProps['name']
   leadingFunction?: () => void
   leadingText?: string
@@ -19,19 +25,24 @@ export type InputProps = {
   trailingFunction?: () => void
   trailingText?: string
   button?: Omit<ButtonProps, 'size'> & { size?: Size.Small }
-  helper?: string
-  className?: string
+
   isDisabled?: boolean
   isLoading?: boolean
   isSkeleton?: boolean
   isError?: boolean
-} & FieldProps
+
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+}
 
 export const Input = ({
-  field,
-  form,
   type = 'text',
-  placeholder = '',
+  placeholder = '', 
+  name,
+  id,
+  value,
+  helper,
+  className = '',
+
   leadingIcon,
   leadingFunction,
   leadingText = '',
@@ -39,33 +50,31 @@ export const Input = ({
   trailingFunction,
   trailingText = '',
   button,
-  helper = '',
-  className = '',
+
   isDisabled = false,
   isLoading = false,
   isSkeleton = false,
   isError = false,
+
+  onChange,
 }: InputProps) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
-  const hasError = isError || form.errors[field.name] && form.touched[field.name]
-  const errorMessage = hasError
-  ? Array.isArray(form.errors[field.name])
-    ? (form.errors[field.name] as string[]).join(', ')
-    : (form.errors[field.name] as string)
-  : undefined
 
   const handleFocus = () => inputRef.current?.focus()
+
+  const clearField = () => {
+    onChange({
+      target: {
+        name,
+        value: '',
+      },
+    } as React.ChangeEvent<HTMLInputElement>)
+  }
 
   const togglePasswordVisibility = (event: React.MouseEvent) => {
     event.stopPropagation()
     setIsPasswordVisible(prev => !prev)
-  }
-
-  const clearField = () => {
-    form.setFieldValue(field.name, '')
-    form.setFieldTouched(field.name, false)
-    form.setFieldError(field.name, undefined)
   }
 
   const handleLeadingClick = (event: React.MouseEvent) => {
@@ -78,22 +87,22 @@ export const Input = ({
     if (trailingIcon === 'X') clearField()
     trailingFunction?.()
   }
-
+  
   const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation()
     button?.onClick?.(event)
-  }
+  }  
 
   return (
     <div className={clsx(styles.field, !placeholder && styles['no-label'])}>
       <div className={clsx(
-          styles.outer,
-          className,
-          (isDisabled || isLoading || isSkeleton) && styles['is-disabled'],
-          (isLoading && !isSkeleton) && styles['is-loading'],
-          isSkeleton && styles['is-skeleton'],
-          isError && styles['is-error'],
-        )}
+        styles.outer,
+        className,
+        (isDisabled || isLoading || isSkeleton) && styles['is-disabled'],
+        (isLoading && !isSkeleton) && styles['is-loading'],
+        isSkeleton && styles['is-skeleton'],
+        isError && styles['is-error'],
+      )}
         onClick={handleFocus}
       >
         {(isLoading && !isSkeleton) && (
@@ -110,17 +119,17 @@ export const Input = ({
 
         <div className={clsx(styles.inner)}>
           <input
-            {...field}
             ref={inputRef}
             type={type === 'password' && isPasswordVisible ? 'text' : type}
-            id={field.name}
-            value={field.value ?? ''}
+            id={id || name}
+            name={name}
+            value={value}
+            onChange={onChange}
             className={styles.input}
             placeholder=" "
             required
             disabled={isDisabled || isLoading || isSkeleton}
-          />
-
+          /> 
           <span className={styles.placeholder}>{placeholder}</span>
         </div>
 
@@ -132,8 +141,9 @@ export const Input = ({
           </div>
         )}
 
-        {trailingIcon && !(trailingIcon === 'X' && (!field.value || isDisabled)) && (
-          <div onClick={trailingFunction || trailingIcon === 'X' ? handleTrailingClick : undefined}
+        {trailingIcon && !(trailingIcon === 'X' && (!value || isDisabled)) && (
+          <div
+            onClick={handleTrailingClick}
             className={clsx(styles['icon-wrap'], trailingFunction || trailingIcon === 'X' ? styles.click : '')}
           >
             <Icon name={trailingIcon} size={Size.Medium} className={styles.icon} />
@@ -152,9 +162,9 @@ export const Input = ({
         )}
       </div>
 
-      {(errorMessage || helper) && (
+      {(helper) && (
         <div className={styles.helper}>
-          {errorMessage ?? helper}
+          {helper}
         </div>
       )}
     </div>

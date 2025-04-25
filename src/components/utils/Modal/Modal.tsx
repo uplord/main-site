@@ -56,10 +56,6 @@ export const Modal = ({
           <motion.div
             onClick={() => backdropClose && modal.hide()}
             className={styles['backdrop--close-button']}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6 }}
           />
           {showMobile && mobileDraggable ? (
             <motion.div

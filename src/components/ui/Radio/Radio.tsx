@@ -1,41 +1,45 @@
 import React from 'react'
-import { FieldProps } from 'formik'
+
 import clsx from 'clsx'
 import styles from '@/components/ui/Checkbox/checkbox.module.scss'
 
 export type RadioProps = {
+  name: string
   id?: string
+  value: string
+  checked?: boolean
+  helper?: string
+  className?: string
+
   label?: string
   total?: string
   content?: string
-  className?: string
-  value: string
+
   isDisabled?: boolean
   isSkeleton?: boolean
   isError?: boolean
-} & FieldProps
+
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+}
 
 export const Radio = ({
-  field,
-  form,
-  id = '',
+  name,
+  id,
+  value,
+  checked,
+  helper,
+  className = '',
+
   label,
   total,
   content,
-  className = '',
-  value,
+
   isDisabled = false,
   isSkeleton = false,
   isError = false,
+
+  onChange,
 }: RadioProps) => {
-  const hasError = isError || form.errors[field.name] && form.touched[field.name]
-  const errorMessage = hasError
-  ? isError
-    ? 'Error message'
-    : Array.isArray(form.errors[field.name])
-      ? (form.errors[field.name] as string[]).join(', ')
-      : (form.errors[field.name] as string)
-  : undefined
 
   return (
     <div className={styles.field}>
@@ -43,18 +47,19 @@ export const Radio = ({
         styles.radio,
         (isDisabled || isSkeleton) && styles['is-disabled'],
         isSkeleton && styles['is-skeleton'],
-        hasError && styles['is-error'],
+        isError && styles['is-error'],
       )}>
         <input
-          {...field}
           type="radio"
-          id={id || field.name}
+          id={id || name}
+          name={name}
           value={value}
-          checked={value === field.value}
+          onChange={onChange}
           className={clsx(styles.input, className)}
+          checked={checked}
           disabled={isDisabled || isSkeleton}
         />
-        <label htmlFor={id || field.name}>
+        <label htmlFor={id || name}>
           <div className={styles.title}>
             {label !== undefined && (
               <div className={styles.label}>
@@ -74,8 +79,11 @@ export const Radio = ({
           )}
         </label>
       </div>
-      {(errorMessage) && (
-        <div className={styles.helper}>{errorMessage}</div>
+
+      {(helper) && (
+        <div className={styles.helper}>
+          {helper}
+        </div>
       )}
     </div>
   )

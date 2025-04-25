@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Formik, Form, Field } from 'formik'
 import styles from '@/components/ui/Input/input.module.scss'
+import { FormikInput } from '../FormikInput'
 import { Select, SelectProps } from './Select'
 
 const meta: Meta<SelectProps> = {
@@ -25,35 +26,32 @@ const meta: Meta<SelectProps> = {
         disable: true,
       },
     },
+    name: {
+      table: {
+        disable: true,
+      },
+    },
+    id: {
+      table: {
+        disable: true,
+      },
+    },
+    value: {
+      table: {
+        disable: true,
+      },
+    },
+    onChange: {
+      table: {
+        disable: true,
+      },
+    },
   },
   decorators: [
-    (Story, context) => {
-      if (context.name === 'Filled') {
-        return (
-          <div className="padding">
-            <Story />
-          </div>
-        )
-      }
-
+    (Story) => {
       return (
         <div className="padding">
-          <Formik
-            initialValues={{
-              input: '',
-              filled: '3',
-            }}
-            onSubmit={async (values) => {
-              await new Promise((r) => setTimeout(r, 500));
-              alert(JSON.stringify(values, null, 2));
-            }}
-          >
-            {() => (
-              <Form>
-                <Story />
-              </Form>
-            )}
-          </Formik>
+          <Story />
         </div>
       )
     },
@@ -66,32 +64,43 @@ type Story = StoryObj<SelectProps>
 
 export const Default: Story = {
   render: (args: SelectProps) => (
-    <Field
+    <Select
       {...args}
-      component={Select}
       name="input"
     />
   )
 }
 
-export const State: Story = {
-  argTypes: {
-    isDisabled: {
-      table: {
-        disable: true,
-      },
-    },
-    isError: {
-      table: {
-        disable: true,
-      },
-    },
-    isLoading: {
-      table: {
-        disable: true,
-      },
-    },
+export const FormikField: Story = {
+  args: {
+    placeholder: 'Select an option',
+    helper: 'Formik field',
   },
+  render: (args: SelectProps) => (
+    <Formik
+      initialValues={{
+        select: ''
+      }}
+      onSubmit={async (values) => {
+        await new Promise((r) => setTimeout(r, 500))
+        console.log(JSON.stringify(values, null, 2))
+      }}
+    >
+      {() => (
+        <Form autoComplete="off" noValidate>
+          <Field
+            {...args}
+            component={FormikInput}
+            input={Select}
+            name="select"
+          />
+        </Form>
+      )}
+    </Formik>
+  ),
+}
+
+export const State: Story = {
   parameters: {
     controls: {
       disable: true,
@@ -99,63 +108,54 @@ export const State: Story = {
   },
   render: (args: SelectProps) => (
     <div className={styles.fields}>
-      <Field
+      <Select
         {...args}
-        component={Select}
         name="input"
         helper="Default"
       />
-      <Field
+      <Select
         {...args}
-        component={Select}
         name="hover"
         helper="Hover"
         className="hover"
       />
-      <Field
+      <Select
         {...args}
-        component={Select}
         name="focus"
         helper="Focus"
         className="focus-within"
       />
-      <Field
+      <Select
         {...args}
-        component={Select}
         name="disabled"
         helper="Disabled"
         isDisabled
       />
-      <Field
+      <Select
         {...args}
-        component={Select}
         name="skeleton"
         helper="Skeleton"
         isSkeleton
       />
-      <Field
+      <Select
         {...args}
-        component={Select}
         name="loading"
         helper="Loading"
         isLoading
       />
-      <Field
+      <Select
         {...args}
-        component={Select}
         name="filled"
         helper="Filled"
       />
-      <Field
+      <Select
         {...args}
-        component={Select}
         name="error"
         helper="Error"
         isError
       />
-      <Field
+      <Select
         {...args}
-        component={Select}
         name="error-focus"
         helper="Error Focus"
         className="focus-within"

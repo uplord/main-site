@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useRef } from 'react'
-import { FieldProps } from 'formik'
+
 import clsx from 'clsx'
 import styles from '@/components/ui/Input/input.module.scss'
 
@@ -13,43 +13,37 @@ type Option = { value: string; label: string }
 export type SelectProps = {
   placeholder?: string
   options: Option[]
+  name: string
+  id?: string
+  value: string
   helper?: string
   className?: string
+
   isDisabled?: boolean
   isLoading?: boolean
   isSkeleton?: boolean
   isError?: boolean
-  value?: string
-  onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void
-  name?: string
-} & Partial<FieldProps>
+
+  onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void
+}
 
 export const Select = ({
-  field,
-  form,
-  name,
-  value,
-  onChange,
   placeholder = '',
   options,
-  helper = '',
+  name,
+  id,
+  value,
+  helper,
   className = '',
+  
   isDisabled = false,
   isLoading = false,
   isSkeleton = false,
   isError = false,
+
+  onChange,
 }: SelectProps) => {
   const selectRef = useRef<HTMLSelectElement>(null)
-
-  const fieldName = field?.name ?? name ?? ''
-  const hasError = isError || (form?.errors?.[fieldName] && form?.touched?.[fieldName])
-  const errorMessage = hasError
-    ? Array.isArray(form?.errors?.[fieldName])
-      ? (form?.errors?.[fieldName] as string[]).join(', ')
-      : (form?.errors?.[fieldName] as string)
-    : undefined
-
-  const handleChange = field?.onChange ?? onChange
 
   return (
     <div className={clsx(styles.field, styles['no-label'])}>
@@ -60,20 +54,20 @@ export const Select = ({
           (isDisabled || isLoading || isSkeleton) && styles['is-disabled'],
           isLoading && !isSkeleton && styles['is-loading'],
           isSkeleton && styles['is-skeleton'],
-          hasError && styles['is-error'],
+          isError && styles['is-error'],
         )}
       >
         {isLoading && !isSkeleton && <div className={styles.loading}></div>}
 
         <div className={styles.inner}>
           <select
-            id={fieldName}
-            name={fieldName}
             ref={selectRef}
+            id={id || name}
+            name={name}
+            value={value}
+            onChange={onChange}
             className={styles.input}
-            disabled={isDisabled}
-            value={field?.value ?? value}
-            onChange={handleChange}
+            disabled={isDisabled || isLoading || isSkeleton}
           >
             {placeholder && <option value="">{placeholder}</option>}
             {options?.map((option) => (
@@ -89,8 +83,10 @@ export const Select = ({
         </div>
       </div>
 
-      {(errorMessage || helper) && (
-        <div className={styles.helper}>{errorMessage ?? helper}</div>
+      {(helper) && (
+        <div className={styles.helper}>
+          {helper}
+        </div>
       )}
     </div>
   )

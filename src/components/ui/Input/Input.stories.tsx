@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
+import { useState } from 'react'
 import { Formik, Form, Field } from 'formik'
 import styles from './input.module.scss'
+import { FormikInput } from '../FormikInput'
 import { Input, InputProps } from './Input'
 import { Variant } from '@/types/system'
 import { IconOptions } from '@/lib/icons'
@@ -55,26 +57,32 @@ const meta: Meta<InputProps> = {
         disable: true,
       },
     },
+    name: {
+      table: {
+        disable: true,
+      },
+    },
+    id: {
+      table: {
+        disable: true,
+      },
+    },
+    value: {
+      table: {
+        disable: true,
+      },
+    },
+    onChange: {
+      table: {
+        disable: true,
+      },
+    },
   },
   decorators: [
     (Story) => {
       return (
         <div className="padding">
-          <Formik
-            initialValues={{
-              filled: 'Filled'
-            }}
-            onSubmit={async (values) => {
-              await new Promise((r) => setTimeout(r, 500))
-              console.log(JSON.stringify(values, null, 2))
-            }}
-          >
-            {() => (
-              <Form autoComplete="off" noValidate>
-                <Story />
-              </Form>
-            )}
-          </Formik>
+          <Story />
         </div>
       )
     },
@@ -95,9 +103,8 @@ export const Default: Story = {
     helper: 'Optional helper text',
   },
   render: (args: InputProps) => (
-    <Field
+    <Input
       {...args}
-      component={Input}
       name="input"
     />
   ),
@@ -118,11 +125,39 @@ export const All: Story = {
     helper: 'Optional helper text',
   },
   render: (args: InputProps) => (
-    <Field
+    <Input
       {...args}
-      component={Input}
       name="input"
     />
+  ),
+}
+
+export const FormikField: Story = {
+  args: {
+    placeholder: 'Input',
+    helper: 'Formik field',
+  },
+  render: (args: InputProps) => (
+    <Formik
+      initialValues={{
+        input: ''
+      }}
+      onSubmit={async (values) => {
+        await new Promise((r) => setTimeout(r, 500))
+        console.log(JSON.stringify(values, null, 2))
+      }}
+    >
+      {() => (
+        <Form autoComplete="off" noValidate>
+          <Field
+            {...args}
+            component={FormikInput}
+            input={Input}
+            name="input"
+          />
+        </Form>
+      )}
+    </Formik>
   ),
 }
 
@@ -132,152 +167,151 @@ export const State: Story = {
       disable: true,
     },
   },
-  render: (args: InputProps) => (
-    <div className={styles.fields}>
-      <Field
-        {...args}
-        component={Input}
-        name="default"
-        placeholder="Default"
-        helper="Default"
-      />
-      <Field
-        {...args}
-        component={Input}
-        name="no-label"
-        helper="No label"
-      />
-      <Field
-        {...args}
-        component={Input}
-        name="hover"
-        placeholder="Hover"
-        helper="Hover"
-        className="hover"
-      />
-      <Field
-        {...args}
-        component={Input}
-        name="focus"
-        placeholder="Focus"
-        helper="Focus"
-        className="focus-within"
-      />
-      <Field
-        {...args}
-        component={Input}
-        name="filled"
-        placeholder="Filled"
-        helper="Filled"
-      />
-      <Field
-        {...args}
-        component={Input}
-        name="disabled"
-        placeholder="Disabled"
-        helper="Disabled"
-        isDisabled
-      />
-      <Field
-        {...args}
-        component={Input}
-        name="loading"
-        placeholder="Loading"
-        helper="Loading"
-        isLoading
-      />
-      <Field
-        {...args}
-        component={Input}
-        name="skeleton"
-        placeholder="Skeleton"
-        helper="Skeleton"
-        isSkeleton
-      />
-      <Field
-        {...args}
-        component={Input}
-        name="error"
-        placeholder="Error"
-        helper="Error"
-        isError
-      />
-      <Field
-        {...args}
-        component={Input}
-        name="error-focus"
-        placeholder="Error focus"
-        helper="Error focus"
-        className="focus-within"
-        isError
-      />
+  render: (args: InputProps) => {
+    const [inputClear, setInputClear] = useState('')
 
-      <Field
-        {...args}
-        component={Input}
-        name="leading-icon"
-        placeholder="Leading icon"
-        helper="Leading icon"
-        leadingIcon="User"
-      />
-
-      <Field
-        {...args}
-        component={Input}
-        name="leading-text"
-        placeholder="Leading text"
-        helper="Leading text"
-        leadingText="£"
-      />
-
-      <Field
-        {...args}
-        component={Input}
-        name="trailing-icon"
-        placeholder="Trailing icon"
-        helper="Trailing icon"
-        trailingIcon="User"
-      />
-
-      <Field
-        {...args}
-        component={Input}
-        name="trailing-text"
-        placeholder="Trailing text"
-        helper="Trailing text"
-        trailingText="metres"
-      />
-
-      <Field
-        {...args}
-        component={Input}
-        name="clear"
-        placeholder="Clear"
-        helper="Clear"
-        trailingIcon="X"
-      />
-
-      <Field
-        {...args}
-        component={Input}
-        type="password"
-        name="password"
-        placeholder="Password"
-        helper="Password"
-      />
-
-      <Field
-        {...args}
-        component={Input}
-        name="button"
-        placeholder="Button"
-        button={{
-          label: 'Button',
-          variant: Variant.Default,
-          onClick: () => handleButtonClick()
-        }}
-        helper="Button"
-      />
-    </div>
-  ),
+    return (
+      <div className={styles.fields}>
+        <Input
+          {...args}
+          name="default"
+          placeholder="Default"
+          helper="Default"
+          onChange={(e) => console.log(e.target.value)}
+        />
+        <Input
+          {...args}
+          name="no-label"
+          helper="No label"
+          onChange={(e) => console.log(e.target.value)}
+        />
+        <Input
+          {...args}
+          name="hover"
+          placeholder="Hover"
+          helper="Hover"
+          className="hover"
+          onChange={(e) => console.log(e.target.value)}
+        />
+        <Input
+          {...args}
+          name="focus"
+          placeholder="Focus"
+          helper="Focus"
+          className="focus-within"
+          onChange={(e) => console.log(e.target.value)}
+        />
+        <Input
+          {...args}
+          name="filled"
+          placeholder="Filled"
+          value="Filled"
+          helper="Filled"
+          onChange={(e) => console.log(e.target.value)}
+        />
+        <Input
+          {...args}
+          name="disabled"
+          placeholder="Disabled"
+          helper="Disabled"
+          isDisabled
+          onChange={(e) => console.log(e.target.value)}
+        />
+        <Input
+          {...args}
+          name="loading"
+          placeholder="Loading"
+          helper="Loading"
+          isLoading
+          onChange={(e) => console.log(e.target.value)}
+        />
+        <Input
+          {...args}
+          name="skeleton"
+          placeholder="Skeleton"
+          helper="Skeleton"
+          isSkeleton
+          onChange={(e) => console.log(e.target.value)}
+        />
+        <Input
+          {...args}
+          name="error"
+          placeholder="Error"
+          helper="Error"
+          isError
+          onChange={(e) => console.log(e.target.value)}
+        />
+        <Input
+          {...args}
+          name="error-focus"
+          placeholder="Error focus"
+          helper="Error focus"
+          className="focus-within"
+          isError
+          onChange={(e) => console.log(e.target.value)}
+        />
+        <Input
+          {...args}
+          name="leading-icon"
+          placeholder="Leading icon"
+          helper="Leading icon"
+          leadingIcon="User"
+          onChange={(e) => console.log(e.target.value)}
+        />
+        <Input
+          {...args}
+          name="leading-text"
+          placeholder="Leading text"
+          helper="Leading text"
+          leadingText="£"
+          onChange={(e) => console.log(e.target.value)}
+        />
+        <Input
+          {...args}
+          name="trailing-icon"
+          placeholder="Trailing icon"
+          helper="Trailing icon"
+          trailingIcon="User"
+          onChange={(e) => console.log(e.target.value)}
+        />
+        <Input
+          {...args}
+          name="trailing-text"
+          placeholder="Trailing text"
+          helper="Trailing text"
+          trailingText="metres"
+          onChange={(e) => console.log(e.target.value)}
+        />
+        <Input
+          {...args}
+          name="clear"
+          value={inputClear}
+          placeholder="Clear"
+          helper="Clear"
+          trailingIcon="X"
+          onChange={(e) => setInputClear(e.target.value)}
+        />
+        <Input
+          {...args}
+          type="password"
+          name="password"
+          placeholder="Password"
+          helper="Password"
+          onChange={(e) => console.log(e.target.value)}
+        />
+        <Input
+          {...args}
+          name="button"
+          placeholder="Button"
+          button={{
+            label: 'Button',
+            variant: Variant.Default,
+            onClick: () => handleButtonClick()
+          }}
+          helper="Button"
+          onChange={(e) => console.log(e.target.value)}
+        />
+      </div>
+    )
+  },
 }

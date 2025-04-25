@@ -18,7 +18,7 @@ export const Banner = ({
           <div className={styles.image}>
             <div className={styles['image-wrap']}>
               <Image
-                src="https://placehold.co/640/EEE/EEE/png"
+                src="/images/me.jpeg"
                 alt="Michael Allen"
                 sizes="(max-width: 1024px) 140px, 500px"
                 width={640}

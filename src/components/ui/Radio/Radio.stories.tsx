@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Formik, Form, Field } from 'formik'
 import styles from '@/components/ui/Checkbox/checkbox.module.scss'
+import { FormikInput } from '../FormikInput'
 import { Radio, RadioProps } from './Radio'
 
 const meta: Meta<RadioProps> = {
@@ -12,27 +13,43 @@ const meta: Meta<RadioProps> = {
     isDisabled: false,
     isError: false,
   },
+  argTypes: {
+    className: {
+      table: {
+        disable: true,
+      },
+    },
+    name: {
+      table: {
+        disable: true,
+      },
+    },
+    id: {
+      table: {
+        disable: true,
+      },
+    },
+    value: {
+      table: {
+        disable: true,
+      },
+    },
+    checked: {
+      table: {
+        disable: true,
+      },
+    },
+    onChange: {
+      table: {
+        disable: true,
+      },
+    },
+  },
   decorators: [
     (Story) => {
       return (
         <div className="padding">
-          <Formik
-            initialValues={{
-              input1: 'true',
-              input2: 'true',
-              filled: 'true',
-            }}
-            onSubmit={async (values) => {
-              await new Promise((r) => setTimeout(r, 500));
-              alert(JSON.stringify(values, null, 2));
-            }}
-          >
-            {() => (
-              <Form>
-                <Story />
-              </Form>
-            )}
-          </Formik>
+          <Story />
         </div>
       )
     },
@@ -47,35 +64,16 @@ export const Default: Story = {
   args: {
     label: 'Radio',
   },
-  argTypes: {
-    id: {
-      table: {
-        disable: true,
-      }
-    },
-    className: {
-      table: {
-        disable: true,
-      },
-    },
-    value: {
-      table: {
-        disable: true,
-      },
-    },
-  },
   render: (args: RadioProps) => (
     <div className={styles.fields}>
-      <Field
+      <Radio
         {...args}
-        component={Radio}
         id="radio1"
         name="input1"
         value="true"
       />
-      <Field
+      <Radio
         {...args}
-        component={Radio}
         id="radio2"
         name="input1"
         value="false"
@@ -109,16 +107,14 @@ export const Content: Story = {
   },
   render: (args: RadioProps) => (
     <div className={styles.fields}>
-      <Field
+      <Radio
         {...args}
-        component={Radio}
         id="radio3"
         name="input2"
         value="true"
       />
-      <Field
+      <Radio
         {...args}
-        component={Radio}
         id="radio4"
         name="input2"
         value="false"
@@ -142,63 +138,55 @@ export const State: Story = {
   },
   render: (args: RadioProps) => (
     <div className={styles.fields}>
-      <Field
+      <Radio
         {...args}
-        component={Radio}
         name="input"
         label="Default"
         value="true"
       />
-      <Field
+      <Radio
         {...args}
-        component={Radio}
         name="hover"
         label="Hover"
         value="true"
         className="hover"
       />
-      <Field
+      <Radio
         {...args}
-        component={Radio}
         name="focus"
         label="Focus"
         value="true"
         className="focus-visible"
       />
-      <Field
+      <Radio
         {...args}
-        component={Radio}
         name="disabled"
         label="Disabled"
         value="true"
         isDisabled
       />
-      <Field
+      <Radio
         {...args}
-        component={Radio}
         name="skeleton"
         label="Skeleton"
         value="true"
         isSkeleton
       />
-      <Field
+      <Radio
         {...args}
-        component={Radio}
         name="filled"
         label="Filled"
         value="true"
       />
-      <Field
+      <Radio
         {...args}
-        component={Radio}
         name="error"
         label="Error"
         value="true"
         isError
       />
-      <Field
+      <Radio
         {...args}
-        component={Radio}
         name="focus-error"
         label="Focus Error"
         className="focus-visible"
@@ -229,56 +217,48 @@ export const StateText: Story = {
   },
   render: (args: RadioProps) => (
     <div className={styles.fields}>
-      <Field
+      <Radio
         {...args}
-        component={Radio}
         name="input"
         value="true"
       />
-      <Field
+      <Radio
         {...args}
-        component={Radio}
         name="hover"
         value="true"
         className="hover"
       />
-      <Field
+      <Radio
         {...args}
-        component={Radio}
         name="focus"
         value="true"
         className="focus-visible"
       />
-      <Field
+      <Radio
         {...args}
-        component={Radio}
         name="disabled"
         value="true"
         isDisabled
       />
-      <Field
+      <Radio
         {...args}
-        component={Radio}
         name="skeleton"
         value="true"
         isSkeleton
       />
-      <Field
+      <Radio
         {...args}
-        component={Radio}
         name="filled"
         value="true"
       />
-      <Field
+      <Radio
         {...args}
-        component={Radio}
         name="error"
         value="true"
         isError
       />
-      <Field
+      <Radio
         {...args}
-        component={Radio}
         name="focus-error"
         className="focus-visible"
         value="true"

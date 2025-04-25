@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Formik, Form, Field } from 'formik'
 import styles from '@/components/ui/Input/input.module.scss'
+import { FormikInput } from '../FormikInput'
 import { Textarea, TextareaProps } from './Textarea'
 
 const meta: Meta<TextareaProps> = {
@@ -20,35 +21,32 @@ const meta: Meta<TextareaProps> = {
         disable: true,
       },
     },
+    name: {
+      table: {
+        disable: true,
+      },
+    },
+    id: {
+      table: {
+        disable: true,
+      },
+    },
+    value: {
+      table: {
+        disable: true,
+      },
+    },
+    onChange: {
+      table: {
+        disable: true,
+      },
+    },
   },
   decorators: [
-    (Story, context) => {
-      if (context.name === 'Filled' || context.name === 'Register') {
-        return (
-          <div className="padding">
-            <Story />
-          </div>
-        )
-      }
-
+    (Story) => {
       return (
         <div className="padding">
-          <Formik
-            initialValues={{
-              input: '',
-              filled: 'Filled',
-            }}
-            onSubmit={async (values) => {
-              await new Promise((r) => setTimeout(r, 500));
-              alert(JSON.stringify(values, null, 2));
-            }}
-          >
-            {() => (
-              <Form>
-                <Story />
-              </Form>
-            )}
-          </Formik>
+          <Story />
         </div>
       )
     },
@@ -61,12 +59,40 @@ type Story = StoryObj<TextareaProps>
 
 export const Default: Story = {
   render: (args: TextareaProps) => (
-    <Field
+    <Textarea
       {...args}
-      component={Textarea}
       name="input"
     />
   )
+}
+
+export const FormikField: Story = {
+  args: {
+    placeholder: 'Label',
+    helper: 'Formik field',
+  },
+  render: (args: TextareaProps) => (
+    <Formik
+      initialValues={{
+        textarea: ''
+      }}
+      onSubmit={async (values) => {
+        await new Promise((r) => setTimeout(r, 500))
+        console.log(JSON.stringify(values, null, 2))
+      }}
+    >
+      {() => (
+        <Form autoComplete="off" noValidate>
+          <Field
+            {...args}
+            component={FormikInput}
+            input={Textarea}
+            name="textarea"
+          />
+        </Form>
+      )}
+    </Formik>
+  ),
 }
 
 export const State: Story = {
@@ -77,67 +103,68 @@ export const State: Story = {
   },
   render: (args: TextareaProps) => (
     <div className={styles.fields}>
-      <Field
+      <Textarea
         {...args}
-        component={Textarea}
         name="input"
         helper="Default"
+        onChange={(e) => console.log(e.target.value)}
       />
-      <Field
+      <Textarea
         {...args}
-        component={Textarea}
         name="hover"
         helper="Hover"
         className="hover"
+        onChange={(e) => console.log(e.target.value)}
       />
-      <Field
+      <Textarea
         {...args}
-        component={Textarea}
         name="focus"
         helper="Focus"
         className="focus-within"
+        onChange={(e) => console.log(e.target.value)}
       />
-      <Field
+      <Textarea
         {...args}
-        component={Textarea}
         name="disabled"
         helper="Disabled"
         isDisabled
+        onChange={(e) => console.log(e.target.value)}
       />
-      <Field
+      <Textarea
         {...args}
-        component={Textarea}
         name="skeleton"
         helper="Skeleton"
         isSkeleton
+        onChange={(e) => console.log(e.target.value)}
       />
-      <Field
+      <Textarea
         {...args}
-        component={Textarea}
         name="loading"
         helper="Loading"
         isLoading
+        onChange={(e) => console.log(e.target.value)}
       />
-      <Field
+      <Textarea
         {...args}
-        component={Textarea}
         name="filled"
+        value="Filled"
         helper="Filled"
+        onChange={(e) => console.log(e.target.value)}
       />
-      <Field
+      <Textarea
         {...args}
-        component={Textarea}
         name="error"
         helper="Error"
         isError
+        onChange={(e) => console.log(e.target.value)}
       />
-      <Field
+      <Textarea
         {...args}
-        component={Textarea}
         name="error-focus"
         helper="Error Focus"
         className="focus-within"
         isError
+        onChange={(e) => console.log(e.target.value)}
       />
     </div>
   )

@@ -18,7 +18,27 @@ const meta: Meta<CheckboxProps> = {
         disable: true,
       },
     },
+    name: {
+      table: {
+        disable: true,
+      },
+    },
+    id: {
+      table: {
+        disable: true,
+      },
+    },
     value: {
+      table: {
+        disable: true,
+      },
+    },
+    checked: {
+      table: {
+        disable: true,
+      },
+    },
+    onChange: {
       table: {
         disable: true,
       },
@@ -28,21 +48,7 @@ const meta: Meta<CheckboxProps> = {
     (Story) => {
       return (
         <div className="padding">
-          <Formik
-            initialValues={{
-              filled: 'true',
-            }}
-            onSubmit={async (values) => {
-              await new Promise((r) => setTimeout(r, 500));
-              alert(JSON.stringify(values, null, 2));
-            }}
-          >
-            {() => (
-              <Form>
-                <Story />
-              </Form>
-            )}
-          </Formik>
+          <Story />
         </div>
       )
     },
@@ -58,9 +64,8 @@ export const Default: Story = {
     label: 'Checkbox',
   },
   render: (args: CheckboxProps) => (
-    <Field
+    <Checkbox
       {...args}
-      component={Checkbox}
       name="input1"
       value="true"
     />
@@ -74,9 +79,8 @@ export const Content: Story = {
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut metus et erat suscipit facilisis quis eu odio.',
   },
   render: (args: CheckboxProps) => (
-    <Field
+    <Checkbox
       {...args}
-      component={Checkbox}
       name="input2"
       value="true"
     />
@@ -91,63 +95,55 @@ export const State: Story = {
   },
   render: (args: CheckboxProps) => (
     <div className={styles.fields}>
-      <Field
+      <Checkbox
         {...args}
-        component={Checkbox}
         name="input"
         label="Default"
         value="true"
       />
-      <Field
+      <Checkbox
         {...args}
-        component={Checkbox}
         name="hover"
         label="Hover"
         value="true"
         className="hover"
       />
-      <Field
+      <Checkbox
         {...args}
-        component={Checkbox}
         name="focus"
         label="Focus"
         value="true"
         className="focus-visible"
       />
-      <Field
+      <Checkbox
         {...args}
-        component={Checkbox}
         name="disabled"
         label="Disabled"
         value="true"
         isDisabled
       />
-      <Field
+      <Checkbox
         {...args}
-        component={Checkbox}
         name="skeleton"
         label="Skeleton"
         value="true"
         isSkeleton
       />
-      <Field
+      <Checkbox
         {...args}
-        component={Checkbox}
         name="filled"
         label="Filled"
         value="true"
       />
-      <Field
+      <Checkbox
         {...args}
-        component={Checkbox}
         name="error"
         label="Error"
         value="true"
         isError
       />
-      <Field
+      <Checkbox
         {...args}
-        component={Checkbox}
         name="focus-error"
         label="Error Focus"
         className="focus-visible"
@@ -171,56 +167,48 @@ export const StateText: Story = {
   },
   render: (args: CheckboxProps) => (
     <div className={styles.fields}>
-      <Field
+      <Checkbox
         {...args}
-        component={Checkbox}
         name="input"
         value="true"
       />
-      <Field
+      <Checkbox
         {...args}
-        component={Checkbox}
         name="hover"
         className="hover"
         value="true"
       />
-      <Field
+      <Checkbox
         {...args}
-        component={Checkbox}
         name="focus"
         className="focus"
         value="true"
       />
-      <Field
+      <Checkbox
         {...args}
-        component={Checkbox}
         name="disabled"
         value="true"
         isDisabled
       />
-      <Field
+      <Checkbox
         {...args}
-        component={Checkbox}
         name="skeleton"
         value="true"
         isSkeleton
       />
-      <Field
+      <Checkbox
         {...args}
-        component={Checkbox}
         name="filled"
         value="true"
       />
-      <Field
+      <Checkbox
         {...args}
-        component={Checkbox}
         name="error"
         value="true"
         isError
       />
-      <Field
+      <Checkbox
         {...args}
-        component={Checkbox}
         name="focus-error"
         className="focus-visible"
         value="true"

@@ -64,7 +64,7 @@
       .content {
         background-color: $color-skeleton;
         animation: pulse 1.5s infinite alternate;
-        height: 1.4375rem;
+        height: 1.5rem;
         border-radius: 0.25rem;
 
         @include dark-mode {
@@ -81,7 +81,7 @@
       }
 
       .content {
-        height: 2.125rem;
+        height: 1.5rem;
       }
     }
   }
@@ -255,7 +255,6 @@
 
   & {
     color: $color-placeholder;
-    margin-left: 2.25rem;
   }
 }
 

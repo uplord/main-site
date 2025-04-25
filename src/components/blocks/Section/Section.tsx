@@ -18,7 +18,7 @@ export const Section = ({
           <div className={styles.image}>
             <div className={styles['image-wrap']}>
               <Image
-                src="https://placehold.co/500x617/EEE/EEE/png"
+                src="/images/me.png"
                 alt="Michael Allen"
                 sizes="(max-width: 1024px) 140px, 500px"
                 width={500}

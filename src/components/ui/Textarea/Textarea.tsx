@@ -1,38 +1,42 @@
 'use client'
 
 import React, { useRef } from 'react'
-import { FieldProps } from 'formik'
+
 import clsx from 'clsx'
 import styles from '@/components/ui/Input/input.module.scss'
 
 export type TextareaProps = {
   placeholder?: string
+  name: string
+  id?: string
+  value: string
   helper?: string
   className?: string
+
   isDisabled?: boolean
   isLoading?: boolean
   isSkeleton?: boolean
   isError?: boolean
-} & FieldProps
+
+  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void
+}
 
 export const Textarea = ({
-  field,
-  form,
-  placeholder = '',
-  helper = '',
+  placeholder = '', 
+  name,
+  id,
+  value,
+  helper,
   className = '',
+
   isDisabled = false,
   isLoading = false,
   isSkeleton = false,
   isError = false,
+
+  onChange,
 }: TextareaProps) => {
   const inputRef = useRef<HTMLTextAreaElement>(null)
-  const hasError = isError || form.errors[field.name] && form.touched[field.name]
-  const errorMessage = hasError
-  ? Array.isArray(form.errors[field.name])
-    ? (form.errors[field.name] as string[]).join(', ')
-    : (form.errors[field.name] as string)
-  : undefined
 
   const handleFocus = () => inputRef.current?.focus()
 
@@ -54,10 +58,11 @@ export const Textarea = ({
 
         <div className={clsx(styles.inner)}>
           <textarea
-            {...field}
             ref={inputRef}
-            id={field.name}
-            value={field.value ?? ''}
+            id={id || name}
+            name={name}
+            value={value}
+            onChange={onChange}
             className={styles.input}
             placeholder=" "
             required
@@ -69,9 +74,9 @@ export const Textarea = ({
 
       </div>
 
-      {(errorMessage || helper) && (
+      {(helper) && (
         <div className={styles.helper}>
-          {errorMessage ?? helper}
+          {helper}
         </div>
       )}
     </div>
