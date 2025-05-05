@@ -18,6 +18,7 @@ export type ModalProps = {
   footerProps?: FooterProps
   mobileDraggable?: boolean
   backdropClose?: boolean
+  bottomSheet?: boolean
 }
 
 export const Modal = ({
@@ -27,6 +28,7 @@ export const Modal = ({
   footerProps,
   mobileDraggable = false,
   backdropClose = true,
+  bottomSheet = false,
 }: ModalProps) => {
   const refMain = useRef<HTMLDivElement>(null)
   const controls = useDragControls()
@@ -47,7 +49,7 @@ export const Modal = ({
     <AnimatePresence onExitComplete={() => modal.remove()}>
       {modal.visible && (
         <motion.div
-          className={styles.backdrop}
+          className={`${styles.backdrop} ${bottomSheet && styles['bottom-sheet']}`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -57,7 +59,7 @@ export const Modal = ({
             onClick={() => backdropClose && modal.hide()}
             className={styles['backdrop--close-button']}
           />
-          {showMobile && mobileDraggable ? (
+          {showMobile && mobileDraggable && bottomSheet ? (
             <motion.div
               ref={refMain}
               className={`${styles.main}`}
@@ -86,7 +88,7 @@ export const Modal = ({
             </motion.div>
           ) : (
             <motion.div
-              className={styles.main}
+              className={`${styles.main}`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}

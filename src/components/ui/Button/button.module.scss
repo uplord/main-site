@@ -174,7 +174,7 @@
     background-color: $color-primary;
     color: $color-light;
 
-    &:hover:not(.is-disabled) {
+    &.has-hover:hover:not(.is-disabled) {
       background-color: color.mix($color-dark, $color-primary, 30%);
       color: $color-light;
     }
@@ -184,7 +184,7 @@
     background-color: $color-success;
     color: $color-light;
 
-    &:hover:not(.is-disabled) {
+    &.has-hover:hover:not(.is-disabled) {
       background-color: color.mix($color-dark, $color-success, 30%);
       color: $color-light;
     }
@@ -203,7 +203,7 @@
       }
     }
 
-    &:hover:not(.is-disabled) {
+    &.has-hover:hover:not(.is-disabled) {
       background-color: color.mix($color-dark, $color-light, 5%);
 
       @include dark-mode {
@@ -222,7 +222,7 @@
       }
     }
 
-    &:hover:not(.is-disabled) {
+    &.has-hover:hover:not(.is-disabled) {
       background-color: color.mix($color-dark, $color-light, 5%);
 
       @include dark-mode {
@@ -237,13 +237,13 @@
 
     @include dark-mode {
 
-      &:not(.is-disabled) {
+      &.has-hover:not(.is-disabled) {
         background-color: color.change($color-light, $alpha: 0.1);
         color: $color-light;
       }
     }
 
-    &:hover:not(.is-disabled) {
+    &.has-hover:hover:not(.is-disabled) {
       background-color: color.change($color-dark, $alpha: 0.25);
 
       @include dark-mode {

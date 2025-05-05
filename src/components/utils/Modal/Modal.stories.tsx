@@ -69,13 +69,28 @@ const TemporaryModal = NiceModal.create((props: ModalProps) => {
   )
 })
 
+const BottomSheet = NiceModal.create((props: ModalProps) => {
+  const modal = useModal()
+
+  return (
+    <Modal
+      {...args}
+      {...props}
+      modal={modal}
+      mobileDraggable={true}
+      bottomSheet={true}
+    >
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel augue commodo, scelerisque nibh a, viverra elit. Aenean id nisl ut leo sagittis cursus id non quam. Nam commodo nibh quis dapibus blandit. Pellentesque in ultricies enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan vestibulum vestibulum. Sed ultrices ex ac fringilla imperdiet. Fusce quis lectus egestas, blandit lectus ac, suscipit libero. Integer viverra placerat dui, eu luctus elit egestas at. Curabitur laoreet vestibulum maximus. In euismod lobortis tortor a sodales. Maecenas eleifend justo id dolor ultricies consequat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed finibus ipsum nulla, nec placerat dui pulvinar vel. In suscipit, nulla ut bibendum pellentesque, nunc risus dictum lectus, non blandit mi ipsum at ante.</p>
+    </Modal>
+  )
+})
+
 const PreventCloseModal = NiceModal.create((props: ModalProps) => {
   const modal = useModal()
 
   return (
     <Modal
       modal={modal}
-      mobileDraggable={true}
       backdropClose={false}
     >
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel augue commodo, scelerisque nibh a, viverra elit. Aenean id nisl ut leo sagittis cursus id non quam. Nam commodo nibh quis dapibus blandit. Pellentesque in ultricies enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan vestibulum vestibulum. Sed ultrices ex ac fringilla imperdiet. Fusce quis lectus egestas, blandit lectus ac, suscipit libero. Integer viverra placerat dui, eu luctus elit egestas at. Curabitur laoreet vestibulum maximus. In euismod lobortis tortor a sodales. Maecenas eleifend justo id dolor ultricies consequat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed finibus ipsum nulla, nec placerat dui pulvinar vel. In suscipit, nulla ut bibendum pellentesque, nunc risus dictum lectus, non blandit mi ipsum at ante.</p>
@@ -207,6 +222,30 @@ export const ButtonOpen: StoryObj<ButtonProps> = {
     variant: Variant.Primary,
     size: Size.Medium,
     onClick: () => NiceModal.show(TemporaryModal),
+  },
+  parameters: {
+    controls: {
+      disable: true,
+    },
+  },
+  render: (args) => <Button {...args} />,
+  decorators: [
+    (Story) => {
+      return (
+        <div className="padding">
+          <Story />
+        </div>
+      )
+    },
+  ],
+}
+
+export const MobileBottomSheet: StoryObj<ButtonProps> = {
+  args: {
+    label: 'Open',
+    variant: Variant.Primary,
+    size: Size.Medium,
+    onClick: () => NiceModal.show(BottomSheet),
   },
   parameters: {
     controls: {

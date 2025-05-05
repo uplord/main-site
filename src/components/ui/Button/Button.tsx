@@ -25,6 +25,7 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   isDisabled?: boolean
   isLoading?: boolean
   isSkeleton?: boolean
+  hasHover?: boolean
 }
 
 export const Button = ({
@@ -41,6 +42,7 @@ export const Button = ({
   isDisabled = false,
   isLoading = false,
   isSkeleton = false,
+  hasHover = true,
   ...restProps
 }: ButtonProps) => {
 
@@ -67,6 +69,7 @@ export const Button = ({
     (isDisabled || isLoading || isSkeleton) && styles['is-disabled'],
     isLoading && styles['is-loading'],
     isSkeleton && styles['is-skeleton'],
+    hasHover && styles['has-hover'],
     ((leadingIcon || trailingIcon) && !label || isIcon) && styles['has-icon']
   )
 

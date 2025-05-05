@@ -74,6 +74,7 @@ export const Footer = ({
               leadingButton === 'text' ? styles.anchor : '',
               styles.button,
             )}
+            hasHover={false}
           />
         )}
       </div>

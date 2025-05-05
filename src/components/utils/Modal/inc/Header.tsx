@@ -68,6 +68,7 @@ export const Header = ({
               leadingButton === 'text' ? styles.anchor : '',
               styles.button,
             )}
+            hasHover={false}
           />
         )}
       </div>
@@ -91,6 +92,7 @@ export const Header = ({
               trailingButton === 'text' ? styles.anchor : '',
               styles.button,
             )}
+            hasHover={false}
           />
         )}
       </div>

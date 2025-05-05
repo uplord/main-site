@@ -8,7 +8,7 @@ import styles from '@/components/ui/Input/input.module.scss'
 import { Icon } from '@/components/utils/Icon'
 import { Size } from '@/types/system'
 
-type Option = { value: string; label: string }
+type Option = { value: string | number; label: string }
 
 export type SelectProps = {
   placeholder?: string
