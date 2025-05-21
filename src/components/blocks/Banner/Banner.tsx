@@ -32,6 +32,8 @@ export const Banner = ({
     }, 1000)
   }, [])
 
+  const skeletonClass = !mounted ? styles.skeleton : ''
+
   return (
     <div id={id} className={clsx(styles.banner, hasHeader && styles.header)}>
       <div className={styles.container}>
@@ -54,10 +56,10 @@ export const Banner = ({
           </div>
           <div className={styles.text}>
             <h1>
-              <span className={clsx(styles.primary, !mounted ? styles.skeleton : '')}>Hi, I&apos;m Michael</span>
-              <span className={!mounted ? styles.skeleton : ''}>A Front End Developer</span>
+              <span className={clsx(styles.primary, skeletonClass)}>Hi, I&apos;m Michael</span>
+              <span className={skeletonClass}>A Front End Developer</span>
             </h1>
-            <h2 className={!mounted ? styles.skeleton : ''}>With over a decade in the industry creating websites</h2>
+            <h2 className={skeletonClass}>With over a decade in the industry creating websites</h2>
             <ButtonGroup className={styles['button-group']}>
               <Button
                 href="mailto:michael@uplord.co.uk"

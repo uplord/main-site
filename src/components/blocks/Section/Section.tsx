@@ -22,10 +22,11 @@ export const Section = ({ id }: SectionProps) => {
   }, [resolvedTheme])
 
   useEffect(() => {
-    setTimeout(function() {
-      setMounted(true)
-    }, 1000)
+    const timer = setTimeout(() => setMounted(true), 1000)
+    return () => clearTimeout(timer)
   }, [])
+
+  const skeletonClass = !mounted ? styles.skeleton : ''
 
   return (
     <div id={id} className={styles.section}>
@@ -46,9 +47,9 @@ export const Section = ({ id }: SectionProps) => {
             </div>
           </div>
           <div className={styles.text}>
-            <h3 className={!mounted ? styles.skeleton : ''}>About Michael Allen</h3>
-            <h2 className={!mounted ? styles.skeleton : ''}>Front End Development</h2>
-            <p className={!mounted ? styles.skeleton : ''}>I&lsquo;m an experienced Front End Developer with excellent collaboration, organization, and teamwork skills. Passionate about developing in HTML, CSS, and JavaScript and always open to exploring new technologies. Over the last decade, I&lsquo;ve worked with various clients, helping me hone my analytical, debugging, and problem-solving skills to create exceptional websites.</p>
+            <h3 className={skeletonClass}>About Michael Allen</h3>
+            <h2 className={skeletonClass}>Front End Development</h2>
+            <p className={skeletonClass}>I&lsquo;m an experienced Front End Developer with excellent collaboration, organization, and teamwork skills. Passionate about developing in HTML, CSS, and JavaScript and always open to exploring new technologies. Over the last decade, I&lsquo;ve worked with various clients, helping me hone my analytical, debugging, and problem-solving skills to create exceptional websites.</p>
             <ButtonGroup className={styles['button-group']}>
               <Button
                 href="mailto:michael@uplord.co.uk"

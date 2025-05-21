@@ -22,9 +22,8 @@ export const Header = ({ id }: HeaderProps) => {
   }, [resolvedTheme])
 
   useEffect(() => {
-    setTimeout(function() {
-      setMounted(true)
-    }, 1000)
+    const timer = setTimeout(() => setMounted(true), 1000)
+    return () => clearTimeout(timer)
   }, [])
 
   return (
