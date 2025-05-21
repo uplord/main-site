@@ -74,7 +74,9 @@ export const Button = ({
   )
 
   if (href) {
-    return target === '_blank' ? (
+    return isSkeleton ? (
+      <div className={classes}>{content}</div>
+    ) : target === '_blank' ? (
       <a href={href} target="_blank" rel="noopener noreferrer" className={classes}>
         {content}
       </a>

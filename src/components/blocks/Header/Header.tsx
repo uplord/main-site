@@ -12,18 +12,20 @@ export type HeaderProps = {
 
 export const Header = ({ id }: HeaderProps) => {
   const { resolvedTheme, setTheme } = useTheme()
-  const [toggle, setToggle] = useState(false)
+  const [darkMode, setDarkMode] = useState(false)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  useEffect(() => {
     if (resolvedTheme) {
-      setToggle(resolvedTheme === 'dark')
+      setDarkMode(resolvedTheme === 'dark')
     }
   }, [resolvedTheme])
+
+  useEffect(() => {
+    setTimeout(function() {
+      setMounted(true)
+    }, 1000)
+  }, [])
 
   return (
     <div id={id} className={clsx(styles.header, styles['is-home'])}>
@@ -45,10 +47,10 @@ export const Header = ({ id }: HeaderProps) => {
               value=""
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 const isChecked = event.target.checked
-                setToggle(isChecked)
+                setDarkMode(isChecked)
                 setTheme(isChecked ? 'dark' : 'light')
               }}
-              checked={toggle}
+              checked={darkMode}
               className={styles.toggle}
               isSkeleton={!mounted}
             />

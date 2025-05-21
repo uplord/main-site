@@ -7,13 +7,13 @@ import { Header } from '@/components/blocks/Header'
 import { Footer } from '@/components/blocks/Footer'
 import { Banner } from '@/components/blocks/Banner'
 import { Section } from '@/components/blocks/Section'
-// import { Projects } from '@/components/blocks/Projects'
+import { Projects } from '@/components/blocks/Projects'
 import { Timeline } from '@/components/blocks/Timeline'
 import { Stack } from '@/components/blocks/Stack'
 
-const Projects = dynamic(() => import('@/components/blocks/Projects'), {
-  ssr: false,
-})
+// const Projects = dynamic(() => import('@/components/blocks/Projects'), {
+//   ssr: false,
+// })
 
 export default function Home() {
 

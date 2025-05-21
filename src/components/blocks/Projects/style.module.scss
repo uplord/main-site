@@ -26,6 +26,18 @@
 
 .container {
   @include container;
+
+  & {
+    align-items: center;
+
+    @media (min-width: $breakpoint-md) {
+      align-items: flex-start;
+    }
+  }
+}
+
+.intro {
+  @include skeleton-text;
 }
 
 .grid {
@@ -64,35 +76,23 @@
   min-width: 280px;
 
   @media (min-width: $breakpoint-md) {
+    grid-column: auto / span 2;
     min-width: auto;
-  }
-
-  &.item-3 {
-    grid-column: auto / span 2;
-
-    @media (min-width: $breakpoint-lg) {
-      grid-column: auto / span 3;
-    }
-  }
-
-  &.item-2 {
-    grid-column: auto / span 2;
-
-    @media (min-width: $breakpoint-lg) {
-      grid-column: auto / span 2;
-    }
   }
 }
 
 .image {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 158px;
-  background-color: #EEE;
-  border-radius: 1rem;
-  padding: 1.5rem;
+  @include skeleton-image;
+
+  & {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 158px;
+    border-radius: 1rem;
+    padding: 1.5rem;
+  }
 
   @media (min-width: $breakpoint-md) {
     height: 265px;
@@ -113,9 +113,13 @@
 }
 
 .text {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  @include skeleton-text;
+
+  & {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
   h3 {
     @include text-lg;

@@ -1,14 +1,12 @@
 @use 'sass:color';
 
-$color-nav: #0d4d9d;
-$color-nav-dark: color.mix(#0d0d0d, $color-light, 90%);
-
 .toggle {
   position: relative;
 
   &.skeleton {
 
     .checkbox + label {
+      transition: opacity 0.3s ease-in-out;
       background-color: $color-nav;
       animation: pulse 1.5s infinite alternate;
 

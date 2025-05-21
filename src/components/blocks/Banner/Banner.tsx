@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import styles from './style.module.scss'
 import clsx from 'clsx'
+import { useTheme } from 'next-themes'
 
 import { Button, ButtonGroup } from '@/components/ui/Button'
 import { Size, Variant } from '@/types/system'
@@ -15,6 +16,21 @@ export const Banner = ({
   id,
   hasHeader = false
 }: BannerProps) => {
+  const { resolvedTheme } = useTheme()
+  const [darkMode, setDarkMode] = useState(false)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    if (resolvedTheme) {
+      setDarkMode(resolvedTheme === 'dark')
+    }
+  }, [resolvedTheme])
+
+  useEffect(() => {
+    setTimeout(function() {
+      setMounted(true)
+    }, 1000)
+  }, [])
 
   return (
     <div id={id} className={clsx(styles.banner, hasHeader && styles.header)}>
@@ -22,25 +38,34 @@ export const Banner = ({
         <div className={styles.content}>
           <div className={styles.image}>
             <div className={styles['image-wrap']}>
-              <Image
-                src="https://placehold.co/32/0d4d9d/0d4d9d/png"
-                alt="Michael Allen"
-                sizes="(max-width: 1024px) 140px, 500px"
-                width={640}
-                height={640}
-                priority
-              />
+              {mounted ? (
+                <Image
+                  src={darkMode ? `https://placehold.co/32/252525/252525/png` : `https://placehold.co/32/0d4d9d/0d4d9d/png`}
+                  alt="Michael Allen"
+                  sizes="(max-width: 1024px) 140px, 500px"
+                  width={640}
+                  height={640}
+                  priority
+                />
+              ) : (
+                <div className={styles.skeleton}></div>
+              )}
             </div>
           </div>
           <div className={styles.text}>
-            <h1><span>Hi, I&apos;m Michael</span> A Front End Developer</h1>
-            <h2>With over a decade in the industry creating websites</h2>
+            <h1>
+              <span className={clsx(styles.primary, !mounted ? styles.skeleton : '')}>Hi, I&apos;m Michael</span>
+              <span className={!mounted ? styles.skeleton : ''}>A Front End Developer</span>
+            </h1>
+            <h2 className={!mounted ? styles.skeleton : ''}>With over a decade in the industry creating websites</h2>
             <ButtonGroup className={styles['button-group']}>
               <Button
                 href="mailto:michael@uplord.co.uk"
                 label="Get in touch"
                 variant={Variant.Primary}
                 size={Size.Medium}
+                isSkeleton={!mounted}
+                className={!mounted ? clsx(styles.skeleton, styles.button) : ''}
               />
               <Button
                 label="Download CV"
@@ -48,6 +73,8 @@ export const Banner = ({
                 target="_blank"
                 variant={Variant.Default}
                 size={Size.Medium}
+                isSkeleton={!mounted}
+                className={!mounted ? clsx(styles.skeleton, styles.button) : ''}
               />
             </ButtonGroup>
           </div>
