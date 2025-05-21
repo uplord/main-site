@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 // import styles from './checkbox.module.scss'
 import { Pagination, PaginationProps } from './Pagination'
 
@@ -15,11 +15,6 @@ const meta: Meta<PaginationProps> = {
     currentPage: {
       control: { type: 'number' },
       defaultValue: 2,
-    },
-    setTotalPages: {
-      table: {
-        disable: true,
-      },
     },
     setCurrentPage: {
       table: {
@@ -48,23 +43,19 @@ export const Default: Story = {
     currentPage: 2,
   },
   render: (args) => {
-    const [totalPages, setTotalPages] = useState(args.totalPages)
-    const [currentPage, setCurrentPage] = useState(args.currentPage)
+    const Wrapper = ({ totalPages: initialTotal, currentPage: initialPage }: PaginationProps) => {
+      const [totalPages] = useState(initialTotal)
+      const [currentPage, setCurrentPage] = useState(initialPage)
 
-    useEffect(() => {
-      setTotalPages(args.totalPages)
-    }, [args.totalPages])
+      return (
+        <Pagination
+          totalPages={totalPages}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      )
+    }
 
-    useEffect(() => {
-      setCurrentPage(args.currentPage)
-    }, [args.currentPage])
-
-    return (
-      <Pagination
-        totalPages={totalPages}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
-    )
+    return <Wrapper {...args} />
   },
 }

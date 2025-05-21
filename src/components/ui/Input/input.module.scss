@@ -38,12 +38,14 @@
     border-color: $color-border-dark;
   }
 
-  &:hover:not(.is-disabled, .is-error, &:has(.button:hover, .click:hover)) {
-    background-color: $color-hover;
-    cursor: text;
+  @media (hover: hover) {
+    &:hover:not(.is-disabled, .is-error, &:has(.button:hover, .click:hover)) {
+      background-color: $color-hover;
+      cursor: text;
 
-    @include dark-mode {
-      background-color: $color-hover-dark;
+      @include dark-mode {
+        background-color: $color-hover-dark;
+      }
     }
   }
 
@@ -163,7 +165,7 @@
   & {
     position: relative;
     width: 100%;
-    background: transparent;
+    background-color: transparent;
     border: 0;
     padding: 0;
     -webkit-appearance: none;
@@ -224,6 +226,7 @@
 .icon-wrap {
   display: flex;
   align-items: center;
+  z-index: 1;
 }
 
 .icon {
@@ -262,8 +265,10 @@
   padding: 1.125rem 0;
   line-height: 1.4375rem;
 
-  &:hover {
-    cursor: pointer;
+  @media (hover: hover) {
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 

@@ -48,6 +48,7 @@ export const Checkbox = ({
         (isDisabled || isSkeleton) && styles['is-disabled'],
         isSkeleton && styles['is-skeleton'],
         isError && styles['is-error'],
+        !label && styles['no-label']
       )}>
         <input
           type="checkbox"

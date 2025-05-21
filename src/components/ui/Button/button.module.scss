@@ -129,7 +129,8 @@
 
   &-md {
     padding: 0.71875rem 1.4375rem;
-    border-radius: 0.5rem;
+    border-radius: 1.5rem;
+    // border-radius: 0.5rem;
 
     &.has-icon {
       padding-left: 0.8125rem;
@@ -150,7 +151,8 @@
 
     & {
       padding: 0.65625rem 0.9375rem;
-      border-radius: 0.5rem;
+      // border-radius: 0.5rem;
+      border-radius: 1.25rem;
     }
 
     &.has-icon {
@@ -233,7 +235,7 @@
 
   &-default {
     background-color: color.change($color-dark, $alpha: 0.15);
-    color: $color-dark;
+    color: $color-light;
 
     @include dark-mode {
 
@@ -247,8 +249,28 @@
       background-color: color.change($color-dark, $alpha: 0.25);
 
       @include dark-mode {
-        background-color: color.change($color-light, $alpha: 0.2);
+        background-color: color.change($color-light, $alpha: 0.15);
       }
+    }
+  }
+
+  &-white {
+    background-color: $color-light;
+    color: $color-dark;
+
+    &.has-hover:hover:not(.is-disabled) {
+      background-color: color.mix($color-dark, $color-light, 30%);
+      color: $color-dark;
+    }
+  }
+
+  &-black {
+    background-color: $color-dark;
+    color: $color-light;
+
+    &.has-hover:hover:not(.is-disabled) {
+      background-color: color.mix($color-light, $color-dark, 10%);
+      color: $color-light;
     }
   }
 }

@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Formik, Form, Field } from 'formik'
 import styles from '@/components/ui/Checkbox/checkbox.module.scss'
-import { FormikInput } from '../FormikInput'
 import { Radio, RadioProps } from './Radio'
 
 const meta: Meta<RadioProps> = {

@@ -10,6 +10,15 @@ const meta: Meta<typeof Section> = {
   args: {
     ...data,
   },
+  decorators: [
+    (Story) => {
+      return (
+        <div className="padding-y">
+          <Story />
+        </div>
+      )
+    },
+  ],
 }
 
 export default meta

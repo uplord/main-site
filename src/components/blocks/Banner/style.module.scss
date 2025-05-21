@@ -1,5 +1,10 @@
 .banner {
   position: relative;
+  background-color: $color-info;
+
+  @include dark-mode {
+    background-color: $color-bg-dark;
+  }
 }
 
 .container {
@@ -27,6 +32,10 @@
   @media (max-width: $breakpoint-md - 1) {
     height: 640px;
     min-height: 100dvh;
+  }
+
+  .header & {
+    padding-top: 4.875rem;
   }
 }
 
@@ -77,11 +86,12 @@
     @include text-bold;
 
     & {
-      color: $color-heading;
+      color: $color-heading-dark;
+      // color: $color-heading;
 
-      @include dark-mode {
-        color: $color-heading-dark;
-      }
+      // @include dark-mode {
+      //   color: $color-heading-dark;
+      // };
     }
 
     @media (min-width: $breakpoint-sm) {
@@ -93,34 +103,40 @@
     }
 
     span {
-      @include text-lg;
+      // @include text-lg;
+      // @include text-semibold;
 
       & {
         display: block;
-        color: $color-primary;
+        // color: $color-light;
         margin-bottom: 0.5rem;
+
+        @include dark-mode {
+          color: $color-primary;
+        }
       }
 
-      @media (min-width: $breakpoint-sm) {
-        @include text-xl;
-      }
+      // @media (min-width: $breakpoint-sm) {
+      //   @include text-xl;
+      // }
   
-      @media (min-width: $breakpoint-lg) {
-        @include text-2xl;
-      }
+      // @media (min-width: $breakpoint-lg) {
+      //   @include text-2xl;
+      // }
     }
   }
   
   h2 {
-    @include text-md;
+    @include text-lg;
     @include text-normal;
 
     & {
-      color: $color-text;
+      color: $color-heading-dark;
+      font-family: $font-body;
 
-      @include dark-mode {
-        color: $color-text-dark;
-      }
+      // @include dark-mode {
+      //   color: $color-text-dark;
+      // }
     }
 
     @media (min-width: $breakpoint-sm) {
@@ -130,6 +146,10 @@
     @media (min-width: $breakpoint-lg) {
       @include text-xl;
     }
+  }
+
+  .button-text {
+    color: #fff;
   }
 }
 

@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { Formik, Form, Field } from 'formik'
 import styles from './checkbox.module.scss'
 import { Checkbox as Checkbox, CheckboxProps } from './Checkbox'
 

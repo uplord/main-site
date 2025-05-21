@@ -1,0 +1,50 @@
+.social {
+  display: flex;
+  gap: 1.5rem;
+
+  a {
+    background: $color-primary;
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 0 0.5rem 0.5rem 0.5rem;
+    transition: all 0.3s ease;
+
+    @media (hover: hover) {
+      &:hover {
+        scale: 1.1;
+      }
+    }
+
+    &:focus {
+      scale: 1;
+    }
+  }
+
+  svg {
+    width: 24px;
+    height: auto;
+
+    @media (min-width: $breakpoint-xl) {
+      width: 30px;
+    }
+  }
+
+  .linkedin {
+    background: #0077b5;
+  }
+  
+  .instagram {
+    background: #d62976;
+  }
+  
+  .github {
+    background: #000;
+    color: #FFF;
+  
+    @include dark-mode {
+      background: #FFF;
+      color: #000;
+    }
+  }
+  
+}

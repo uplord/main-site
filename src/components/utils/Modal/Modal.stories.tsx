@@ -13,13 +13,11 @@ import { IconOptions, AvailableIcons } from '@/lib/icons'
 const meta: Meta = {
   title: 'Utils/Modal',
   decorators: [
-    (Story) => {
-      return (
-        <NiceModal.Provider>
-          <Story />
-        </NiceModal.Provider>
-      )
-    },
+    (Story) => (
+      <NiceModal.Provider>
+        <Story />
+      </NiceModal.Provider>
+    ),
   ],
 }
 
@@ -55,45 +53,31 @@ const args = {
   mobileDraggable: true,
 }
 
+// ---------- Modal Definitions ----------
+
 const TemporaryModal = NiceModal.create((props: ModalProps) => {
   const modal = useModal()
-
   return (
-    <Modal
-      {...args}
-      {...props}
-      modal={modal}
-    >
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel augue commodo, scelerisque nibh a, viverra elit. Aenean id nisl ut leo sagittis cursus id non quam. Nam commodo nibh quis dapibus blandit. Pellentesque in ultricies enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan vestibulum vestibulum. Sed ultrices ex ac fringilla imperdiet. Fusce quis lectus egestas, blandit lectus ac, suscipit libero. Integer viverra placerat dui, eu luctus elit egestas at. Curabitur laoreet vestibulum maximus. In euismod lobortis tortor a sodales. Maecenas eleifend justo id dolor ultricies consequat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed finibus ipsum nulla, nec placerat dui pulvinar vel. In suscipit, nulla ut bibendum pellentesque, nunc risus dictum lectus, non blandit mi ipsum at ante.</p>
+    <Modal {...args} {...props} modal={modal}>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula tempor gravida. Integer ac ligula luctus, consectetur nunc non, sagittis ipsum. Suspendisse vitae mattis leo. Maecenas a felis nec tortor molestie semper. Donec fermentum diam sollicitudin, ornare neque a, egestas quam. Pellentesque et nisl vitae enim scelerisque eleifend eu quis ipsum. Suspendisse potenti. Nulla in augue at odio imperdiet dapibus et nec risus. Nam elementum mi ut tellus bibendum, nec scelerisque urna blandit. Duis egestas risus neque, rutrum ultrices dui vehicula vitae.</p>
     </Modal>
   )
 })
 
 const BottomSheet = NiceModal.create((props: ModalProps) => {
   const modal = useModal()
-
   return (
-    <Modal
-      {...args}
-      {...props}
-      modal={modal}
-      mobileDraggable={true}
-      bottomSheet={true}
-    >
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel augue commodo, scelerisque nibh a, viverra elit. Aenean id nisl ut leo sagittis cursus id non quam. Nam commodo nibh quis dapibus blandit. Pellentesque in ultricies enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan vestibulum vestibulum. Sed ultrices ex ac fringilla imperdiet. Fusce quis lectus egestas, blandit lectus ac, suscipit libero. Integer viverra placerat dui, eu luctus elit egestas at. Curabitur laoreet vestibulum maximus. In euismod lobortis tortor a sodales. Maecenas eleifend justo id dolor ultricies consequat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed finibus ipsum nulla, nec placerat dui pulvinar vel. In suscipit, nulla ut bibendum pellentesque, nunc risus dictum lectus, non blandit mi ipsum at ante.</p>
+    <Modal {...args} {...props} modal={modal} mobileDraggable bottomSheet>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula tempor gravida. Integer ac ligula luctus, consectetur nunc non, sagittis ipsum. Suspendisse vitae mattis leo. Maecenas a felis nec tortor molestie semper. Donec fermentum diam sollicitudin, ornare neque a, egestas quam. Pellentesque et nisl vitae enim scelerisque eleifend eu quis ipsum. Suspendisse potenti. Nulla in augue at odio imperdiet dapibus et nec risus. Nam elementum mi ut tellus bibendum, nec scelerisque urna blandit. Duis egestas risus neque, rutrum ultrices dui vehicula vitae.</p>
     </Modal>
   )
 })
 
-const PreventCloseModal = NiceModal.create((props: ModalProps) => {
+const PreventCloseModal = NiceModal.create(() => {
   const modal = useModal()
-
   return (
-    <Modal
-      modal={modal}
-      backdropClose={false}
-    >
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel augue commodo, scelerisque nibh a, viverra elit. Aenean id nisl ut leo sagittis cursus id non quam. Nam commodo nibh quis dapibus blandit. Pellentesque in ultricies enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan vestibulum vestibulum. Sed ultrices ex ac fringilla imperdiet. Fusce quis lectus egestas, blandit lectus ac, suscipit libero. Integer viverra placerat dui, eu luctus elit egestas at. Curabitur laoreet vestibulum maximus. In euismod lobortis tortor a sodales. Maecenas eleifend justo id dolor ultricies consequat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed finibus ipsum nulla, nec placerat dui pulvinar vel. In suscipit, nulla ut bibendum pellentesque, nunc risus dictum lectus, non blandit mi ipsum at ante.</p>
+    <Modal modal={modal} backdropClose={false}>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula tempor gravida. Integer ac ligula luctus, consectetur nunc non, sagittis ipsum. Suspendisse vitae mattis leo. Maecenas a felis nec tortor molestie semper. Donec fermentum diam sollicitudin, ornare neque a, egestas quam. Pellentesque et nisl vitae enim scelerisque eleifend eu quis ipsum. Suspendisse potenti. Nulla in augue at odio imperdiet dapibus et nec risus. Nam elementum mi ut tellus bibendum, nec scelerisque urna blandit. Duis egestas risus neque, rutrum ultrices dui vehicula vitae.</p>
       <ButtonGroup justify="center">
         <Button
           label="Close Modal"
@@ -108,13 +92,15 @@ const PreventCloseModal = NiceModal.create((props: ModalProps) => {
   )
 })
 
+// ---------- Header and Footer Stories ----------
+
 type HeaderStory = StoryObj<HeaderProps>
 type FooterStory = StoryObj<FooterProps>
 
 const HeaderTemplate: React.FC<HeaderProps> = (args) => {
-  const modal = useModal(TemporaryModal);
-  return <HeaderComponent {...args} modal={modal} />;
-};
+  const modal = useModal(TemporaryModal)
+  return <HeaderComponent {...args} modal={modal} />
+}
 
 export const Header: HeaderStory = {
   args: {
@@ -131,22 +117,10 @@ export const Header: HeaderStory = {
     trailingFunction: () => console.log('Trailing clicked'),
   },
   argTypes: {
-    leadingIcon: {
-      control: { type: 'select' },
-      options: IconOptions,
-    },
-    leadingButton: {
-      control: { type: 'select' },
-      options: Object.values(Variant),
-    },
-    trailingIcon: {
-      control: { type: 'select' },
-      options: IconOptions,
-    },
-    trailingButton: {
-      control: { type: 'select' },
-      options: Object.values(Variant),
-    },
+    leadingIcon: { control: { type: 'select' }, options: IconOptions },
+    leadingButton: { control: { type: 'select' }, options: Object.values(Variant) },
+    trailingIcon: { control: { type: 'select' }, options: IconOptions },
+    trailingButton: { control: { type: 'select' }, options: Object.values(Variant) },
   },
   render: (args) => <HeaderTemplate {...args} />,
 }
@@ -168,53 +142,18 @@ export const Footer: FooterStory = {
     trailingFunction: () => console.log('Trailing clicked'),
   },
   argTypes: {
-    leadingIcon: {
-      control: {
-        type: 'select',
-      },
-      options: IconOptions,
-      if: { arg: 'title', truthy: false },
-      and: { arg: 'subtitle', truthy: false },
-    },
-    leadingText: {
-      if: { arg: 'title', truthy: false },
-      and: { arg: 'subtitle', truthy: false },
-    },
-    leadingButton: {
-      control: {
-        type: 'select',
-      },
-      options: Object.values(Variant),
-      if: { arg: 'title', truthy: false },
-      and: { arg: 'subtitle', truthy: false },
-    },
-    leadingFunction: {
-      table: {
-        disable: true,
-      },
-    },
-    trailingIcon: {
-      control: {
-        type: 'select',
-      },
-      options: IconOptions,
-    },
-    trailingButton: {
-      control: {
-        type: 'select',
-      },
-      options: Object.values(Variant),
-    },
-    trailingFunction: {
-      table: {
-        disable: true,
-      },
-    },
+    leadingIcon: { control: { type: 'select' }, options: IconOptions },
+    leadingText: {},
+    leadingButton: { control: { type: 'select' }, options: Object.values(Variant) },
+    leadingFunction: { table: { disable: true } },
+    trailingIcon: { control: { type: 'select' }, options: IconOptions },
+    trailingButton: { control: { type: 'select' }, options: Object.values(Variant) },
+    trailingFunction: { table: { disable: true } },
   },
-  render: (args) => {
-    return <FooterComponent {...args} />
-  },
+  render: (args) => <FooterComponent {...args} />,
 }
+
+// ---------- Button Stories to Open Modals ----------
 
 export const ButtonOpen: StoryObj<ButtonProps> = {
   args: {
@@ -223,21 +162,9 @@ export const ButtonOpen: StoryObj<ButtonProps> = {
     size: Size.Medium,
     onClick: () => NiceModal.show(TemporaryModal),
   },
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
+  parameters: { controls: { disable: true } },
   render: (args) => <Button {...args} />,
-  decorators: [
-    (Story) => {
-      return (
-        <div className="padding">
-          <Story />
-        </div>
-      )
-    },
-  ],
+  decorators: [(Story) => <div className="padding"><Story /></div>],
 }
 
 export const MobileBottomSheet: StoryObj<ButtonProps> = {
@@ -247,21 +174,9 @@ export const MobileBottomSheet: StoryObj<ButtonProps> = {
     size: Size.Medium,
     onClick: () => NiceModal.show(BottomSheet),
   },
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
+  parameters: { controls: { disable: true } },
   render: (args) => <Button {...args} />,
-  decorators: [
-    (Story) => {
-      return (
-        <div className="padding">
-          <Story />
-        </div>
-      )
-    },
-  ],
+  decorators: [(Story) => <div className="padding"><Story /></div>],
 }
 
 export const PreventClose: StoryObj<ButtonProps> = {
@@ -271,30 +186,23 @@ export const PreventClose: StoryObj<ButtonProps> = {
     size: Size.Medium,
     onClick: () => NiceModal.show(PreventCloseModal),
   },
-  parameters: {
-    controls: {
-      disable: true,
-    },
-  },
+  parameters: { controls: { disable: true } },
   render: (args) => <Button {...args} />,
-  decorators: [
-    (Story) => {
-      return (
-        <div className="padding">
-          <Story />
-        </div>
-      )
-    },
-  ],
+  decorators: [(Story) => <div className="padding"><Story /></div>],
+}
+
+// ---------- Content Story ----------
+
+const ModalContent: React.FC = () => {
+  const modal = useModal(TemporaryModal)
+  return (
+    <Content {...args} modal={modal}>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula tempor gravida. Integer ac ligula luctus, consectetur nunc non, sagittis ipsum. Suspendisse vitae mattis leo. Maecenas a felis nec tortor molestie semper. Donec fermentum diam sollicitudin, ornare neque a, egestas quam. Pellentesque et nisl vitae enim scelerisque eleifend eu quis ipsum. Suspendisse potenti. Nulla in augue at odio imperdiet dapibus et nec risus. Nam elementum mi ut tellus bibendum, nec scelerisque urna blandit. Duis egestas risus neque, rutrum ultrices dui vehicula vitae.</p>
+    </Content>
+  )
 }
 
 export const ModalOpen: StoryObj = {
-  render: () => {
-    const modal = useModal(TemporaryModal);
-
-    return <Content {...args} modal={modal}>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel augue commodo, scelerisque nibh a, viverra elit. Aenean id nisl ut leo sagittis cursus id non quam. Nam commodo nibh quis dapibus blandit. Pellentesque in ultricies enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum accumsan vestibulum vestibulum. Sed ultrices ex ac fringilla imperdiet. Fusce quis lectus egestas, blandit lectus ac, suscipit libero. Integer viverra placerat dui, eu luctus elit egestas at. Curabitur laoreet vestibulum maximus. In euismod lobortis tortor a sodales. Maecenas eleifend justo id dolor ultricies consequat. Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed finibus ipsum nulla, nec placerat dui pulvinar vel. In suscipit, nulla ut bibendum pellentesque, nunc risus dictum lectus, non blandit mi ipsum at ante.</p>
-    </Content>
-  },
-};
+  render: () => <ModalContent />,
+}
 

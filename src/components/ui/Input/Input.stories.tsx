@@ -119,7 +119,7 @@ export const All: Story = {
     trailingText: 'dollars',
     button: {
       label: 'Button',
-      variant: Variant.Default,
+      variant: Variant.Primary,
       onClick: () => handleButtonClick()
     },
     helper: 'Optional helper text',
@@ -166,157 +166,159 @@ export const FormikField: Story = {
   ),
 }
 
+const InputStates = (args: InputProps) => {
+  const [inputClear, setInputClear] = useState('')
+
+  return (
+    <div className={styles.fields}>
+      <Input
+        {...args}
+        name="default"
+        placeholder="Default"
+        helper="Default"
+        onChange={(e) => console.log(e.target.value)}
+      />
+      <Input
+        {...args}
+        name="no-label"
+        helper="No label"
+        onChange={(e) => console.log(e.target.value)}
+      />
+      <Input
+        {...args}
+        name="hover"
+        placeholder="Hover"
+        helper="Hover"
+        className="hover"
+        onChange={(e) => console.log(e.target.value)}
+      />
+      <Input
+        {...args}
+        name="focus"
+        placeholder="Focus"
+        helper="Focus"
+        className="focus-within"
+        onChange={(e) => console.log(e.target.value)}
+      />
+      <Input
+        {...args}
+        name="filled"
+        placeholder="Filled"
+        value="Filled"
+        helper="Filled"
+        onChange={(e) => console.log(e.target.value)}
+      />
+      <Input
+        {...args}
+        name="disabled"
+        placeholder="Disabled"
+        helper="Disabled"
+        isDisabled
+        onChange={(e) => console.log(e.target.value)}
+      />
+      <Input
+        {...args}
+        name="loading"
+        placeholder="Loading"
+        helper="Loading"
+        isLoading
+        onChange={(e) => console.log(e.target.value)}
+      />
+      <Input
+        {...args}
+        name="skeleton"
+        placeholder="Skeleton"
+        helper="Skeleton"
+        isSkeleton
+        onChange={(e) => console.log(e.target.value)}
+      />
+      <Input
+        {...args}
+        name="error"
+        placeholder="Error"
+        helper="Error"
+        isError
+        onChange={(e) => console.log(e.target.value)}
+      />
+      <Input
+        {...args}
+        name="error-focus"
+        placeholder="Error focus"
+        helper="Error focus"
+        className="focus-within"
+        isError
+        onChange={(e) => console.log(e.target.value)}
+      />
+      <Input
+        {...args}
+        name="leading-icon"
+        placeholder="Leading icon"
+        helper="Leading icon"
+        leadingIcon="User"
+        onChange={(e) => console.log(e.target.value)}
+      />
+      <Input
+        {...args}
+        name="leading-text"
+        placeholder="Leading text"
+        helper="Leading text"
+        leadingText="£"
+        onChange={(e) => console.log(e.target.value)}
+      />
+      <Input
+        {...args}
+        name="trailing-icon"
+        placeholder="Trailing icon"
+        helper="Trailing icon"
+        trailingIcon="User"
+        onChange={(e) => console.log(e.target.value)}
+      />
+      <Input
+        {...args}
+        name="trailing-text"
+        placeholder="Trailing text"
+        helper="Trailing text"
+        trailingText="metres"
+        onChange={(e) => console.log(e.target.value)}
+      />
+      <Input
+        {...args}
+        name="clear"
+        value={inputClear}
+        placeholder="Clear"
+        helper="Clear"
+        trailingIcon="X"
+        onChange={(e) => setInputClear(e.target.value)}
+      />
+      <Input
+        {...args}
+        type="password"
+        name="password"
+        placeholder="Password"
+        helper="Password"
+        onChange={(e) => console.log(e.target.value)}
+      />
+      <Input
+        {...args}
+        name="button"
+        placeholder="Button"
+        button={{
+          label: 'Button',
+          variant: Variant.Primary,
+          onClick: () => handleButtonClick()
+        }}
+        helper="Button"
+        onChange={(e) => console.log(e.target.value)}
+      />
+    </div>
+  )
+}
+
 export const State: Story = {
   parameters: {
     controls: {
       disable: true,
     },
   },
-  render: (args: InputProps) => {
-    const [inputClear, setInputClear] = useState('')
-
-    return (
-      <div className={styles.fields}>
-        <Input
-          {...args}
-          name="default"
-          placeholder="Default"
-          helper="Default"
-          onChange={(e) => console.log(e.target.value)}
-        />
-        <Input
-          {...args}
-          name="no-label"
-          helper="No label"
-          onChange={(e) => console.log(e.target.value)}
-        />
-        <Input
-          {...args}
-          name="hover"
-          placeholder="Hover"
-          helper="Hover"
-          className="hover"
-          onChange={(e) => console.log(e.target.value)}
-        />
-        <Input
-          {...args}
-          name="focus"
-          placeholder="Focus"
-          helper="Focus"
-          className="focus-within"
-          onChange={(e) => console.log(e.target.value)}
-        />
-        <Input
-          {...args}
-          name="filled"
-          placeholder="Filled"
-          value="Filled"
-          helper="Filled"
-          onChange={(e) => console.log(e.target.value)}
-        />
-        <Input
-          {...args}
-          name="disabled"
-          placeholder="Disabled"
-          helper="Disabled"
-          isDisabled
-          onChange={(e) => console.log(e.target.value)}
-        />
-        <Input
-          {...args}
-          name="loading"
-          placeholder="Loading"
-          helper="Loading"
-          isLoading
-          onChange={(e) => console.log(e.target.value)}
-        />
-        <Input
-          {...args}
-          name="skeleton"
-          placeholder="Skeleton"
-          helper="Skeleton"
-          isSkeleton
-          onChange={(e) => console.log(e.target.value)}
-        />
-        <Input
-          {...args}
-          name="error"
-          placeholder="Error"
-          helper="Error"
-          isError
-          onChange={(e) => console.log(e.target.value)}
-        />
-        <Input
-          {...args}
-          name="error-focus"
-          placeholder="Error focus"
-          helper="Error focus"
-          className="focus-within"
-          isError
-          onChange={(e) => console.log(e.target.value)}
-        />
-        <Input
-          {...args}
-          name="leading-icon"
-          placeholder="Leading icon"
-          helper="Leading icon"
-          leadingIcon="User"
-          onChange={(e) => console.log(e.target.value)}
-        />
-        <Input
-          {...args}
-          name="leading-text"
-          placeholder="Leading text"
-          helper="Leading text"
-          leadingText="£"
-          onChange={(e) => console.log(e.target.value)}
-        />
-        <Input
-          {...args}
-          name="trailing-icon"
-          placeholder="Trailing icon"
-          helper="Trailing icon"
-          trailingIcon="User"
-          onChange={(e) => console.log(e.target.value)}
-        />
-        <Input
-          {...args}
-          name="trailing-text"
-          placeholder="Trailing text"
-          helper="Trailing text"
-          trailingText="metres"
-          onChange={(e) => console.log(e.target.value)}
-        />
-        <Input
-          {...args}
-          name="clear"
-          value={inputClear}
-          placeholder="Clear"
-          helper="Clear"
-          trailingIcon="X"
-          onChange={(e) => setInputClear(e.target.value)}
-        />
-        <Input
-          {...args}
-          type="password"
-          name="password"
-          placeholder="Password"
-          helper="Password"
-          onChange={(e) => console.log(e.target.value)}
-        />
-        <Input
-          {...args}
-          name="button"
-          placeholder="Button"
-          button={{
-            label: 'Button',
-            variant: Variant.Default,
-            onClick: () => handleButtonClick()
-          }}
-          helper="Button"
-          onChange={(e) => console.log(e.target.value)}
-        />
-      </div>
-    )
-  },
+  render: (args: InputProps) => <InputStates {...args} />,
 }

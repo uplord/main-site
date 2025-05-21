@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import styles from './button.module.scss'
-
 import { Button, ButtonGroup, ButtonProps } from './Button'
 import { Variant, Size } from '@/types/system'
 import { IconOptions } from '@/lib/icons'

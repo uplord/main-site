@@ -4,6 +4,8 @@ export enum Variant {
   Primary = 'primary',
   Success = 'success',
   Outline = 'outline',
+  White = 'white',
+  Black = 'black',
 }
 
 export type ImageProps = {
@@ -23,10 +25,10 @@ export enum Size {
 
 export type SizeType = Size.Small | Size.Medium | Size.Large | Size.ExtraLarge
 
-export const isProd = () => {
-  process.env.ENVIRONMENT === 'production'
-}
+// export const isProd = () => {
+//   process.env.ENVIRONMENT === 'production'
+// }
 
-export const isDev = () => {
-  process.env.ENVIRONMENT === 'development'
-}
+// export const isDev = () => {
+//   process.env.ENVIRONMENT === 'development'
+// }

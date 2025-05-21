@@ -1,10 +1,17 @@
 import React from 'react'
 import { FieldProps } from 'formik'
 
+import { CheckboxProps } from '../Checkbox'
+import { InputProps } from '../Input'
+import { RadioProps } from '../Radio'
+import { SelectProps } from '../Select'
+import { TextareaProps } from '../Textarea'
+
 type FormikInputProps = FieldProps & {
   helper?: string
-  input?: React.ComponentType<any>
-} & { [key: string]: any }
+  input?: React.ComponentType<CheckboxProps | InputProps | RadioProps | SelectProps | TextareaProps>
+  value?: string
+}
 
 export const FormikInput = ({
   field,

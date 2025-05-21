@@ -8,6 +8,10 @@
     & {
       color: $color-heading;
       text-align: left;
+
+      @include dark-mode {
+        color: $color-heading-dark;
+      }
     }
 
     @media (min-width: $breakpoint-md) {
@@ -41,9 +45,7 @@
   @media (min-width: $breakpoint-md) {
     display: grid;
     gap: 2rem;
-    grid-auto-rows: min-content;
     grid-template-columns: repeat(4, minmax(1px, 1fr));
-    grid-template-rows: repeat(2, min-content);
     width: 100%;
     margin: 0;
     padding: 0;
@@ -51,7 +53,7 @@
 
   @media (min-width: $breakpoint-lg) {
     gap: 2.5rem;
-    grid-template-columns: repeat(5, minmax(1px, 1fr));
+    grid-template-columns: repeat(6, minmax(1px, 1fr));
   }
 }
 
@@ -89,7 +91,7 @@
   justify-content: center;
   height: 158px;
   background-color: #EEE;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   padding: 1.5rem;
 
   @media (min-width: $breakpoint-md) {
@@ -100,27 +102,13 @@
     height: 298px;
   }
 
-  // &:after {
-  //   content: '';
-  //   position: absolute;
-  //   left: 0.5rem;
-  //   top: 0.5rem;
-  //   right: 0.5rem;
-  //   bottom: 0.5rem;
-  //   border: 0.0625rem solid #FFF;
-  //   border-radius: 0.5rem;
-
-  //   @media (min-width: $breakpoint-md) {
-  //     left: 1rem;
-  //     top: 1rem;
-  //     right: 1rem;
-  //     bottom: 1rem;
-  //   }
-  // }
-
   img {
-    max-width: 75%;
-    height: auto;
+    max-height: 40%;
+    transition: all 0.3s ease-in-out;
+
+    @media (min-width: $breakpoint-md) {
+      max-height: 100%;
+    }
   }
 }
 
@@ -139,6 +127,10 @@
 
     & {
       color: $color-heading;
+
+      @include dark-mode {
+        color: $color-heading-dark;
+      }
     }
   }
 
@@ -148,10 +140,14 @@
 
     & {
       color: $color-text;
+
+      @include dark-mode {
+        color: $color-text-dark;
+      }
     }
 
-    // @media (max-width: $breakpoint-md - 1) {
-    //   display: none;
-    // }
+    @media (min-width: $breakpoint-md) {
+      @include text-md;
+    }
   }
 }

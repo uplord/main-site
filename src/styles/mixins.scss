@@ -40,6 +40,12 @@
   // }
 }
 
+$color-tooltip: #0d0d0d;
+$color-tooltip-text: #fff;
+
+$color-tooltip-dark: #fff;
+$color-tooltip-text-dark: #000;
+
 @mixin toolbar {
   &:hover::after {
     content: attr(data-tooltip);

@@ -1,7 +1,7 @@
 @use 'sass:color';
 
-$font-heading: 'DM Sans', Arial, sans-serif;
-$font-body: Arial, sans-serif;
+$font-heading: 'Inter', Arial, sans-serif;
+$font-body: 'Nunito', Arial, sans-serif;
 
 $width-max: 1432px;
 $width-xl: 2032px;
@@ -23,6 +23,8 @@ $color-skeleton: color.mix($color-dark, $color-light, 10%);
 $color-placeholder: color.mix($color-dark, $color-light, 50%);
 $color-icon: color.mix($color-dark, $color-light, 80%);
 
+$color-block: color.mix($color-dark, $color-light, 2.5%);
+
 $color-bg-dark: $color-dark;
 $color-border-dark: color.mix($color-light, $color-dark, 30%);
 $color-hover-dark: color.mix($color-light, $color-dark, 10%);
@@ -31,6 +33,8 @@ $color-disabled-dark: color.change($color-light, $alpha: 0.15);
 $color-skeleton-dark: color.mix($color-light, $color-dark, 10%);
 $color-placeholder-dark: color.mix($color-light, $color-dark, 50%);
 $color-icon-dark: color.mix($color-light, $color-dark, 80%);
+
+$color-block-dark: color.mix($color-light, $color-dark, 5%);
 
 $color-primary: #dd2121;
 $color-success: #29a027;

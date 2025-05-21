@@ -1,0 +1,72 @@
+@use 'sass:color';
+
+$color-nav: #0d4d9d;
+$color-nav-dark: color.mix(#0d0d0d, $color-light, 90%);
+
+.toggle {
+  position: relative;
+
+  &.skeleton {
+
+    .checkbox + label {
+      background-color: $color-nav;
+      animation: pulse 1.5s infinite alternate;
+
+      @include dark-mode {
+        background-color: $color-skeleton-dark;
+      }
+    }
+
+    span {
+      display: none;
+    }
+  }
+
+  &.checked {
+
+    .checkbox + label {
+      background-color: green;
+    }
+  }
+
+  .checkbox {
+    display: none;
+
+    & + label {
+      background-color: $color-nav;
+      width: 5rem;
+      height: 2.5rem;
+      border-radius: 2.5rem;
+
+      @include dark-mode {
+        background-color: $color-nav-dark;
+      }
+
+      &:before {
+        display: none;
+      }
+    }
+  }
+
+  span {
+    position: absolute;
+    left: 0.25rem;
+    top: 0.25rem;
+    width: 2rem;
+    height: 2rem;
+    background-color: #ffd43b;
+    border-radius: 1rem;
+    z-index: 1;
+    pointer-events: none;
+
+    @include dark-mode {
+      background-color: #74c0fc;
+    }
+  }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}

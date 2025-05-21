@@ -1,9 +1,15 @@
-import { DM_Sans } from 'next/font/google'
+import { Inter, Nunito } from 'next/font/google'
 import '@/styles/index.scss'
 import { ThemeProvider } from '@/context/ThemeProvider'
 import NiceModalProvider from '@/context/NiceModalProvider'
 
-const dmSans = DM_Sans({
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+})
+
+const nunito = Nunito({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
   display: 'swap',
@@ -26,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={dmSans.className} suppressHydrationWarning>
+      <body className={`${inter.className} ${nunito.className}`} suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

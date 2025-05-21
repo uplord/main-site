@@ -4,7 +4,7 @@ import styles from './colors.module.scss'
 export type ColorsProps = {
   name: string
   className?: string
-  hexCode?: string
+  hexCode?: string | string[]
 }
 
 export const Colors = ({
@@ -12,13 +12,18 @@ export const Colors = ({
   className = '',
   hexCode = '',
 }: ColorsProps) => {
+  const background = Array.isArray(hexCode) ? hexCode[0] : hexCode // Handle hexCode as array or string
+  const classNames = `${styles.background} ${className ? styles[className] : ''}` // Handle optional className
+
   return (
     <div className={styles.color}>
-      <div className={`${styles.background} ${className ? styles[className] : ''}`} style={{background: hexCode}}></div>
+      <div className={classNames} style={{ background: background }}></div>
       <div className={styles.text}>
         <div className={styles.name}>{name}</div>
         {hexCode && (
-          <div className={styles.hex}>{hexCode}</div>
+          <div className={styles.hex}>
+            {Array.isArray(hexCode) ? hexCode.join(' / ') : hexCode}
+          </div>
         )}
       </div>
     </div>

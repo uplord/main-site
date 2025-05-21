@@ -14,7 +14,39 @@ const nextConfig: NextConfig = {
     ],
     minimumCacheTTL: 3600,
     formats: ['image/webp'],
-  }
+  },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      issuer: /\.[jt]sx?$/,
+      use: [
+        {
+          loader: '@svgr/webpack',
+          options: {
+            svgo: true,
+            svgoConfig: {
+              plugins: [
+                {
+                  name: 'preset-default',
+                  params: {
+                    overrides: {
+                      removeViewBox: false,
+                      cleanupIds: false,
+                      inlineStyles: false,
+                      minifyStyles: false,
+                      mergeStyles: false,
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        },
+      ],
+    });
+
+    return config;
+  },
 }
 
 export default nextConfig
