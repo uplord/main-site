@@ -6,12 +6,17 @@
   @include container;
 }
 
-.text {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  gap: 0.5rem;
+.intro {
+  @include skeleton-text;
+
+  & {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
 
   h2 {
     @include text-xl;
@@ -45,6 +50,7 @@
 .item {
   position: relative;
   width: 40px;
+  aspect-ratio: 1;
   color: $color-heading;
 
   @include dark-mode {
@@ -55,22 +61,20 @@
     width: 60px;
   }
 
-  &:before {
-    content: '';
-    display: block;
-    padding-bottom: 100%;
-  }
-
   &:hover {
     z-index: 1;
   }
 
   .image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    @include skeleton-image;
+
+    & {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
 
     &[data-tooltip] {
       @include toolbar;
@@ -83,6 +87,10 @@
         top: auto;
         bottom: -1rem;
       }
+    }
+
+    .skeleton {
+      border-radius: 0.5rem;
     }
   }
 

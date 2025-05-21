@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react'
 import styles from './style.module.scss'
 
 import Html5Icon from '@/../public/icons/html5.svg'
@@ -33,18 +34,33 @@ const stackIcons = [
 ]
 
 export const Stack = ({ id }: StackProps) => {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setMounted(true), 1000)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const skeletonClass = !mounted ? styles.skeleton : ''
+
   return (
     <div id={id} className={styles.stack}>
       <div className={styles.container}>
-        <div className={styles.text}>
-          <h2>My current stack</h2>
+        <div className={styles.intro}>
+          <h2 className={skeletonClass}>My current stack</h2>
         </div>
         <div className={styles.list}>
           {stackIcons.map(({ name, Icon }) => (
             <div key={name} className={styles.item}>
-              <div className={styles.image} data-tooltip={name}>
-                <Icon width="60" height="60" alt={name} />
-              </div>
+              {mounted ? (
+                <div className={styles.image} data-tooltip={name}>
+                  <Icon width="60" height="60" alt={name} />
+                </div>
+              ) : (
+                <div className={styles.image}>
+                  <div className={styles.skeleton}></div>
+                </div>
+              )}
             </div>
           ))}
         </div>
