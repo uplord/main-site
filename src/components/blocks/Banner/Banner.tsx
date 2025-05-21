@@ -1,4 +1,4 @@
-import React, { use, useEffect, useRef, useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import styles from './style.module.scss'
 import clsx from 'clsx'

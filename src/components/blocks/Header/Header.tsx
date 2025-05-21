@@ -43,7 +43,7 @@ export const Header = ({ id }: HeaderProps) => {
             <Toggle
               name="toggle"
               value=""
-              onChange={(event: any) => {
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 const isChecked = event.target.checked
                 setToggle(isChecked)
                 setTheme(isChecked ? 'dark' : 'light')
