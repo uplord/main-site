@@ -28,11 +28,7 @@
   @include container;
 
   & {
-    align-items: center;
-
-    @media (min-width: $breakpoint-md) {
-      align-items: flex-start;
-    }
+    align-items: flex-start;
   }
 }
 
