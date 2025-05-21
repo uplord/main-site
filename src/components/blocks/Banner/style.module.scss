@@ -79,7 +79,7 @@
   .skeleton {
 
     @include light-mode {
-      background-color: $color-nav !important;
+      background-color: rgba(0,0,0,0.2) !important;
     }
   }
 }
@@ -167,7 +167,7 @@
   .skeleton {
 
     @include light-mode {
-      background-color: $color-nav !important;
+      background-color: rgba(0,0,0,0.2) !important;
     }
   }
 }
