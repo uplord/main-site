@@ -30,14 +30,17 @@ export const Header = ({ id }: HeaderProps) => {
     <div id={id} className={clsx(styles.header, styles['is-home'])}>
       <div className={styles.container}>
         <div className={styles.top}>
-          <div className={styles.logo}><span>M</span>TheMichael</div>
-          <div className={styles.nav}>
+          <a href="/" className={clsx(styles.logo)}>
+            <span className={clsx(styles.icon, !mounted && styles.skeleton)}>M</span>
+            <span className={clsx(styles.title, !mounted && styles.skeleton)}>TheMichael</span>
+          </a>
+          <div className={clsx(styles.nav, !mounted && styles.skeleton)}>
             <ul>
-              <li><a href="">Home</a></li>
-              <li><a href="">About me</a></li>
-              <li><a href="">Projects</a></li>
-              <li><a href="">Timeline</a></li>
-              <li><a href="">Contact</a></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="/">About me</a></li>
+              <li><a href="/">Projects</a></li>
+              <li><a href="/">Timeline</a></li>
+              <li><a href="/">Contact</a></li>
             </ul>
           </div>
           <div className={styles.right}>

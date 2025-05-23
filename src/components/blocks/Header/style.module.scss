@@ -37,6 +37,7 @@ $color-header-text: #fff;
 .logo {
   @include text-lg;
   @include text-semibold;
+  @include skeleton-text;
 
   font-family: $font-heading;
   display: flex;
@@ -45,7 +46,7 @@ $color-header-text: #fff;
   margin: 0.25rem 0;
   transition: all 0.3s ease-in-out;
 
-  span {
+  .icon {
     @include text-xl;
 
     display: flex;
@@ -55,6 +56,20 @@ $color-header-text: #fff;
     height: 2.5rem;
     background-color: $color-primary;
     border-radius: 0 0.5rem 0.5rem 0.5rem;
+
+    &.skeleton {
+
+      @include light-mode {
+        background-color: rgba(0,0,0,0.2) !important;
+      }
+    }
+  }
+
+  .title.skeleton {
+
+    @include light-mode {
+      background-color: rgba(0,0,0,0.2) !important;
+    }
   }
 
   @media (hover: hover) {
@@ -65,9 +80,13 @@ $color-header-text: #fff;
 }
 
 .nav {
-  display: none;
-  background-color: $color-nav;
-  border-radius: 1.5rem;
+  @include skeleton-text;
+
+  & {
+    display: none;
+    background-color: $color-nav;
+    border-radius: 1.5rem;
+  }
 
   @include dark-mode {
     background-color: $color-nav-dark;
@@ -75,6 +94,13 @@ $color-header-text: #fff;
 
   @media (min-width: $breakpoint-md) {
     display: block;
+  }
+
+  &.skeleton {
+
+    @include light-mode {
+      background-color: rgba(0,0,0,0.2) !important;
+    }
   }
 
   ul {

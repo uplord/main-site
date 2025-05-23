@@ -216,15 +216,17 @@ $color-tooltip-text-dark: #000;
 }
 
 @mixin skeleton-text {
-  .skeleton {
+  .skeleton,
+  &.skeleton {
     color: transparent !important;
     background-color: rgba(0,0,0,0.1) !important;
     border-color: transparent !important;
     user-select: none;
     transition: opacity 0.3s ease-in-out;
     animation: pulse 1.5s infinite alternate;
+    pointer-events: none;
 
-    &:not(.button) {
+    &:not(.button, .nav, .icon) {
       border-radius: 0.5rem;
     }
   
