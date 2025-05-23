@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import styles from './style.module.scss'
 import { clsx } from 'clsx'
 import { Toggle } from '@/components/ui/Toggle'
@@ -30,17 +31,17 @@ export const Header = ({ id }: HeaderProps) => {
     <div id={id} className={clsx(styles.header, styles['is-home'])}>
       <div className={styles.container}>
         <div className={styles.top}>
-          <a href="/" className={clsx(styles.logo)}>
+          <Link href="/" className={clsx(styles.logo)}>
             <span className={clsx(styles.icon, !mounted && styles.skeleton)}>M</span>
             <span className={clsx(styles.title, !mounted && styles.skeleton)}>TheMichael</span>
-          </a>
+          </Link>
           <div className={clsx(styles.nav, !mounted && styles.skeleton)}>
             <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/">About me</a></li>
-              <li><a href="/">Projects</a></li>
-              <li><a href="/">Timeline</a></li>
-              <li><a href="/">Contact</a></li>
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="/">About me</Link></li>
+              <li><Link href="/">Projects</Link></li>
+              <li><Link href="/">Timeline</Link></li>
+              <li><Link href="/">Contact</Link></li>
             </ul>
           </div>
           <div className={styles.right}>
