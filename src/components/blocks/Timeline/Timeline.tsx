@@ -1,19 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styles from './style.module.scss'
 import { timelineData } from '@/data/data'
+import { useMounted } from '@/lib/useMounted'
 
 export type TimelineProps = {
   id?: string
 }
 
 export const Timeline = ({ id }: TimelineProps) => {
-  const [mounted, setMounted] = useState(false)
+  const mounted = useMounted()
   const data = timelineData()
-
-  useEffect(() => {
-    const timer = setTimeout(() => setMounted(true), 1000)
-    return () => clearTimeout(timer)
-  }, [])
 
   const skeletonClass = !mounted ? styles.skeleton : ''
 

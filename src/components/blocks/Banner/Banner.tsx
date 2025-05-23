@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import styles from './style.module.scss'
@@ -6,6 +8,7 @@ import { useTheme } from 'next-themes'
 
 import { Button, ButtonGroup } from '@/components/ui/Button'
 import { Size, Variant } from '@/types/system'
+import { useMounted } from '@/lib/useMounted'
 
 export type BannerProps = {
   id?: string
@@ -18,18 +21,13 @@ export const Banner = ({
 }: BannerProps) => {
   const { resolvedTheme } = useTheme()
   const [darkMode, setDarkMode] = useState(false)
-  const [mounted, setMounted] = useState(false)
+  const mounted = useMounted()
 
   useEffect(() => {
     if (resolvedTheme) {
       setDarkMode(resolvedTheme === 'dark')
     }
   }, [resolvedTheme])
-
-  useEffect(() => {
-    const timer = setTimeout(() => setMounted(true), 1000)
-    return () => clearTimeout(timer)
-  }, [])
 
   const skeletonClass = !mounted ? styles.skeleton : ''
 

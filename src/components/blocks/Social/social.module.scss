@@ -1,8 +1,12 @@
 .social {
-  display: flex;
-  gap: 1.5rem;
+  @include skeleton-text;
 
-  a {
+  & {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .icon {
     background: $color-primary;
     color: #fff;
     padding: 0.5rem;

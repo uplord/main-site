@@ -1,5 +1,9 @@
 .footer {
-  padding: 0 0 2rem;
+  @include skeleton-text;
+
+  & {
+    padding: 0 0 2rem;
+  }
 }
 
 .container {

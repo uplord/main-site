@@ -6,6 +6,7 @@ import styles from './style.module.scss'
 import { clsx } from 'clsx'
 import { Toggle } from '@/components/ui/Toggle'
 import { useTheme } from 'next-themes'
+import { useMounted } from '@/lib/useMounted'
 
 export type HeaderProps = {
   id?: string
@@ -14,18 +15,13 @@ export type HeaderProps = {
 export const Header = ({ id }: HeaderProps) => {
   const { resolvedTheme, setTheme } = useTheme()
   const [darkMode, setDarkMode] = useState(false)
-  const [mounted, setMounted] = useState(false)
+  const mounted = useMounted()
 
   useEffect(() => {
     if (resolvedTheme) {
       setDarkMode(resolvedTheme === 'dark')
     }
   }, [resolvedTheme])
-
-  useEffect(() => {
-    const timer = setTimeout(() => setMounted(true), 1000)
-    return () => clearTimeout(timer)
-  }, [])
 
   return (
     <div id={id} className={clsx(styles.header, styles['is-home'])}>

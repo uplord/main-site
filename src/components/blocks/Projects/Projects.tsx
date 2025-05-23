@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import styles from './style.module.scss'
 import clsx from 'clsx'
 import { projectsData } from '@/data/data'
+import { useMounted } from '@/lib/useMounted'
 
 export type ProjectsProps = {
   id?: string
 }
 
 export const Projects = ({ id }: ProjectsProps) => {
-  const [mounted, setMounted] = useState(false)
+  const mounted = useMounted()
   const data = projectsData()
-
-  useEffect(() => {
-    const timer = setTimeout(() => setMounted(true), 1000)
-    return () => clearTimeout(timer)
-  }, [])
 
   const skeletonClass = !mounted ? styles.skeleton : ''
 

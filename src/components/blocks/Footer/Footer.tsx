@@ -1,16 +1,17 @@
-'use client'
-
+import { clsx } from 'clsx'
 import styles from './footer.module.scss'
 import { Social } from '../Social'
+import { useMounted } from '@/lib/useMounted'
 
 export const Footer = () => {
+  const mounted = useMounted()
   const currentYear = new Date().getFullYear()
-  
+
   return (
     <div className={styles.footer}>
       <div className={styles.container}>
         <Social className={styles.social} />
-        <p>&copy; {currentYear} Michael Allen</p>
+        <p className={clsx(!mounted && styles.skeleton)}>&copy; {currentYear} Michael Allen</p>
       </div>
     </div>
   )

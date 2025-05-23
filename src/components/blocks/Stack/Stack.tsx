@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styles from './style.module.scss'
 
 import Html5Icon from '@/../public/icons/html5.svg'
@@ -13,6 +13,7 @@ import GithubIcon from '@/../public/icons/github.svg'
 import AwsIcon from '@/../public/icons/aws.svg'
 import NetlifyIcon from '@/../public/icons/netlify.svg'
 import VscodeIcon from '@/../public/icons/vscode.svg'
+import { useMounted } from '@/lib/useMounted'
 
 export type StackProps = {
   id?: string
@@ -34,12 +35,7 @@ const stackIcons = [
 ]
 
 export const Stack = ({ id }: StackProps) => {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    const timer = setTimeout(() => setMounted(true), 1000)
-    return () => clearTimeout(timer)
-  }, [])
+  const mounted = useMounted()
 
   const skeletonClass = !mounted ? styles.skeleton : ''
 
