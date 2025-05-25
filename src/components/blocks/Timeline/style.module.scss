@@ -30,7 +30,11 @@
     @include text-bold;
 
     & {
-      color: $color-primary;
+      color: $color-rebecca;
+
+      @include dark-mode {
+        color: $color-primary;
+      }
     }
 
     @media (min-width: $breakpoint-lg) {
@@ -123,7 +127,11 @@
     @include text-bold;
 
     & {
-      color: $color-primary;
+      color: $color-rebecca;
+
+      @include dark-mode {
+        color: $color-primary;
+      }
     }
 
     @media (min-width: $breakpoint-lg) {

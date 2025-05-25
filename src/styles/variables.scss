@@ -36,7 +36,7 @@ $color-icon-dark: color.mix($color-light, $color-dark, 80%);
 
 $color-block-dark: color.mix($color-light, $color-dark, 5%);
 
-$color-primary: #dd2121;
+$color-primary: #FFC514;
 $color-success: #29a027;
 $color-error: #dd2121;
 $color-error-02: #dd212111;
@@ -49,8 +49,13 @@ $color-heading-dark: #fff;
 $color-text: #5D5D5D;
 $color-text-dark: #bdc1c6;
 
-$color-nav: #0d4d9d;
+$color-header: $color-rebecca;
+$color-header-dark: #0d0d0d;
+
+$color-nav: color.mix($color-header, $color-dark, 80%);
 $color-nav-dark: color.mix(#0d0d0d, $color-light, 90%);
+
+$color-header-text: #fff;
 
 // Light / Dark
 // Background

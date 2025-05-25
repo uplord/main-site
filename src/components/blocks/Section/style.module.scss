@@ -42,12 +42,12 @@
     display: flex;
     justify-content: flex-start;
     width: 100%;
-    max-width: 520px;
+    max-width: 250px;
     aspect-ratio: 1;
 
     @media (min-width: $breakpoint-md) {
       justify-content: center;
-      max-width: 100%;
+      max-width: 520px;
     }
   }
 
@@ -82,7 +82,11 @@
     @include text-bold;
 
     & {
-      color: $color-primary;
+      color: $color-rebecca;
+
+      @include dark-mode {
+        color: $color-primary;
+      }
     }
 
     @media (min-width: $breakpoint-lg) {
@@ -129,6 +133,6 @@
   }
 
   .button-group {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
   }
 }

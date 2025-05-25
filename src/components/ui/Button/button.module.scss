@@ -25,7 +25,7 @@
 
 .button {
   @include text-md;
-  @include text-semibold;
+  @include text-bold;
 
   & {
     z-index: 5;
@@ -174,11 +174,11 @@
 
   &-primary {
     background-color: $color-primary;
-    color: $color-light;
+    color: $color-dark;
 
     &.has-hover:hover:not(.is-disabled) {
       background-color: color.mix($color-dark, $color-primary, 30%);
-      color: $color-light;
+      color: $color-dark;
     }
   }
 
@@ -234,7 +234,7 @@
   }
 
   &-default {
-    background-color: color.change($color-dark, $alpha: 0.15);
+    background-color: color.change($color-dark, $alpha: 0.2);
     color: $color-light;
 
     @include dark-mode {
@@ -246,7 +246,7 @@
     }
 
     &.has-hover:hover:not(.is-disabled) {
-      background-color: color.change($color-dark, $alpha: 0.25);
+      background-color: color.change($color-dark, $alpha: 0.3);
 
       @include dark-mode {
         background-color: color.change($color-light, $alpha: 0.15);

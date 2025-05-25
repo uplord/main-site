@@ -8,7 +8,7 @@
 
   .icon {
     background: $color-primary;
-    color: #fff;
+    color: $color-dark;
     padding: 0.5rem;
     border-radius: 0 0.5rem 0.5rem 0.5rem;
     transition: all 0.3s ease;
@@ -35,10 +35,12 @@
 
   .linkedin {
     background: #0077b5;
+    color: $color-light;
   }
   
   .instagram {
     background: #d62976;
+    color: $color-light;
   }
   
   .github {

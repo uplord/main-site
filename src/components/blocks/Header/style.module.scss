@@ -1,13 +1,5 @@
 @use 'sass:color';
 
-$color-header: #1164cc;
-$color-header-dark: #0d0d0d;
-
-$color-nav: #0d4d9d;
-$color-nav-dark: color.mix(#0d0d0d, $color-light, 90%);
-
-$color-header-text: #fff;
-
 .header {
   position: relative;
   background-color: $color-header;
@@ -55,6 +47,7 @@ $color-header-text: #fff;
     width: 2.5rem;
     height: 2.5rem;
     background-color: $color-primary;
+    color: $color-dark;
     border-radius: 0 0.5rem 0.5rem 0.5rem;
 
     &.skeleton {

@@ -1,6 +1,6 @@
 .banner {
   position: relative;
-  background-color: $color-info;
+  background-color: $color-rebecca;
 
   @include dark-mode {
     background-color: $color-bg-dark;
@@ -128,13 +128,7 @@
     }
 
     .primary {
-
-      & {
-
-        @include dark-mode {
-          color: $color-primary;
-        }
-      }
+      color: $color-primary;
     }
   }
   
@@ -145,10 +139,6 @@
     & {
       color: $color-heading-dark;
       font-family: $font-body;
-
-      // @include dark-mode {
-      //   color: $color-text-dark;
-      // }
     }
 
     @media (min-width: $breakpoint-sm) {
@@ -174,7 +164,7 @@
 
 .button-group {
   justify-content: center;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 
   @media (min-width: $breakpoint-md) {
     justify-content: flex-start;
