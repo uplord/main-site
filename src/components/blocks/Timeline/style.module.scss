@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 .timeline {
   position: relative;
 }
@@ -30,7 +32,7 @@
     @include text-bold;
 
     & {
-      color: $color-rebecca;
+      color: $color-primary;
 
       @include dark-mode {
         color: $color-primary;
@@ -88,59 +90,146 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
 
   @media (min-width: $breakpoint-md) {
-    gap: 2rem;
+    gap: 4rem;
   }
-}
-
-.item,
-.info {
-  display: flex;
-  align-items: flex-start;
-  flex-direction: column;
-  gap: 0.5rem;
 }
 
 .item {
   @include skeleton-text;
 
   & {
-    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     margin: 0 -1.5rem;
+    padding: 1rem 1.5rem;
     background-color: $color-block;
-  }
+  
+    @include dark-mode {
+      background-color: $color-block-dark;
+    }
 
-  @include dark-mode {
-    background-color: $color-block-dark;
+    @media (min-width: $breakpoint-md) {
+      flex-direction: row;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+
+      @include dark-mode {
+        background-color: transparent;
+      }
+    }
   }
 
   @media (min-width: $breakpoint-md) {
-    padding: 1.5rem;
     margin: 0;
-    border-radius: 1rem;
+  }
+
+  &:first-child .left {
+
+    &::after {
+      top: 0.5rem;
+    }
+  }
+
+  &:last-child .left {
+
+    &::after {
+      bottom: 0;
+    }
+  }
+}
+
+.left {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  @media (min-width: $breakpoint-md) {
+    min-width: 260px;
+    padding-left: 2rem;
+  }
+
+  &::after {
+
+    @media (min-width: $breakpoint-md) {
+      content: '';
+      position: absolute;
+      left: 0rem;
+      top: -2rem;
+      bottom: -2rem;
+      border-left: 1px solid $color-border;
+
+      @include dark-mode {
+        border-color: $color-border-dark;
+      }
+    }
+  }
+
+  .dot {
+
+    @media (min-width: $breakpoint-md) {
+      position: absolute;
+      left: -0.5rem;
+      top: 0;
+      width: 1.0625rem;
+      height: 1.0625rem;
+      background-color: $color-bg;
+      z-index: 1;
+
+      @include dark-mode {
+        background-color: $color-bg-dark;
+      }
+    }
+
+    &::before {
+
+      @media (min-width: $breakpoint-md) {
+        content: '';
+        display: flex;
+        width: 100%;
+        height: 100%;
+        background-color: color.change($color-primary, $alpha: 0.2);
+        border-radius: 0.5313rem;
+      }
+    }
+
+    &::after {
+
+      @media (min-width: $breakpoint-md) {
+        content: '';
+        position: absolute;
+        left: 0.25rem;
+        top: 0.25rem;
+        width: 0.5625rem;
+        height: 0.5625rem;
+        border-radius: 0.2813rem;
+        background-color: $color-primary;
+      }
+    }
   }
 
   h4 {
-    @include text-md;
+    @include text-sm;
     @include text-bold;
 
     & {
-      color: $color-rebecca;
+      color: $color-info;
 
       @include dark-mode {
         color: $color-primary;
       }
     }
-
-    @media (min-width: $breakpoint-lg) {
-      @include text-lg;
-    }
   }
 
   h3 {
-    @include text-lg;
+    @include text-md;
     @include text-bold;
 
     & {
@@ -154,9 +243,29 @@
     @media (min-width: $breakpoint-md) {
       @include text-lg;
     }
+  }
+}
 
-    @media (min-width: $breakpoint-lg) {
-      @include text-xl;
+.right {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  h5 {
+    @include text-xl;
+    @include text-bold;
+
+    & {
+      color: $color-heading;
+
+      @include dark-mode {
+        color: $color-heading-dark;
+      }
+    }
+
+    @media (min-width: $breakpoint-md) {
+      @include text-2xl;
     }
   }
 
@@ -173,7 +282,7 @@
     }
 
     @media (min-width: $breakpoint-md) {
-      @include text-xm;
+      @include text-lg;
     }
   }
 }

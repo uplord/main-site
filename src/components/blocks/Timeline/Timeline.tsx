@@ -26,9 +26,13 @@ export const Timeline = ({ id }: TimelineProps) => {
         <div className={styles.list}>
           {data.map((item, index) => (
             <div key={index} className={styles.item}>
-              <h4 className={skeletonClass}>{item.date}</h4>
-              <h3 className={skeletonClass}>{item.role}</h3>
-              <div className={styles.info}>
+              <div className={styles.left}>
+                <span className={styles.dot}></span>
+                <h4 className={skeletonClass}>{item.date}</h4>
+                <h3 className={skeletonClass}>{item.location}</h3>
+              </div>
+              <div className={styles.right}>
+                <h5 className={skeletonClass}>{item.role}</h5>
                 {item.description.map((paragraph, i) => (
                   <p key={i} className={skeletonClass}>
                     {paragraph}

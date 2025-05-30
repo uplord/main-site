@@ -174,11 +174,11 @@
 
   &-primary {
     background-color: $color-primary;
-    color: $color-dark;
+    color: $color-light;
 
     &.has-hover:hover:not(.is-disabled) {
       background-color: color.mix($color-dark, $color-primary, 30%);
-      color: $color-dark;
+      color: $color-light;
     }
   }
 

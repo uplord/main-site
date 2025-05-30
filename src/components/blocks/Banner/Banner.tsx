@@ -39,7 +39,7 @@ export const Banner = ({
             <div className={styles['image-wrap']}>
               {mounted ? (
                 <Image
-                  src={darkMode ? `https://placehold.co/32/252525/252525/png` : `https://placehold.co/32/562C80/562C80/png`}
+                  src={darkMode ? `https://placehold.co/32/252525/252525/png` : `https://placehold.co/32/1153A6/1153A6/png`}
                   alt="Michael Allen"
                   sizes="(max-width: 1024px) 140px, 500px"
                   width={640}
