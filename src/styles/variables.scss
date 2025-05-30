@@ -23,10 +23,10 @@ $color-skeleton: color.mix($color-dark, $color-light, 10%);
 $color-placeholder: color.mix($color-dark, $color-light, 50%);
 $color-icon: color.mix($color-dark, $color-light, 80%);
 
-$color-block: color.mix($color-dark, $color-light, 2.5%);
+$color-block: color.mix($color-dark, $color-light, 2%);
 
 $color-bg-dark: $color-dark;
-$color-border-dark: color.mix($color-light, $color-dark, 30%);
+$color-border-dark: color.mix($color-light, $color-dark, 20%);
 $color-hover-dark: color.mix($color-light, $color-dark, 10%);
 $color-focus-dark: $color-light;
 $color-disabled-dark: color.change($color-light, $alpha: 0.15);

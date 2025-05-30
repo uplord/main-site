@@ -100,16 +100,11 @@
 .item {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-
+  gap: 1rem;
 
   @media (min-width: $breakpoint-md) {
     flex-direction: row;
     gap: 1rem;
-
-    @include dark-mode {
-      background-color: transparent;
-    }
   }
 
   @media (min-width: $breakpoint-md) {
@@ -253,6 +248,23 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 0.5rem;
+    padding: 1rem;
+    background-color: $color-block;
+    border: 0.0625rem solid $color-border;
+    border-radius: 1rem;
+
+    @include dark-mode {
+      background-color: $color-block-dark;
+      border-color: $color-border-dark;
+    }
+
+    @media (min-width: $breakpoint-md) {
+      padding: 1.5rem;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      padding: 1.5rem 2rem;
+    }
   }
 
   h3 {
@@ -261,7 +273,6 @@
 
     & {
       color: $color-primary;
-      display: none;
 
       @include dark-mode {
         color: $color-primary;
@@ -270,10 +281,6 @@
 
     @media (min-width: $breakpoint-md) {
       @include text-lg;
-
-      & {
-        display: flex;
-      }
     }
   }
 
