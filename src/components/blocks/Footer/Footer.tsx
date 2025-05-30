@@ -10,7 +10,7 @@ export const Footer = () => {
   return (
     <div className={styles.footer}>
       <div className={styles.container}>
-        <Social className={styles.social} />
+        <Social className={styles.social} isMounted={mounted} />
         <p className={clsx(!mounted && styles.skeleton)}>&copy; {currentYear} Michael Allen</p>
       </div>
     </div>
