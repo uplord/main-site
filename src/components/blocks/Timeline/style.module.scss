@@ -250,12 +250,10 @@
     flex-direction: column;
     gap: 0.5rem;
     padding: 1rem;
-    background-color: $color-block;
     border: 0.0625rem solid $color-border;
     border-radius: 1rem;
 
     @include dark-mode {
-      background-color: $color-block-dark;
       border-color: $color-border-dark;
     }
 
