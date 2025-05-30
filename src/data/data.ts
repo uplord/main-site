@@ -8,6 +8,7 @@ export const timelineData = () => ([
       'At LeaseLoco, I help build and maintain a high-performance, user-focused website. I work across the full development lifecycle, focusing on key features like our scoring algorithm, vehicle configurator, and price alerts.',
       'I collaborate with engineers and designers to write clean, scalable code that meets Core Web Vitals and accessibility standards—ensuring a fast, inclusive experience across all devices.',
     ],
+    icon: 'leaseloco',
   },
   {
     date: 'Sept 2021 – Jan 2025',
@@ -17,6 +18,7 @@ export const timelineData = () => ([
       'Returning to Hungrrr full time just in time for the merger with Snappy Shopper and continuing to lead the front end of the Hungrrr platform while also assisting the Snappy Shopper team. Updating and improving the ordering platform to keep up with style trends and work better for clients and members in the team.',
       'Maintaining hundreds of clients websites and making periodic changes to improve their performance and help pull through more sales. Increasing the amount of client enquiries to join the platforms through updates to the B2B websites making it easier to sign up and to keep a track of these leads.',
     ],
+    icon: 'snappy-logo',
   },
   {
     date: 'May 2020 – July 2020',
@@ -26,6 +28,7 @@ export const timelineData = () => ([
       'Leading front end in the company at the beginning of the pandemic. Integrating a table ordering system for businesses reopening to make the users journey easier and opening up this feature to all the client on this platform.',
       'Developing an internal business setup tool to make it easier for our team to add businesses to our system and also maintain clients. Continuing to do work for them while back at mtc due to the impact I made in the company even in just a short period of time.',
     ],
+    icon: 'hungrrr-logo',
   },
   {
     date: 'Sept 2015 – Sept 2021',
@@ -35,6 +38,7 @@ export const timelineData = () => ([
       'While in mtc I have worked in many areas of the company from leading projects to dealing with aftercare for clients. I was able to work on complex projects early into joining the company without needing much assistance to mentoring newer members of staff.',
       'I have dealt with hundreds of different websites and have the ability to work to tight deadlines without lowering quality. I have been able to work across multiple teams in the company and am quick to adapt to new situations.',
     ],
+    icon: 'mtc-logo',
   },
 ])
 

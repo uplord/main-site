@@ -104,20 +104,11 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    margin: 0 -1.5rem;
-    padding: 1rem 1.5rem;
-    background-color: $color-block;
-  
-    @include dark-mode {
-      background-color: $color-block-dark;
-    }
+
 
     @media (min-width: $breakpoint-md) {
       flex-direction: row;
       gap: 1rem;
-      margin: 0;
-      padding: 0;
-      background-color: transparent;
 
       @include dark-mode {
         background-color: transparent;
@@ -220,28 +211,11 @@
     @include text-bold;
 
     & {
-      color: $color-info;
-
-      @include dark-mode {
-        color: $color-primary;
-      }
-    }
-  }
-
-  h3 {
-    @include text-md;
-    @include text-bold;
-
-    & {
       color: $color-heading;
 
       @include dark-mode {
         color: $color-heading-dark;
       }
-    }
-
-    @media (min-width: $breakpoint-md) {
-      @include text-lg;
     }
   }
 }
@@ -251,6 +225,28 @@
   align-items: flex-start;
   flex-direction: column;
   gap: 0.5rem;
+
+  h3 {
+    @include text-md;
+    @include text-bold;
+
+    & {
+      color: $color-primary;
+      display: none;
+
+      @include dark-mode {
+        color: $color-primary;
+      }
+    }
+
+    @media (min-width: $breakpoint-md) {
+      @include text-lg;
+
+      & {
+        display: flex;
+      }
+    }
+  }
 
   h5 {
     @include text-xl;
@@ -284,5 +280,11 @@
     @media (min-width: $breakpoint-md) {
       @include text-lg;
     }
+  }
+}
+
+svg.skeleton {
+  g, path {
+    opacity: 0;
   }
 }
