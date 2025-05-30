@@ -24,8 +24,9 @@ export const Section = ({ id }: SectionProps) => {
                 <Image
                   src="/ellie.png"
                   alt="Michael Allen"
-                  width={522}
-                  height={522}
+                  sizes="(max-width: 743px) 250px, 500px"
+                  width={520}
+                  height={520}
                 />
               ) : (
                 <div className={styles.skeleton}></div>

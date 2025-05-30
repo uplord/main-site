@@ -33,9 +33,9 @@ export const Banner = ({
                   <Image
                     src="/me.jpeg"
                     alt="Michael Allen"
-                    sizes="(max-width: 1024px) 140px, 500px"
-                    width={640}
-                    height={640}
+                    sizes="(max-width: 743px) 140px, 500px"
+                    width={500}
+                    height={500}
                     priority
                   />
                   <Social className={styles.social} isMounted={mounted} />
