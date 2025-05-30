@@ -31,7 +31,7 @@ export const Banner = ({
               {mounted ? (
                 <>
                   <Image
-                    src="/me.png"
+                    src="/me.jpeg"
                     alt="Michael Allen"
                     sizes="(max-width: 1024px) 140px, 500px"
                     width={640}
