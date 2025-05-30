@@ -1,4 +1,5 @@
 import React from 'react'
+import { clsx } from 'clsx'
 import styles from './style.module.scss'
 import { timelineData } from '@/data/data'
 import { useMounted } from '@/lib/useMounted'
@@ -41,9 +42,11 @@ export const Timeline = ({ id }: TimelineProps) => {
             return (
               <div key={index} className={styles.item}>
                 <div className={styles.left}>
-                  <span className={styles.dot}></span>
-                  <h4 className={skeletonClass}>{item.date}</h4>
-                  {IconComponent && <IconComponent height="32" className={skeletonClass} />}
+                  <span className={clsx(styles.dot, skeletonClass)}></span>
+                  <div className={styles.text}>
+                    <h4 className={skeletonClass}>{item.date}</h4>
+                    {IconComponent && <IconComponent height="32" className={skeletonClass} />}
+                  </div>
                 </div>
                 <div className={styles.right}>
                   <h3 className={skeletonClass}>{item.location}</h3>
