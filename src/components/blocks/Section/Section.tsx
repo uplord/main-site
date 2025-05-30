@@ -32,7 +32,7 @@ export const Section = ({ id }: SectionProps) => {
             <div className={styles['image-wrap']}>
               {mounted ? (
                 <Image
-                  src={darkMode ? `https://placehold.co/32/252525/252525/png` : `https://placehold.co/32/eee/eee/png`}
+                  src="/ellie.png"
                   alt="Michael Allen"
                   width={522}
                   height={522}

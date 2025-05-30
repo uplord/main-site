@@ -41,7 +41,7 @@ export const Banner = ({
               {mounted ? (
                 <>
                   <Image
-                    src={darkMode ? `https://placehold.co/32/252525/252525/png` : `https://placehold.co/32/1153A6/1153A6/png`}
+                    src="/me.png"
                     alt="Michael Allen"
                     sizes="(max-width: 1024px) 140px, 500px"
                     width={640}
