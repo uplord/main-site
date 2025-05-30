@@ -170,3 +170,16 @@
     justify-content: flex-start;
   }
 }
+
+.social {
+  position: absolute;
+  left: 50%;
+  bottom: -1rem;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: none;
+
+  @media (min-width: $breakpoint-md) {
+    display: flex;
+  }
+}

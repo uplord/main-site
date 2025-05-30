@@ -7,6 +7,7 @@ import clsx from 'clsx'
 import { useTheme } from 'next-themes'
 
 import { Button, ButtonGroup } from '@/components/ui/Button'
+import { Social } from '../Social'
 import { Size, Variant } from '@/types/system'
 import { useMounted } from '@/lib/useMounted'
 
@@ -38,14 +39,17 @@ export const Banner = ({
           <div className={styles.image}>
             <div className={styles['image-wrap']}>
               {mounted ? (
-                <Image
-                  src={darkMode ? `https://placehold.co/32/252525/252525/png` : `https://placehold.co/32/1153A6/1153A6/png`}
-                  alt="Michael Allen"
-                  sizes="(max-width: 1024px) 140px, 500px"
-                  width={640}
-                  height={640}
-                  priority
-                />
+                <>
+                  <Image
+                    src={darkMode ? `https://placehold.co/32/252525/252525/png` : `https://placehold.co/32/1153A6/1153A6/png`}
+                    alt="Michael Allen"
+                    sizes="(max-width: 1024px) 140px, 500px"
+                    width={640}
+                    height={640}
+                    priority
+                  />
+                  <Social className={styles.social} isMounted={mounted} />
+                </>
               ) : (
                 <div className={styles.skeleton}></div>
               )}

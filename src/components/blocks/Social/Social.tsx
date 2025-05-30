@@ -8,10 +8,14 @@ import { useMounted } from '@/lib/useMounted'
 
 export type SocialProps = {
   className?: string
+  isMounted?: boolean
 }
 
-export const Social = ({ className }: SocialProps) => {
-  const mounted = useMounted()
+export const Social = ({ className, isMounted = false }: SocialProps) => {
+  let mounted = isMounted
+  if (!mounted) {
+    mounted = useMounted()
+  }
 
   return (
     <div className={clsx(styles.social, className)}>
