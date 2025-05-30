@@ -128,7 +128,11 @@
     }
 
     .primary {
-      color: $color-primary;
+      color: $color-heading-dark;
+
+      @include dark-mode {
+        color: $color-primary;
+      }
     }
   }
   
