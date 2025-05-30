@@ -12,7 +12,7 @@ export type TimelineProps = {
   id?: string
 }
 
-const iconMap: Record<string, React.ComponentType<any>> = {
+const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
   leaseloco: LeaselocoIcon,
   'snappy-logo': SnappyIcon,
   'hungrrr-logo': HungrrrIcon,
@@ -22,9 +22,6 @@ const iconMap: Record<string, React.ComponentType<any>> = {
 export const Timeline = ({ id }: TimelineProps) => {
   const mounted = useMounted()
   const data = timelineData()
-
-  console.log('data', data)
-
   const skeletonClass = !mounted ? styles.skeleton : ''
 
   return (

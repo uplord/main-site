@@ -12,10 +12,8 @@ export type SocialProps = {
 }
 
 export const Social = ({ className, isMounted = false }: SocialProps) => {
-  let mounted = isMounted
-  if (!mounted) {
-    mounted = useMounted()
-  }
+  const hasMounted = useMounted()
+  const mounted = isMounted ?? hasMounted
 
   return (
     <div className={clsx(styles.social, className)}>
