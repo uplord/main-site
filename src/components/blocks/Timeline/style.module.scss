@@ -103,35 +103,10 @@
   gap: 1rem;
 
   @media (min-width: $breakpoint-md) {
+    position: relative;
+    align-items: flex-start;
     flex-direction: row;
     gap: 1rem;
-  }
-
-  @media (min-width: $breakpoint-md) {
-    margin: 0;
-  }
-
-  &:first-child .left {
-
-    &::after {
-      top: 0.5rem;
-    }
-  }
-
-  &:last-child .left {
-
-    &::after {
-      bottom: 0;
-    }
-  }
-}
-
-.left {
-  position: relative;
-
-  @media (min-width: $breakpoint-md) {
-    min-width: 260px;
-    padding-left: 2rem;
   }
 
   &::after {
@@ -148,6 +123,32 @@
         border-color: $color-border-dark;
       }
     }
+  }
+
+  &:first-child {
+
+    &::after {
+      top: 0.5rem;
+    }
+  }
+
+  &:last-child {
+
+    &::after {
+      bottom: 0;
+    }
+  }
+}
+
+.left {
+  position: relative;
+
+  @media (min-width: $breakpoint-md) {
+    position: sticky;
+    top: 1rem;
+    min-width: 260px;
+    padding-left: 2rem;
+    z-index: 1;
   }
 
   .dot {
