@@ -244,7 +244,7 @@ $color-tooltip-text-dark: #000;
     background-color: rgba(0,0,0,0.1) !important;
     border-radius: 1rem;
     transition: all 0.3s ease-in-out;
-    // animation: pulse 1.5s infinite alternate;
+    animation: pulse 1.5s infinite alternate;
   
     @include dark-mode {
       background-color: rgba(255,255,255,0.1) !important;
