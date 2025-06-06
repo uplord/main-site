@@ -1,7 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs'
 import { useState } from 'react'
 
-// import styles from './checkbox.module.scss'
 import { Pagination, PaginationProps } from './Pagination'
 
 const meta: Meta<PaginationProps> = {

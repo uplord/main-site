@@ -1,5 +1,5 @@
 import React from 'react'
-import type { Preview } from '@storybook/react'
+import type { Preview } from '@storybook/nextjs'
 import { Inter, Nunito } from 'next/font/google'
 import { clsx } from 'clsx'
 import './preview.scss'
@@ -20,12 +20,14 @@ const nunito = Nunito({
 const preview: Preview = {
   parameters: {
     layout: 'fullscreen',
+
     controls: {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
     },
+
     backgrounds: {
       values: [
         { name: 'Dark', value: '#0d0d0d' },
@@ -33,6 +35,7 @@ const preview: Preview = {
       ],
       default: 'Light',
     },
+
     pseudo: {
       hover: '.hover',
       focus: '.focus',
@@ -40,11 +43,13 @@ const preview: Preview = {
       focusWithin: '.focus-within',
       active: '.active',
     },
+
     options: {
       storySort: {
         order: ['Components', 'Styleguide', 'Blocks', 'Navigation', 'UI', 'Utils'],
       }
     },
+
     chromatic: {
       disableSnapshot: true,
     },

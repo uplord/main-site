@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs'
 
 import styles from '@/app/page.module.scss'
 import { Banner } from '@/components/blocks/Banner'

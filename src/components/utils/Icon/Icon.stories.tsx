@@ -1,5 +1,5 @@
 import * as icons from 'lucide-react'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs'
 
 import { Icon as IconComponent, IconProps } from '@/components/utils/Icon'
 import { Size } from '@/types/system'

@@ -7,12 +7,10 @@ const config: StorybookConfig = {
     '../src/components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],
   addons: [
-    '@storybook/addon-essentials',
     '@chromatic-com/storybook',
-    '@storybook/addon-interactions',
     '@storybook/addon-styling-webpack',
-    '@storybook/addon-storysource',
     'storybook-addon-pseudo-states',
+    '@storybook/addon-docs'
   ],
   framework: {
     name: '@storybook/nextjs',

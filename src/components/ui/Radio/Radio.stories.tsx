@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs'
 
 import { Radio, RadioProps } from './Radio'
 import styles from '@/components/ui/Checkbox/checkbox.module.scss'

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/nextjs'
 
 import { Colors, ColorsProps } from './Colors'
 import styles from './colors.module.scss'

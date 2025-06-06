@@ -13,8 +13,6 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@storybook/addon-controls": "^8.6.12",
-    "@storybook/addon-storysource": "^8.6.12",
     "@tsparticles/react": "^3.0.0",
     "formik": "^2.4.6",
     "framer-motion": "^12.6.3",
@@ -27,25 +25,19 @@
     "react-responsive": "^10.0.1",
     "react-transition-group": "^4.4.5",
     "resend": "^4.1.2",
-    "storybook-addon-pseudo-states": "^4.0.3",
+    "storybook-addon-pseudo-states": "^9.0.5",
     "yup": "^1.6.1"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^3.2.4",
+    "@chromatic-com/storybook": "^4.0.0",
     "@ebay/nice-modal-react": "^1.2.13",
     "@eslint/eslintrc": "^3",
     "@hookform/resolvers": "^3.10.0",
-    "@storybook/addon-essentials": "^8.6.12",
-    "@storybook/addon-interactions": "^8.6.12",
-    "@storybook/addon-onboarding": "^8.6.12",
-    "@storybook/addon-styling-webpack": "^1.0.1",
-    "@storybook/blocks": "^8.6.12",
-    "@storybook/manager-api": "^8.6.12",
-    "@storybook/nextjs": "^8.6.12",
+    "@storybook/addon-docs": "^9.0.5",
+    "@storybook/addon-onboarding": "^9.0.5",
+    "@storybook/addon-styling-webpack": "^2.0.0",
+    "@storybook/nextjs": "^9.0.5",
     "@storybook/preset-scss": "^1.0.3",
-    "@storybook/react": "^8.6.12",
-    "@storybook/test": "^8.6.12",
-    "@storybook/theming": "^8.6.12",
     "@svgr/webpack": "^8.1.0",
     "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/node": "^20",
@@ -56,14 +48,14 @@
     "css-loader": "^7.1.2",
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
-    "eslint-plugin-storybook": "^0.11.2",
+    "eslint-plugin-storybook": "^9.0.5",
     "husky": "^8.0.0",
     "lint-staged": "^15.4.3",
     "lucide-react": "^0.474.0",
     "prettier": "^3.4.2",
     "sass": "^1.86.2",
     "sass-loader": "^16.0.5",
-    "storybook": "^8.6.12",
+    "storybook": "^9.0.5",
     "storybook-addon-sass-postcss": "^0.3.2",
     "style-loader": "^4.0.0",
     "tsparticles": "^3.7.1",
@@ -98,5 +90,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "overrides": {
+    "storybook": "$storybook"
   }
 }
