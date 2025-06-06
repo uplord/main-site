@@ -1,14 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react'
 import NiceModal, { useModal } from '@ebay/nice-modal-react'
+import type { Meta, StoryObj } from '@storybook/react'
 
 import { Modal, ModalProps } from './Modal'
-import { Header as HeaderComponent, HeaderProps } from './inc/Header'
-import { Footer as FooterComponent, FooterProps } from './inc/Footer'
 import { Content } from './inc/Content'
-
+import { Footer as FooterComponent, FooterProps } from './inc/Footer'
+import { Header as HeaderComponent, HeaderProps } from './inc/Header'
 import { Button, ButtonGroup, ButtonProps } from '@/components/ui/Button'
-import { Variant, Size } from '@/types/system'
 import { IconOptions, AvailableIcons } from '@/lib/icons'
+import { Variant, Size } from '@/types/system'
 
 const meta: Meta = {
   title: 'Utils/Modal',
@@ -58,8 +57,19 @@ const args = {
 const TemporaryModal = NiceModal.create((props: ModalProps) => {
   const modal = useModal()
   return (
-    <Modal {...args} {...props} modal={modal}>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula tempor gravida. Integer ac ligula luctus, consectetur nunc non, sagittis ipsum. Suspendisse vitae mattis leo. Maecenas a felis nec tortor molestie semper. Donec fermentum diam sollicitudin, ornare neque a, egestas quam. Pellentesque et nisl vitae enim scelerisque eleifend eu quis ipsum. Suspendisse potenti. Nulla in augue at odio imperdiet dapibus et nec risus. Nam elementum mi ut tellus bibendum, nec scelerisque urna blandit. Duis egestas risus neque, rutrum ultrices dui vehicula vitae.</p>
+    <Modal
+      {...args}
+      {...props}
+      modal={modal}>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula tempor gravida.
+        Integer ac ligula luctus, consectetur nunc non, sagittis ipsum. Suspendisse vitae mattis
+        leo. Maecenas a felis nec tortor molestie semper. Donec fermentum diam sollicitudin, ornare
+        neque a, egestas quam. Pellentesque et nisl vitae enim scelerisque eleifend eu quis ipsum.
+        Suspendisse potenti. Nulla in augue at odio imperdiet dapibus et nec risus. Nam elementum mi
+        ut tellus bibendum, nec scelerisque urna blandit. Duis egestas risus neque, rutrum ultrices
+        dui vehicula vitae.
+      </p>
     </Modal>
   )
 })
@@ -67,8 +77,21 @@ const TemporaryModal = NiceModal.create((props: ModalProps) => {
 const BottomSheet = NiceModal.create((props: ModalProps) => {
   const modal = useModal()
   return (
-    <Modal {...args} {...props} modal={modal} mobileDraggable bottomSheet>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula tempor gravida. Integer ac ligula luctus, consectetur nunc non, sagittis ipsum. Suspendisse vitae mattis leo. Maecenas a felis nec tortor molestie semper. Donec fermentum diam sollicitudin, ornare neque a, egestas quam. Pellentesque et nisl vitae enim scelerisque eleifend eu quis ipsum. Suspendisse potenti. Nulla in augue at odio imperdiet dapibus et nec risus. Nam elementum mi ut tellus bibendum, nec scelerisque urna blandit. Duis egestas risus neque, rutrum ultrices dui vehicula vitae.</p>
+    <Modal
+      {...args}
+      {...props}
+      modal={modal}
+      mobileDraggable
+      bottomSheet>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula tempor gravida.
+        Integer ac ligula luctus, consectetur nunc non, sagittis ipsum. Suspendisse vitae mattis
+        leo. Maecenas a felis nec tortor molestie semper. Donec fermentum diam sollicitudin, ornare
+        neque a, egestas quam. Pellentesque et nisl vitae enim scelerisque eleifend eu quis ipsum.
+        Suspendisse potenti. Nulla in augue at odio imperdiet dapibus et nec risus. Nam elementum mi
+        ut tellus bibendum, nec scelerisque urna blandit. Duis egestas risus neque, rutrum ultrices
+        dui vehicula vitae.
+      </p>
     </Modal>
   )
 })
@@ -76,15 +99,24 @@ const BottomSheet = NiceModal.create((props: ModalProps) => {
 const PreventCloseModal = NiceModal.create(() => {
   const modal = useModal()
   return (
-    <Modal modal={modal} backdropClose={false}>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula tempor gravida. Integer ac ligula luctus, consectetur nunc non, sagittis ipsum. Suspendisse vitae mattis leo. Maecenas a felis nec tortor molestie semper. Donec fermentum diam sollicitudin, ornare neque a, egestas quam. Pellentesque et nisl vitae enim scelerisque eleifend eu quis ipsum. Suspendisse potenti. Nulla in augue at odio imperdiet dapibus et nec risus. Nam elementum mi ut tellus bibendum, nec scelerisque urna blandit. Duis egestas risus neque, rutrum ultrices dui vehicula vitae.</p>
+    <Modal
+      modal={modal}
+      backdropClose={false}>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula tempor gravida.
+        Integer ac ligula luctus, consectetur nunc non, sagittis ipsum. Suspendisse vitae mattis
+        leo. Maecenas a felis nec tortor molestie semper. Donec fermentum diam sollicitudin, ornare
+        neque a, egestas quam. Pellentesque et nisl vitae enim scelerisque eleifend eu quis ipsum.
+        Suspendisse potenti. Nulla in augue at odio imperdiet dapibus et nec risus. Nam elementum mi
+        ut tellus bibendum, nec scelerisque urna blandit. Duis egestas risus neque, rutrum ultrices
+        dui vehicula vitae.
+      </p>
       <ButtonGroup justify="center">
         <Button
           label="Close Modal"
           variant={Variant.Outline}
           size={Size.Medium}
-          onClick={() => modal.hide()}
-        >
+          onClick={() => modal.hide()}>
           Close
         </Button>
       </ButtonGroup>
@@ -99,7 +131,12 @@ type FooterStory = StoryObj<FooterProps>
 
 const HeaderTemplate: React.FC<HeaderProps> = (args) => {
   const modal = useModal(TemporaryModal)
-  return <HeaderComponent {...args} modal={modal} />
+  return (
+    <HeaderComponent
+      {...args}
+      modal={modal}
+    />
+  )
 }
 
 export const Header: HeaderStory = {
@@ -164,7 +201,13 @@ export const ButtonOpen: StoryObj<ButtonProps> = {
   },
   parameters: { controls: { disable: true } },
   render: (args) => <Button {...args} />,
-  decorators: [(Story) => <div className="padding"><Story /></div>],
+  decorators: [
+    (Story) => (
+      <div className="padding">
+        <Story />
+      </div>
+    ),
+  ],
 }
 
 export const MobileBottomSheet: StoryObj<ButtonProps> = {
@@ -176,7 +219,13 @@ export const MobileBottomSheet: StoryObj<ButtonProps> = {
   },
   parameters: { controls: { disable: true } },
   render: (args) => <Button {...args} />,
-  decorators: [(Story) => <div className="padding"><Story /></div>],
+  decorators: [
+    (Story) => (
+      <div className="padding">
+        <Story />
+      </div>
+    ),
+  ],
 }
 
 export const PreventClose: StoryObj<ButtonProps> = {
@@ -188,7 +237,13 @@ export const PreventClose: StoryObj<ButtonProps> = {
   },
   parameters: { controls: { disable: true } },
   render: (args) => <Button {...args} />,
-  decorators: [(Story) => <div className="padding"><Story /></div>],
+  decorators: [
+    (Story) => (
+      <div className="padding">
+        <Story />
+      </div>
+    ),
+  ],
 }
 
 // ---------- Content Story ----------
@@ -196,8 +251,18 @@ export const PreventClose: StoryObj<ButtonProps> = {
 const ModalContent: React.FC = () => {
   const modal = useModal(TemporaryModal)
   return (
-    <Content {...args} modal={modal}>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula tempor gravida. Integer ac ligula luctus, consectetur nunc non, sagittis ipsum. Suspendisse vitae mattis leo. Maecenas a felis nec tortor molestie semper. Donec fermentum diam sollicitudin, ornare neque a, egestas quam. Pellentesque et nisl vitae enim scelerisque eleifend eu quis ipsum. Suspendisse potenti. Nulla in augue at odio imperdiet dapibus et nec risus. Nam elementum mi ut tellus bibendum, nec scelerisque urna blandit. Duis egestas risus neque, rutrum ultrices dui vehicula vitae.</p>
+    <Content
+      {...args}
+      modal={modal}>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula tempor gravida.
+        Integer ac ligula luctus, consectetur nunc non, sagittis ipsum. Suspendisse vitae mattis
+        leo. Maecenas a felis nec tortor molestie semper. Donec fermentum diam sollicitudin, ornare
+        neque a, egestas quam. Pellentesque et nisl vitae enim scelerisque eleifend eu quis ipsum.
+        Suspendisse potenti. Nulla in augue at odio imperdiet dapibus et nec risus. Nam elementum mi
+        ut tellus bibendum, nec scelerisque urna blandit. Duis egestas risus neque, rutrum ultrices
+        dui vehicula vitae.
+      </p>
     </Content>
   )
 }
@@ -205,4 +270,3 @@ const ModalContent: React.FC = () => {
 export const ModalOpen: StoryObj = {
   render: () => <ModalContent />,
 }
-

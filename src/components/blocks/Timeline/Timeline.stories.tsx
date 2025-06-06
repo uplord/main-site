@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+
 import { Timeline, TimelineProps } from '@/components/blocks/Timeline'
 
 const meta: Meta<typeof Timeline> = {

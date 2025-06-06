@@ -1,8 +1,8 @@
-import React from 'react'
 import { NiceModalHandler } from '@ebay/nice-modal-react'
 import clsx from 'clsx'
-import styles from '../modal.module.scss'
+import React from 'react'
 
+import styles from '../modal.module.scss'
 import { Button } from '@/components/ui/Button'
 import { IconProps } from '@/components/utils/Icon'
 import { Variant, Size } from '@/types/system'
@@ -36,7 +36,6 @@ export const Header = ({
   trailingFunction,
   modal,
 }: HeaderProps) => {
-
   const leadingFunc = () => {
     if (modal && leadingIcon === 'X') {
       modal.hide()
@@ -52,10 +51,7 @@ export const Header = ({
   }
 
   return (
-    <div className={clsx(
-      styles.header,
-      hasBorder && styles.border,
-    )}>
+    <div className={clsx(styles.header, hasBorder && styles.border)}>
       <div className={styles.left}>
         {(leadingIcon || leadingText) && (
           <Button
@@ -64,10 +60,7 @@ export const Header = ({
             variant={leadingButton}
             size={Size.Small}
             onClick={leadingFunc}
-            className={clsx(
-              leadingButton === 'text' ? styles.anchor : '',
-              styles.button,
-            )}
+            className={clsx(leadingButton === 'text' ? styles.anchor : '', styles.button)}
             hasHover={false}
           />
         )}
@@ -75,9 +68,7 @@ export const Header = ({
 
       <div className={styles.top}>
         <div className={styles.title}>{title}</div>
-        {subtext && (
-          <div className={styles.subtext}>{subtext}</div>
-        )}
+        {subtext && <div className={styles.subtext}>{subtext}</div>}
       </div>
 
       <div className={styles.right}>
@@ -88,15 +79,11 @@ export const Header = ({
             variant={trailingButton}
             size={Size.Small}
             onClick={trailingFunc}
-            className={clsx(
-              trailingButton === 'text' ? styles.anchor : '',
-              styles.button,
-            )}
+            className={clsx(trailingButton === 'text' ? styles.anchor : '', styles.button)}
             hasHover={false}
           />
         )}
       </div>
-
     </div>
   )
 }

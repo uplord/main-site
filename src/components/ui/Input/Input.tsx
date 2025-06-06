@@ -1,10 +1,9 @@
 'use client'
 
+import clsx from 'clsx'
 import React, { useRef, useState } from 'react'
 
-import clsx from 'clsx'
 import styles from './input.module.scss'
-
 import { Button, ButtonProps } from '@/components/ui/Button'
 import { Icon, IconProps } from '@/components/utils/Icon'
 import { Variant, Size } from '@/types/system'
@@ -36,7 +35,7 @@ export type InputProps = {
 
 export const Input = ({
   type = 'text',
-  placeholder = '', 
+  placeholder = '',
   name,
   id,
   value,
@@ -74,7 +73,7 @@ export const Input = ({
 
   const togglePasswordVisibility = (event: React.MouseEvent) => {
     event.stopPropagation()
-    setIsPasswordVisible(prev => !prev)
+    setIsPasswordVisible((prev) => !prev)
   }
 
   const handleLeadingClick = (event: React.MouseEvent) => {
@@ -87,31 +86,35 @@ export const Input = ({
     if (trailingIcon === 'X') clearField()
     trailingFunction?.()
   }
-  
+
   const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation()
     button?.onClick?.(event)
-  }  
+  }
 
   return (
     <div className={clsx(styles.field, !placeholder && styles['no-label'])}>
-      <div className={clsx(
-        styles.outer,
-        className,
-        (isDisabled || isLoading || isSkeleton) && styles['is-disabled'],
-        (isLoading && !isSkeleton) && styles['is-loading'],
-        isSkeleton && styles['is-skeleton'],
-        isError && styles['is-error'],
-      )}
-        onClick={handleFocus}
-      >
-        {(isLoading && !isSkeleton) && (
-          <div className={styles.loading}></div>
+      <div
+        className={clsx(
+          styles.outer,
+          className,
+          (isDisabled || isLoading || isSkeleton) && styles['is-disabled'],
+          isLoading && !isSkeleton && styles['is-loading'],
+          isSkeleton && styles['is-skeleton'],
+          isError && styles['is-error'],
         )}
+        onClick={handleFocus}>
+        {isLoading && !isSkeleton && <div className={styles.loading}></div>}
 
         {leadingIcon && (
-          <div onClick={leadingFunction && handleLeadingClick} className={clsx(styles['icon-wrap'], leadingFunction && styles.click)}>
-            <Icon name={leadingIcon} size={Size.Medium} className={styles.icon} />
+          <div
+            onClick={leadingFunction && handleLeadingClick}
+            className={clsx(styles['icon-wrap'], leadingFunction && styles.click)}>
+            <Icon
+              name={leadingIcon}
+              size={Size.Medium}
+              className={styles.icon}
+            />
           </div>
         )}
 
@@ -129,24 +132,36 @@ export const Input = ({
             placeholder=" "
             required
             disabled={isDisabled || isLoading || isSkeleton}
-          /> 
+          />
           <span className={styles.placeholder}>{placeholder}</span>
         </div>
 
         {trailingText && <div className={styles.text}>{trailingText}</div>}
 
         {type === 'password' && (
-          <div onClick={togglePasswordVisibility} className={clsx(styles['icon-wrap'], styles.click)}>
-            <Icon name={!isPasswordVisible ? 'EyeOff' : 'Eye'} size={Size.Medium} className={styles.icon} />
+          <div
+            onClick={togglePasswordVisibility}
+            className={clsx(styles['icon-wrap'], styles.click)}>
+            <Icon
+              name={!isPasswordVisible ? 'EyeOff' : 'Eye'}
+              size={Size.Medium}
+              className={styles.icon}
+            />
           </div>
         )}
 
         {trailingIcon && !(trailingIcon === 'X' && (!value || isDisabled)) && (
           <div
             onClick={handleTrailingClick}
-            className={clsx(styles['icon-wrap'], trailingFunction || trailingIcon === 'X' ? styles.click : '')}
-          >
-            <Icon name={trailingIcon} size={Size.Medium} className={styles.icon} />
+            className={clsx(
+              styles['icon-wrap'],
+              trailingFunction || trailingIcon === 'X' ? styles.click : '',
+            )}>
+            <Icon
+              name={trailingIcon}
+              size={Size.Medium}
+              className={styles.icon}
+            />
           </div>
         )}
 
@@ -162,11 +177,7 @@ export const Input = ({
         )}
       </div>
 
-      {(helper) && (
-        <div className={styles.helper}>
-          {helper}
-        </div>
-      )}
+      {helper && <div className={styles.helper}>{helper}</div>}
     </div>
   )
 }

@@ -1,7 +1,9 @@
-import React from 'react'
 import * as icons from 'lucide-react'
 import { LucideIcon } from 'lucide-react'
+import React from 'react'
+
 import { Size, SizeType } from '@/types/system'
+
 type AvailableIcons = keyof typeof icons
 
 export interface IconProps {
@@ -11,12 +13,7 @@ export interface IconProps {
   className?: string
 }
 
-export function Icon({
-  name,
-  size,
-  strokeWidth = 2,
-  className = ''
-}: IconProps) {
+export function Icon({ name, size, strokeWidth = 2, className = '' }: IconProps) {
   if (!name) {
     return false
   }
@@ -37,5 +34,11 @@ export function Icon({
     iconSize = 28
   }
 
-  return <LucideIcon size={iconSize} className={className} strokeWidth={strokeWidth} />
+  return (
+    <LucideIcon
+      size={iconSize}
+      className={className}
+      strokeWidth={strokeWidth}
+    />
+  )
 }

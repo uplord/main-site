@@ -1,7 +1,8 @@
 import { Inter, Nunito } from 'next/font/google'
-import '@/styles/index.scss'
-import { ThemeProvider } from '@/context/ThemeProvider'
+
 import NiceModalProvider from '@/context/NiceModalProvider'
+import { ThemeProvider } from '@/context/ThemeProvider'
+import '@/styles/index.scss'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -31,14 +32,17 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} ${nunito.className}`} suppressHydrationWarning>
+    <html
+      lang="en"
+      suppressHydrationWarning>
+      <body
+        className={`${inter.className} ${nunito.className}`}
+        suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
-          disableTransitionOnChange
-        >
+          disableTransitionOnChange>
           <NiceModalProvider>{children}</NiceModalProvider>
         </ThemeProvider>
       </body>

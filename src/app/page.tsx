@@ -1,17 +1,15 @@
 'use client'
 
 import styles from '@/app/page.module.scss'
-
-import { Header } from '@/components/blocks/Header'
-import { Footer } from '@/components/blocks/Footer'
 import { Banner } from '@/components/blocks/Banner'
-import { Section } from '@/components/blocks/Section'
+import { Footer } from '@/components/blocks/Footer'
+import { Header } from '@/components/blocks/Header'
 import { Projects } from '@/components/blocks/Projects'
-import { Timeline } from '@/components/blocks/Timeline'
+import { Section } from '@/components/blocks/Section'
 import { Stack } from '@/components/blocks/Stack'
+import { Timeline } from '@/components/blocks/Timeline'
 
 export default function Home() {
-
   return (
     <div className={styles.page}>
       <Header />

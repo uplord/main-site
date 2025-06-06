@@ -1,7 +1,7 @@
-import React from 'react'
 import clsx from 'clsx'
-import styles from '../modal.module.scss'
+import React from 'react'
 
+import styles from '../modal.module.scss'
 import { Button } from '@/components/ui/Button'
 import { IconProps } from '@/components/utils/Icon'
 import { Variant, Size } from '@/types/system'
@@ -37,7 +37,6 @@ export const Footer = ({
   trailingButton = Variant.Primary,
   trailingFunction,
 }: FooterProps) => {
-
   const leadingFunc = () => {
     leadingFunction?.()
   }
@@ -47,35 +46,31 @@ export const Footer = ({
   }
 
   return (
-    <div className={clsx(
-      styles.footer,
-      fullWidth && styles.full,
-      hasBorder && styles.border,
-      hasShadow && styles.shadow,
-    )}>
+    <div
+      className={clsx(
+        styles.footer,
+        fullWidth && styles.full,
+        hasBorder && styles.border,
+        hasShadow && styles.shadow,
+      )}>
       <div className={styles.left}>
         {title || subtext ? (
           <div className={styles.text}>
-            {title && (
-              <div className={styles.title}>{title}</div>
-            )}
-            {subtext && (
-              <div className={styles.subtext}>{subtext}</div>
-            )}
+            {title && <div className={styles.title}>{title}</div>}
+            {subtext && <div className={styles.subtext}>{subtext}</div>}
           </div>
-        ) : (leadingIcon || leadingText) && (
-          <Button
-            label={leadingText}
-            leadingIcon={leadingIcon}
-            variant={leadingButton}
-            size={Size.Medium}
-            onClick={leadingFunc}
-            className={clsx(
-              leadingButton === 'text' ? styles.anchor : '',
-              styles.button,
-            )}
-            hasHover={false}
-          />
+        ) : (
+          (leadingIcon || leadingText) && (
+            <Button
+              label={leadingText}
+              leadingIcon={leadingIcon}
+              variant={leadingButton}
+              size={Size.Medium}
+              onClick={leadingFunc}
+              className={clsx(leadingButton === 'text' ? styles.anchor : '', styles.button)}
+              hasHover={false}
+            />
+          )
         )}
       </div>
 
@@ -87,14 +82,10 @@ export const Footer = ({
             variant={trailingButton}
             size={Size.Medium}
             onClick={trailingFunc}
-            className={clsx(
-              trailingButton === 'text' ? styles.anchor : '',
-              styles.button,
-            )}
+            className={clsx(trailingButton === 'text' ? styles.anchor : '', styles.button)}
           />
         )}
       </div>
-
     </div>
   )
 }

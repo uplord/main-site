@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import clsx from 'clsx'
-import { Typography, TypographyProps } from './Typography'
 
+import { Typography, TypographyProps } from './Typography'
 import styles from './style.module.scss'
 
 const meta: Meta<typeof Typography> = {
@@ -50,7 +50,7 @@ export const All: Story = {
       disable: true,
     },
   },
-  render: () => { 
+  render: () => {
     return (
       <div className={clsx('list', styles.typography)}>
         <h1>Heading 1</h1>
@@ -62,7 +62,9 @@ export const All: Story = {
 
         <p>Body</p>
 
-        <p><a href="">Link</a></p>
+        <p>
+          <a href="">Link</a>
+        </p>
 
         <p className={styles['text-bold']}>Bold</p>
         <p className={styles['text-semibold']}>Semibold</p>
@@ -80,5 +82,5 @@ export const All: Story = {
         </ul>
       </div>
     )
-  }
+  },
 }

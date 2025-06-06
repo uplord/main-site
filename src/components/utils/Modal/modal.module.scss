@@ -1,5 +1,5 @@
-$background-overlay: rgba(0,0,0,0.5);
-$background-overlay-dark: rgba(0,0,0,0.6);
+$background-overlay: rgba(0, 0, 0, 0.5);
+$background-overlay-dark: rgba(0, 0, 0, 0.6);
 $foreground-animation-duration: 0.6s;
 $background-surface: $color-light;
 $background-surface-dark: $color-dark;
@@ -31,14 +31,13 @@ $text-body: green;
     @include dark-mode {
       background-color: $background-overlay-dark;
     }
-    
+
     &:focus {
       outline: 0;
     }
   }
 
   &.bottom-sheet {
-
     @media (max-width: $breakpoint-md - 1) {
       padding: 0;
       place-items: end;
@@ -54,7 +53,7 @@ $text-body: green;
   .main {
     background-color: $background-surface;
     border-radius: 1rem;
-    box-shadow: 0px 4px 18px 0px #0000002B;
+    box-shadow: 0px 4px 18px 0px #0000002b;
 
     @include dark-mode {
       background-color: $background-surface-dark;
@@ -70,9 +69,8 @@ $text-body: green;
   max-height: calc(100dvh - 5rem);
   display: flex;
   flex-direction: column;
-  
-  .bottom-sheet & {
 
+  .bottom-sheet & {
     @media (max-width: $breakpoint-md - 1) {
       max-width: 100%;
       max-height: calc(100dvh - 1rem);
@@ -105,10 +103,10 @@ $text-body: green;
     height: 0.25rem;
     border-radius: 0.125rem;
     transform: translateX(-50%);
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0, 0, 0, 0.2);
 
     @include dark-mode {
-      background-color: rgba(255,255,255,0.2);
+      background-color: rgba(255, 255, 255, 0.2);
     }
 
     @media (min-width: $breakpoint-md) {
@@ -225,7 +223,7 @@ $text-body: green;
   }
 
   &.shadow {
-    box-shadow: 0px 0px 18px 0px #0000002B;
+    box-shadow: 0px 0px 18px 0px #0000002b;
   }
 
   .text {
@@ -292,5 +290,5 @@ $text-body: green;
   p {
     @include text-md;
     @include text-normal;
-  }  
+  }
 }

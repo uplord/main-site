@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
 import { Button, ButtonGroup, ButtonProps } from './Button'
-import { Variant, Size } from '@/types/system'
 import { IconOptions } from '@/lib/icons'
+import { Variant, Size } from '@/types/system'
 
 const meta: Meta<ButtonProps> = {
   title: 'UI/Button',
@@ -30,7 +30,7 @@ const meta: Meta<ButtonProps> = {
       control: {
         type: 'select',
       },
-      options: [Size.Small, Size.Medium]
+      options: [Size.Small, Size.Medium],
     },
     variant: {
       control: {
@@ -60,8 +60,8 @@ const meta: Meta<ButtonProps> = {
     (Story) => {
       return (
         <div className="padding">
-					<Story />
-				</div>
+          <Story />
+        </div>
       )
     },
   ],
@@ -79,11 +79,9 @@ export const Main: Story = {
   },
   render: (args: ButtonProps) => (
     <ButtonGroup>
-      <Button
-        {...args}
-      />
+      <Button {...args} />
     </ButtonGroup>
-  )
+  ),
 }
 
 export const Icon: Story = {
@@ -94,11 +92,9 @@ export const Icon: Story = {
   },
   render: (args: ButtonProps) => (
     <ButtonGroup>
-      <Button
-        {...args}
-      />
+      <Button {...args} />
     </ButtonGroup>
-  )
+  ),
 }
 
 export const Links: Story = {
@@ -136,12 +132,12 @@ export const Links: Story = {
         target="_blank"
       />
     </ButtonGroup>
-  )
+  ),
 }
 
 export const Variants: Story = {
   args: {
-    label: 'Button'
+    label: 'Button',
   },
   argTypes: {
     href: {
@@ -183,12 +179,12 @@ export const Variants: Story = {
         variant={Variant.Text}
       />
     </ButtonGroup>
-  )
+  ),
 }
 
 export const Default: Story = {
   args: {
-    variant: Variant.Default
+    variant: Variant.Default,
   },
   argTypes: {
     variant: {
@@ -202,13 +198,12 @@ export const Default: Story = {
       disable: true,
     },
   },
-  render: (args: ButtonProps) => <TestButtons {...args} />
+  render: (args: ButtonProps) => <TestButtons {...args} />,
 }
-
 
 export const Primary: Story = {
   args: {
-    variant: Variant.Primary
+    variant: Variant.Primary,
   },
   argTypes: {
     variant: {
@@ -222,12 +217,12 @@ export const Primary: Story = {
       disable: true,
     },
   },
-  render: (args: ButtonProps) => <TestButtons {...args} />
+  render: (args: ButtonProps) => <TestButtons {...args} />,
 }
 
 export const Success: Story = {
   args: {
-    variant: Variant.Success
+    variant: Variant.Success,
   },
   argTypes: {
     variant: {
@@ -241,12 +236,12 @@ export const Success: Story = {
       disable: true,
     },
   },
-  render: (args: ButtonProps) => <TestButtons {...args} />
+  render: (args: ButtonProps) => <TestButtons {...args} />,
 }
 
 export const Outline: Story = {
   args: {
-    variant: Variant.Outline
+    variant: Variant.Outline,
   },
   argTypes: {
     variant: {
@@ -260,12 +255,12 @@ export const Outline: Story = {
       disable: true,
     },
   },
-  render: (args: ButtonProps) => <TestButtons {...args} />
+  render: (args: ButtonProps) => <TestButtons {...args} />,
 }
 
 export const Text: Story = {
   args: {
-    variant: Variant.Text
+    variant: Variant.Text,
   },
   argTypes: {
     variant: {
@@ -279,7 +274,7 @@ export const Text: Story = {
       disable: true,
     },
   },
-  render: (args: ButtonProps) => <TestButtons {...args} />
+  render: (args: ButtonProps) => <TestButtons {...args} />,
 }
 
 const TestButtons = (args: ButtonProps) => {

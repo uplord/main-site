@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+
 import { Section, SectionProps } from '@/components/blocks/Section'
 
 const meta: Meta<typeof Section> = {

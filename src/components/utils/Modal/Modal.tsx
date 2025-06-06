@@ -1,15 +1,14 @@
 'use client'
 
-import React, { useRef, useState, useEffect } from 'react'
-import { motion, AnimatePresence, useDragControls } from 'framer-motion'
-import { useMediaQuery } from 'react-responsive'
 import { NiceModalHandler } from '@ebay/nice-modal-react'
+import { motion, AnimatePresence, useDragControls } from 'framer-motion'
+import React, { useRef, useState, useEffect } from 'react'
+import { useMediaQuery } from 'react-responsive'
 
-import styles from './modal.module.scss'
-
-import { Header, HeaderProps } from './inc/Header'
-import { Footer, FooterProps } from './inc/Footer'
 import { Content } from './inc/Content'
+import { Footer, FooterProps } from './inc/Footer'
+import { Header, HeaderProps } from './inc/Header'
+import styles from './modal.module.scss'
 
 export type ModalProps = {
   children: React.ReactNode
@@ -53,8 +52,7 @@ export const Modal = ({
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+          transition={{ duration: 0.6 }}>
           <motion.div
             onClick={() => backdropClose && modal.hide()}
             className={styles['backdrop--close-button']}
@@ -72,14 +70,17 @@ export const Modal = ({
               initial={{ y: '100%' }}
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
-              transition={{ duration: 0.4, ease: 'easeInOut' }}
-            >
+              transition={{ duration: 0.4, ease: 'easeInOut' }}>
               <div
                 className={styles.drag}
                 onPointerDown={(event) => controls.start(event)}
-                style={{ touchAction: 'none' }}
-              >
-                {headerProps && <Header {...headerProps} modal={modal} />}
+                style={{ touchAction: 'none' }}>
+                {headerProps && (
+                  <Header
+                    {...headerProps}
+                    modal={modal}
+                  />
+                )}
                 <div className={styles.scroll}>
                   <div className={styles.content}>{children}</div>
                 </div>
@@ -92,13 +93,11 @@ export const Modal = ({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.4, ease: 'easeInOut' }}
-            >
+              transition={{ duration: 0.4, ease: 'easeInOut' }}>
               <Content
                 headerProps={headerProps}
                 footerProps={footerProps}
-                modal={modal}
-              >
+                modal={modal}>
                 {children}
               </Content>
             </motion.div>

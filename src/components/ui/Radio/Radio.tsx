@@ -1,6 +1,6 @@
+import clsx from 'clsx'
 import React from 'react'
 
-import clsx from 'clsx'
 import styles from '@/components/ui/Checkbox/checkbox.module.scss'
 
 export type RadioProps = {
@@ -40,15 +40,15 @@ export const Radio = ({
 
   onChange,
 }: RadioProps) => {
-
   return (
     <div className={styles.field}>
-      <div className={clsx(
-        styles.radio,
-        (isDisabled || isSkeleton) && styles['is-disabled'],
-        isSkeleton && styles['is-skeleton'],
-        isError && styles['is-error'],
-      )}>
+      <div
+        className={clsx(
+          styles.radio,
+          (isDisabled || isSkeleton) && styles['is-disabled'],
+          isSkeleton && styles['is-skeleton'],
+          isError && styles['is-error'],
+        )}>
         <input
           type="radio"
           id={id || name}
@@ -61,30 +61,14 @@ export const Radio = ({
         />
         <label htmlFor={id || name}>
           <div className={styles.title}>
-            {label !== undefined && (
-              <div className={styles.label}>
-                {!isSkeleton && label}
-              </div>
-            )}
-            {total !== undefined && (
-              <div className={styles.total}>
-                {!isSkeleton && total}
-              </div>
-            )}
+            {label !== undefined && <div className={styles.label}>{!isSkeleton && label}</div>}
+            {total !== undefined && <div className={styles.total}>{!isSkeleton && total}</div>}
           </div>
-          {content !== undefined && (
-            <div className={styles.content}>
-              {!isSkeleton && content}
-            </div>
-          )}
+          {content !== undefined && <div className={styles.content}>{!isSkeleton && content}</div>}
         </label>
       </div>
 
-      {(helper) && (
-        <div className={styles.helper}>
-          {helper}
-        </div>
-      )}
+      {helper && <div className={styles.helper}>{helper}</div>}
     </div>
   )
 }

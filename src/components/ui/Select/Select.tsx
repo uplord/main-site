@@ -1,10 +1,9 @@
 'use client'
 
+import clsx from 'clsx'
 import React, { useRef } from 'react'
 
-import clsx from 'clsx'
 import styles from '@/components/ui/Input/input.module.scss'
-
 import { Icon } from '@/components/utils/Icon'
 import { Size } from '@/types/system'
 
@@ -35,7 +34,7 @@ export const Select = ({
   value,
   helper,
   className = '',
-  
+
   isDisabled = false,
   isLoading = false,
   isSkeleton = false,
@@ -55,8 +54,7 @@ export const Select = ({
           isLoading && !isSkeleton && styles['is-loading'],
           isSkeleton && styles['is-skeleton'],
           isError && styles['is-error'],
-        )}
-      >
+        )}>
         {isLoading && !isSkeleton && <div className={styles.loading}></div>}
 
         <div className={styles.inner}>
@@ -67,11 +65,12 @@ export const Select = ({
             value={value}
             onChange={onChange}
             className={styles.input}
-            disabled={isDisabled || isLoading || isSkeleton}
-          >
+            disabled={isDisabled || isLoading || isSkeleton}>
             {placeholder && <option value="">{placeholder}</option>}
             {options?.map((option) => (
-              <option key={option.value} value={option.value}>
+              <option
+                key={option.value}
+                value={option.value}>
                 {option.label}
               </option>
             ))}
@@ -79,15 +78,15 @@ export const Select = ({
         </div>
 
         <div className={styles['icon-wrap']}>
-          <Icon name="ChevronDown" size={Size.Medium} className={styles.icon} />
+          <Icon
+            name="ChevronDown"
+            size={Size.Medium}
+            className={styles.icon}
+          />
         </div>
       </div>
 
-      {(helper) && (
-        <div className={styles.helper}>
-          {helper}
-        </div>
-      )}
+      {helper && <div className={styles.helper}>{helper}</div>}
     </div>
   )
 }

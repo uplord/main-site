@@ -1,5 +1,5 @@
-import type { Meta, StoryObj } from '@storybook/react'
 import * as icons from 'lucide-react'
+import type { Meta, StoryObj } from '@storybook/react'
 
 import { Icon as IconComponent, IconProps } from '@/components/utils/Icon'
 import { Size } from '@/types/system'
@@ -12,14 +12,14 @@ const meta: Meta<IconProps> = {
   args: {
     name: 'Home',
     size: Size.Large,
-    className: ''
+    className: '',
   },
   argTypes: {
     name: {
       control: {
         type: 'select',
       },
-      options: [null, ...Object.keys(icons)] as (AvailableIcons)[],
+      options: [null, ...Object.keys(icons)] as AvailableIcons[],
     },
     size: {
       control: {
@@ -39,5 +39,5 @@ export const Icon: Story = {
     <div className="padding">
       <IconComponent {...args} />
     </div>
-  )
+  ),
 }

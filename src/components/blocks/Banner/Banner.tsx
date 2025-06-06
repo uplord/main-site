@@ -1,29 +1,28 @@
 'use client'
 
-import React from 'react'
-import Image from 'next/image'
-import styles from './style.module.scss'
 import clsx from 'clsx'
+import Image from 'next/image'
+import React from 'react'
 
+import styles from './style.module.scss'
+import { Social } from '@/components/blocks/Social'
 import { Button, ButtonGroup } from '@/components/ui/Button'
-import { Social } from '../Social'
-import { Size, Variant } from '@/types/system'
 import { useMounted } from '@/lib/useMounted'
+import { Size, Variant } from '@/types/system'
 
 export type BannerProps = {
   id?: string
   hasHeader?: boolean
 }
 
-export const Banner = ({
-  id,
-  hasHeader = false
-}: BannerProps) => {
+export const Banner = ({ id, hasHeader = false }: BannerProps) => {
   const mounted = useMounted()
   const skeletonClass = !mounted ? styles.skeleton : ''
 
   return (
-    <div id={id} className={clsx(styles.banner, hasHeader && styles.header)}>
+    <div
+      id={id}
+      className={clsx(styles.banner, hasHeader && styles.header)}>
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.image}>
@@ -38,7 +37,10 @@ export const Banner = ({
                     height={500}
                     priority
                   />
-                  <Social className={styles.social} isMounted={mounted} />
+                  <Social
+                    className={styles.social}
+                    isMounted={mounted}
+                  />
                 </>
               ) : (
                 <div className={styles.skeleton}></div>

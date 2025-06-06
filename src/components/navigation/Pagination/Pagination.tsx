@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-
 import { useMediaQuery } from 'react-responsive'
-import { ButtonGroup, Button } from '@/components/ui/Button'
-import { Size, Variant } from '@/types/system'
 
+import { ButtonGroup, Button } from '@/components/ui/Button'
 import { Select } from '@/components/ui/Select'
+import { Size, Variant } from '@/types/system'
 
 export type PaginationProps = {
   totalPages: number
@@ -53,9 +52,7 @@ export const Pagination = ({
               key={page}
               label={String(page)}
               size={Size.Small}
-              variant={
-                page === currentPage ? Variant.Primary : Variant.Text
-              }
+              variant={page === currentPage ? Variant.Primary : Variant.Text}
               onClick={() => setCurrentPage(page)}
               isIcon
             />

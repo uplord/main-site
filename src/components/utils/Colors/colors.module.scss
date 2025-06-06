@@ -14,7 +14,7 @@
 .title {
   @include text-xl;
   @include text-semibold;
-  
+
   color: $color-heading;
 
   @include dark-mode {
@@ -100,7 +100,13 @@
 }
 
 @keyframes pulse {
-  0% { opacity: 0.6; }
-  50% { opacity: 1; }
-  100% { opacity: 0.6; }
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
 }

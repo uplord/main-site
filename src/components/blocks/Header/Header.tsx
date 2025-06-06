@@ -1,11 +1,12 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import Link from 'next/link'
-import styles from './style.module.scss'
 import { clsx } from 'clsx'
-import { Toggle } from '@/components/ui/Toggle'
 import { useTheme } from 'next-themes'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+
+import styles from './style.module.scss'
+import { Toggle } from '@/components/ui/Toggle'
 import { useMounted } from '@/lib/useMounted'
 
 export type HeaderProps = {
@@ -24,20 +25,34 @@ export const Header = ({ id }: HeaderProps) => {
   }, [resolvedTheme])
 
   return (
-    <div id={id} className={clsx(styles.header, styles['is-home'])}>
+    <div
+      id={id}
+      className={clsx(styles.header, styles['is-home'])}>
       <div className={styles.container}>
         <div className={styles.top}>
-          <Link href="/" className={clsx(styles.logo)}>
+          <Link
+            href="/"
+            className={clsx(styles.logo)}>
             <span className={clsx(styles.icon, !mounted && styles.skeleton)}>M</span>
             <span className={clsx(styles.title, !mounted && styles.skeleton)}>TheMichael</span>
           </Link>
           <div className={clsx(styles.nav, !mounted && styles.skeleton)}>
             <ul>
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/">About me</Link></li>
-              <li><Link href="/">Projects</Link></li>
-              <li><Link href="/">Timeline</Link></li>
-              <li><Link href="/">Contact</Link></li>
+              <li>
+                <Link href="/">Home</Link>
+              </li>
+              <li>
+                <Link href="/">About me</Link>
+              </li>
+              <li>
+                <Link href="/">Projects</Link>
+              </li>
+              <li>
+                <Link href="/">Timeline</Link>
+              </li>
+              <li>
+                <Link href="/">Contact</Link>
+              </li>
             </ul>
           </div>
           <div className={styles.right}>

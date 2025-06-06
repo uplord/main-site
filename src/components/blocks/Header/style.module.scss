@@ -51,17 +51,15 @@
     border-radius: 0 0.5rem 0.5rem 0.5rem;
 
     &.skeleton {
-
       @include light-mode {
-        background-color: rgba(0,0,0,0.2) !important;
+        background-color: rgba(0, 0, 0, 0.2) !important;
       }
     }
   }
 
   .title.skeleton {
-
     @include light-mode {
-      background-color: rgba(0,0,0,0.2) !important;
+      background-color: rgba(0, 0, 0, 0.2) !important;
     }
   }
 
@@ -90,9 +88,8 @@
   }
 
   &.skeleton {
-
     @include light-mode {
-      background-color: rgba(0,0,0,0.2) !important;
+      background-color: rgba(0, 0, 0, 0.2) !important;
     }
   }
 
@@ -127,7 +124,7 @@
 
       @media (hover: hover) {
         &:hover {
-          background-color: #FFF;
+          background-color: #fff;
           color: #000;
           scale: 1.05;
         }
@@ -140,4 +137,3 @@
     }
   }
 }
-

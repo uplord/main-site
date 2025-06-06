@@ -47,6 +47,7 @@
     "@storybook/test": "^8.6.12",
     "@storybook/theming": "^8.6.12",
     "@svgr/webpack": "^8.1.0",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -75,7 +76,10 @@
     ]
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": "eslint --fix",
+    "*.{js,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
     "*.json": "prettier --write",
     "*.scss": "prettier --write",
     "*.html": "prettier --write"

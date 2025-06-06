@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import styles from './checkbox.module.scss'
+
 import { Checkbox, CheckboxProps } from './Checkbox'
+import styles from './checkbox.module.scss'
 
 const meta: Meta<CheckboxProps> = {
   title: 'UI/Checkbox',
@@ -68,14 +69,15 @@ export const Default: Story = {
       name="input1"
       value="true"
     />
-  )
+  ),
 }
 
 export const Content: Story = {
   args: {
     label: 'Title',
     total: 'X,XXX',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut metus et erat suscipit facilisis quis eu odio.',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut metus et erat suscipit facilisis quis eu odio.',
   },
   render: (args: CheckboxProps) => (
     <Checkbox
@@ -83,7 +85,7 @@ export const Content: Story = {
       name="input2"
       value="true"
     />
-  )
+  ),
 }
 
 export const State: Story = {
@@ -150,14 +152,15 @@ export const State: Story = {
         isError
       />
     </div>
-  )
+  ),
 }
 
 export const StateText: Story = {
   args: {
     label: 'Title',
     total: 'X,XXX',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut metus et erat suscipit facilisis quis eu odio.',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut metus et erat suscipit facilisis quis eu odio.',
   },
   parameters: {
     controls: {
@@ -214,5 +217,5 @@ export const StateText: Story = {
         isError
       />
     </div>
-  )
+  ),
 }

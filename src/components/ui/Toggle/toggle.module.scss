@@ -4,7 +4,6 @@
   position: relative;
 
   &.skeleton {
-
     .checkbox + label {
       transition: opacity 0.3s ease-in-out;
       background-color: $color-nav;
@@ -21,7 +20,6 @@
   }
 
   &.checked {
-
     .checkbox + label {
       background-color: green;
     }
@@ -52,7 +50,7 @@
     top: 0.25rem;
     width: 2rem;
     height: 2rem;
-    background-color: #FFC514;
+    background-color: #ffc514;
     border-radius: 1rem;
     z-index: 1;
     pointer-events: none;
@@ -64,7 +62,13 @@
 }
 
 @keyframes pulse {
-  0% { opacity: 0.6; }
-  50% { opacity: 1; }
-  100% { opacity: 0.6; }
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
 }

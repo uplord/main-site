@@ -1,5 +1,4 @@
-
-export const timelineData = () => ([
+export const timelineData = () => [
   {
     date: 'Jan 2025 – Present',
     role: 'Software Engineer',
@@ -40,9 +39,9 @@ export const timelineData = () => ([
     ],
     icon: 'mtc-logo',
   },
-])
+]
 
-export const projectsData = () => ([
+export const projectsData = () => [
   {
     title: 'Brewdog Now',
     description:
@@ -109,4 +108,4 @@ export const projectsData = () => ([
     width: 187,
     height: 60,
   },
-])
+]

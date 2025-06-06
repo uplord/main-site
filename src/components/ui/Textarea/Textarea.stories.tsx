@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Formik, Form, Field } from 'formik'
-import styles from '@/components/ui/Input/input.module.scss'
+
 import { FormikInput } from '../FormikInput'
 import { Textarea, TextareaProps } from './Textarea'
+import styles from '@/components/ui/Input/input.module.scss'
 
 const meta: Meta<TextareaProps> = {
   title: 'UI/Textarea',
@@ -63,7 +64,7 @@ export const Default: Story = {
       {...args}
       name="input"
     />
-  )
+  ),
 }
 
 export const FormikField: Story = {
@@ -79,15 +80,16 @@ export const FormikField: Story = {
   render: (args: TextareaProps) => (
     <Formik
       initialValues={{
-        textarea: ''
+        textarea: '',
       }}
       onSubmit={async (values) => {
         await new Promise((r) => setTimeout(r, 500))
         console.log(JSON.stringify(values, null, 2))
-      }}
-    >
+      }}>
       {() => (
-        <Form autoComplete="off" noValidate>
+        <Form
+          autoComplete="off"
+          noValidate>
           <Field
             {...args}
             component={FormikInput}
@@ -172,5 +174,5 @@ export const State: Story = {
         onChange={(e) => console.log(e.target.value)}
       />
     </div>
-  )
+  ),
 }

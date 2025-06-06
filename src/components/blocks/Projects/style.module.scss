@@ -37,7 +37,7 @@
 }
 
 .grid {
-  width: 100%;;
+  width: 100%;
   display: flex;
   gap: 1rem;
   width: calc(100% + 3rem);
@@ -121,7 +121,7 @@
   h3 {
     @include text-lg;
     @include text-bold;
-  
+
     @media (min-width: $breakpoint-lg) {
       @include text-xl;
     }

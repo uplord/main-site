@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import styles from '@/components/ui/Checkbox/checkbox.module.scss'
+
 import { Radio, RadioProps } from './Radio'
+import styles from '@/components/ui/Checkbox/checkbox.module.scss'
 
 const meta: Meta<RadioProps> = {
   title: 'UI/Radio',
@@ -77,20 +78,21 @@ export const Default: Story = {
         value="false"
       />
     </div>
-  )
+  ),
 }
 
 export const Content: Story = {
   args: {
     label: 'Title',
     total: 'X,XXX',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut metus et erat suscipit facilisis quis eu odio.',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut metus et erat suscipit facilisis quis eu odio.',
   },
   argTypes: {
     id: {
       table: {
         disable: true,
-      }
+      },
     },
     className: {
       table: {
@@ -118,7 +120,7 @@ export const Content: Story = {
         value="false"
       />
     </div>
-  )
+  ),
 }
 
 export const State: Story = {
@@ -185,14 +187,15 @@ export const State: Story = {
         isError
       />
     </div>
-  )
+  ),
 }
 
 export const StateText: Story = {
   args: {
     label: 'Title',
     total: 'X,XXX',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut metus et erat suscipit facilisis quis eu odio.',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ut metus et erat suscipit facilisis quis eu odio.',
   },
   parameters: {
     controls: {
@@ -249,5 +252,5 @@ export const StateText: Story = {
         isError
       />
     </div>
-  )
+  ),
 }

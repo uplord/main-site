@@ -19,6 +19,24 @@ const config: StorybookConfig = {
     options: {},
   },
   staticDirs: ['../public'],
+  webpackFinal: async (config) => {
+    // Remove existing SVG loader
+    const fileLoaderRule = config.module?.rules?.find((rule) =>
+      rule && typeof rule === 'object' && 'test' in rule && rule.test instanceof RegExp && rule.test.test('.svg')
+    )
+
+    if (fileLoaderRule) {
+      fileLoaderRule.exclude = /\.svg$/i
+    }
+
+    // Add SVGR loader for SVGs
+    config.module?.rules?.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    })
+
+    return config
+  },
 }
 
 export default config

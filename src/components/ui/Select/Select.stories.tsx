@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { Formik, Form, Field } from 'formik'
-import styles from '@/components/ui/Input/input.module.scss'
+
 import { FormikInput } from '../FormikInput'
 import { Select, SelectProps } from './Select'
+import styles from '@/components/ui/Input/input.module.scss'
 
 const meta: Meta<SelectProps> = {
   title: 'UI/Select',
@@ -13,7 +14,7 @@ const meta: Meta<SelectProps> = {
     options: [
       { value: '1', label: 'Option 1' },
       { value: '2', label: 'Option 2' },
-      { value: '3', label: 'Option 3' }
+      { value: '3', label: 'Option 3' },
     ],
     isLoading: false,
     isSkeleton: false,
@@ -68,7 +69,7 @@ export const Default: Story = {
       {...args}
       name="input"
     />
-  )
+  ),
 }
 
 export const FormikField: Story = {
@@ -84,15 +85,16 @@ export const FormikField: Story = {
   render: (args: SelectProps) => (
     <Formik
       initialValues={{
-        select: ''
+        select: '',
       }}
       onSubmit={async (values) => {
         await new Promise((r) => setTimeout(r, 500))
         console.log(JSON.stringify(values, null, 2))
-      }}
-    >
+      }}>
       {() => (
-        <Form autoComplete="off" noValidate>
+        <Form
+          autoComplete="off"
+          noValidate>
           <Field
             {...args}
             component={FormikInput}
@@ -167,5 +169,5 @@ export const State: Story = {
         isError
       />
     </div>
-  )
+  ),
 }

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react'
+
 import { Projects, ProjectsProps } from '@/components/blocks/Projects'
 
 const meta: Meta<typeof Projects> = {

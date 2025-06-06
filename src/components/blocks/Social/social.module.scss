@@ -37,20 +37,19 @@
     background: #0077b5;
     color: $color-light;
   }
-  
+
   .instagram {
     background: #d62976;
     color: $color-light;
   }
-  
+
   .github {
     background: #000;
-    color: #FFF;
-  
+    color: #fff;
+
     @include dark-mode {
-      background: #FFF;
+      background: #fff;
       color: #000;
     }
   }
-  
 }

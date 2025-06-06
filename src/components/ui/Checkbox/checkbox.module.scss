@@ -93,7 +93,7 @@
     & + .helper {
       color: $color-error;
     }
-  
+
     .input {
       border-color: $color-error;
 
@@ -221,7 +221,6 @@
   }
 }
 
-
 .title {
   display: flex;
   justify-content: space-between;
@@ -266,7 +265,13 @@
 }
 
 @keyframes pulse {
-  0% { opacity: 0.6; }
-  50% { opacity: 1; }
-  100% { opacity: 0.6; }
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
 }

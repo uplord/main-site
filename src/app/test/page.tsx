@@ -1,14 +1,15 @@
-'use client';
+'use client'
+
+import { useState } from 'react'
 
 import styles from '../page.module.scss'
-import { Input } from '@/components/ui/Input'
-import { Textarea } from '@/components/ui/Textarea'
-import { Select } from '@/components/ui/Select'
 import { Checkbox } from '@/components/ui/Checkbox'
+import { Input } from '@/components/ui/Input'
 import { Radio } from '@/components/ui/Radio'
-import { useState } from 'react'
-export default function TestPage() {
+import { Select } from '@/components/ui/Select'
+import { Textarea } from '@/components/ui/Textarea'
 
+export default function TestPage() {
   const [input, setInput] = useState('')
   const [textarea, setTextarea] = useState('')
   const [select, setSelect] = useState('')
@@ -35,13 +36,16 @@ export default function TestPage() {
           />
 
           <Select
-            options={[{
-              value: '1',
-              label: 'Option 1'
-            },{
-              value: '2',
-              label: 'Option 2'
-            }]}
+            options={[
+              {
+                value: '1',
+                label: 'Option 1',
+              },
+              {
+                value: '2',
+                label: 'Option 2',
+              },
+            ]}
             name="select"
             value={select}
             placeholder="Select as option"
@@ -73,9 +77,8 @@ export default function TestPage() {
             checked={radio === 'bus'}
             onChange={(e) => setRadio(e.target.value)}
           />
-
         </div>
       </div>
     </main>
-  );
+  )
 }

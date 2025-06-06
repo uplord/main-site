@@ -1,6 +1,6 @@
+import clsx from 'clsx'
 import React from 'react'
 
-import clsx from 'clsx'
 import styles from './checkbox.module.scss'
 
 export type CheckboxProps = {
@@ -40,16 +40,16 @@ export const Checkbox = ({
 
   onChange,
 }: CheckboxProps) => {
-
   return (
     <div className={styles.field}>
-      <div className={clsx(
-        styles.checkbox,
-        (isDisabled || isSkeleton) && styles['is-disabled'],
-        isSkeleton && styles['is-skeleton'],
-        isError && styles['is-error'],
-        !label && styles['no-label']
-      )}>
+      <div
+        className={clsx(
+          styles.checkbox,
+          (isDisabled || isSkeleton) && styles['is-disabled'],
+          isSkeleton && styles['is-skeleton'],
+          isError && styles['is-error'],
+          !label && styles['no-label'],
+        )}>
         <input
           type="checkbox"
           id={id || name}
@@ -62,30 +62,14 @@ export const Checkbox = ({
         />
         <label htmlFor={id || name}>
           <div className={styles.title}>
-            {label !== undefined && (
-              <div className={styles.label}>
-                {!isSkeleton && label}
-              </div>
-            )}
-            {total !== undefined && (
-              <div className={styles.total}>
-                {!isSkeleton && total}
-              </div>
-            )}
+            {label !== undefined && <div className={styles.label}>{!isSkeleton && label}</div>}
+            {total !== undefined && <div className={styles.total}>{!isSkeleton && total}</div>}
           </div>
-          {content !== undefined && (
-            <div className={styles.content}>
-              {!isSkeleton && content}
-            </div>
-          )}
+          {content !== undefined && <div className={styles.content}>{!isSkeleton && content}</div>}
         </label>
       </div>
 
-      {(helper) && (
-        <div className={styles.helper}>
-          {helper}
-        </div>
-      )}
+      {helper && <div className={styles.helper}>{helper}</div>}
     </div>
   )
 }

@@ -1,5 +1,5 @@
-import React from 'react'
 import { FieldProps } from 'formik'
+import React from 'react'
 
 import { CheckboxProps } from '../Checkbox'
 import { InputProps } from '../Input'

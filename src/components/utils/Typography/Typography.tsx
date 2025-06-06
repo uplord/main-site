@@ -1,5 +1,6 @@
-import React from 'react'
 import clsx from 'clsx'
+import React from 'react'
+
 import styles from './style.module.scss'
 
 export type TypographyProps = {
@@ -13,13 +14,5 @@ export const Typography = ({
   weight = 'text-normal',
   text = 'Typography',
 }: TypographyProps) => {
-  return (
-    <Component
-      className={clsx(
-        Component === 'p' && styles[weight]
-      )}
-    >
-      {text}
-    </Component>
-  )
+  return <Component className={clsx(Component === 'p' && styles[weight])}>{text}</Component>
 }

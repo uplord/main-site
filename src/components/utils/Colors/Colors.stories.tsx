@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import styles from './colors.module.scss'
+
 import { Colors, ColorsProps } from './Colors'
+import styles from './colors.module.scss'
 
 const colors = {
-  Background: [
-    { name: 'Background', className: 'border', hexCode: ['#FFFFFF', '#0D0D0D'] },
-  ],
+  Background: [{ name: 'Background', className: 'border', hexCode: ['#FFFFFF', '#0D0D0D'] }],
   Text: [
     { name: 'Heading', className: '', hexCode: ['#222222', '#ffffff'] },
     { name: 'Text', className: '', hexCode: ['#5D5D5D', '#bdc1c6'] },
@@ -64,8 +63,8 @@ type Story = StoryObj<ColorsProps>
 export const Default: Story = {
   args: colorOptions[0],
   render: ({ name }) => {
-    const selectedColor = colorOptions.find((color) => color.name === name) || colorOptions[0];
-    const { className, hexCode } = selectedColor;
+    const selectedColor = colorOptions.find((color) => color.name === name) || colorOptions[0]
+    const { className, hexCode } = selectedColor
 
     return (
       <div className={styles.colors}>
@@ -75,9 +74,9 @@ export const Default: Story = {
           hexCode={Array.isArray(hexCode) ? hexCode[0] : hexCode}
         />
       </div>
-    );
+    )
   },
-};
+}
 
 export const AllColors: Story = {
   argTypes: {
@@ -91,7 +90,9 @@ export const AllColors: Story = {
     return (
       <div className={styles.blocks}>
         {Object.entries(colors).map(([category, shades]) => (
-          <div key={category} className={styles.block}>
+          <div
+            key={category}
+            className={styles.block}>
             <div className={styles.title}>{category}</div>
             <div className={styles.colors}>
               {shades.map(({ name, className, hexCode }: ColorsProps) => (
@@ -99,7 +100,13 @@ export const AllColors: Story = {
                   key={name}
                   name={name}
                   className={className || ''}
-                  hexCode={Array.isArray(hexCode) ? (background === 'light' ? hexCode[0] : hexCode[1]) : hexCode}
+                  hexCode={
+                    Array.isArray(hexCode)
+                      ? background === 'light'
+                        ? hexCode[0]
+                        : hexCode[1]
+                      : hexCode
+                  }
                 />
               ))}
             </div>
@@ -109,4 +116,3 @@ export const AllColors: Story = {
     )
   },
 }
-

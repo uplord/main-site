@@ -219,7 +219,7 @@ $color-tooltip-text-dark: #000;
   .skeleton,
   &.skeleton {
     color: transparent !important;
-    background-color: rgba(0,0,0,0.1) !important;
+    background-color: rgba(0, 0, 0, 0.1) !important;
     border-color: transparent !important;
     user-select: none;
     transition: opacity 0.3s ease-in-out;
@@ -229,9 +229,9 @@ $color-tooltip-text-dark: #000;
     &:not(.button, .nav, .icon) {
       border-radius: 0.5rem;
     }
-  
+
     @include dark-mode {
-      background-color: rgba(255,255,255,0.1) !important;
+      background-color: rgba(255, 255, 255, 0.1) !important;
     }
   }
 }
@@ -241,19 +241,25 @@ $color-tooltip-text-dark: #000;
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.1) !important;
+    background-color: rgba(0, 0, 0, 0.1) !important;
     border-radius: 1rem;
     transition: all 0.3s ease-in-out;
     animation: pulse 1.5s infinite alternate;
-  
+
     @include dark-mode {
-      background-color: rgba(255,255,255,0.1) !important;
+      background-color: rgba(255, 255, 255, 0.1) !important;
     }
   }
 }
 
 @keyframes pulse {
-  0% { opacity: 0.6; }
-  50% { opacity: 1; }
-  100% { opacity: 0.6; }
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
 }

@@ -1,17 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { useState } from 'react'
 import { Formik, Form, Field } from 'formik'
-import styles from './input.module.scss'
+import { useState } from 'react'
+
 import { FormikInput } from '../FormikInput'
 import { Input, InputProps } from './Input'
-import { Variant } from '@/types/system'
+import styles from './input.module.scss'
 import { IconOptions } from '@/lib/icons'
+import { Variant } from '@/types/system'
 
 const meta: Meta<InputProps> = {
   title: 'UI/Input',
   component: Input,
   args: {
-    type:'text',
+    type: 'text',
     placeholder: '',
     leadingIcon: null,
     leadingText: '',
@@ -120,7 +121,7 @@ export const All: Story = {
     button: {
       label: 'Button',
       variant: Variant.Primary,
-      onClick: () => handleButtonClick()
+      onClick: () => handleButtonClick(),
     },
     helper: 'Optional helper text',
   },
@@ -145,15 +146,16 @@ export const FormikField: Story = {
   render: (args: InputProps) => (
     <Formik
       initialValues={{
-        input: ''
+        input: '',
       }}
       onSubmit={async (values) => {
         await new Promise((r) => setTimeout(r, 500))
         console.log(JSON.stringify(values, null, 2))
-      }}
-    >
+      }}>
       {() => (
-        <Form autoComplete="off" noValidate>
+        <Form
+          autoComplete="off"
+          noValidate>
           <Field
             {...args}
             component={FormikInput}
@@ -305,7 +307,7 @@ const InputStates = (args: InputProps) => {
         button={{
           label: 'Button',
           variant: Variant.Primary,
-          onClick: () => handleButtonClick()
+          onClick: () => handleButtonClick(),
         }}
         helper="Button"
         onChange={(e) => console.log(e.target.value)}

@@ -5,6 +5,19 @@
   @include dark-mode {
     background-color: $color-bg-dark;
   }
+
+  .social {
+    position: absolute;
+    left: 50%;
+    bottom: -1rem;
+    transform: translateX(-50%);
+    z-index: 1;
+    display: none;
+
+    @media (min-width: $breakpoint-md) {
+      display: flex;
+    }
+  }
 }
 
 .container {
@@ -77,9 +90,8 @@
   }
 
   .skeleton {
-
     @include light-mode {
-      background-color: rgba(0,0,0,0.2) !important;
+      background-color: rgba(0, 0, 0, 0.2) !important;
     }
   }
 }
@@ -135,7 +147,7 @@
       }
     }
   }
-  
+
   h2 {
     @include text-lg;
     @include text-normal;
@@ -159,9 +171,8 @@
   }
 
   .skeleton {
-
     @include light-mode {
-      background-color: rgba(0,0,0,0.2) !important;
+      background-color: rgba(0, 0, 0, 0.2) !important;
     }
   }
 }
@@ -172,18 +183,5 @@
 
   @media (min-width: $breakpoint-md) {
     justify-content: flex-start;
-  }
-}
-
-.social {
-  position: absolute;
-  left: 50%;
-  bottom: -1rem;
-  transform: translateX(-50%);
-  z-index: 1;
-  display: none;
-
-  @media (min-width: $breakpoint-md) {
-    display: flex;
   }
 }

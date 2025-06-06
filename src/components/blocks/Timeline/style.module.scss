@@ -110,7 +110,6 @@
   }
 
   &::after {
-
     @media (min-width: $breakpoint-md) {
       content: '';
       position: absolute;
@@ -126,14 +125,12 @@
   }
 
   &:first-child {
-
     &::after {
       top: 0.5rem;
     }
   }
 
   &:last-child {
-
     &::after {
       bottom: 0;
     }
@@ -153,7 +150,6 @@
 
   .dot {
     &.skeleton {
-
       &::before {
         @media (min-width: $breakpoint-md) {
           background-color: color.change($color-dark, $alpha: 0.1);
@@ -190,7 +186,6 @@
     }
 
     &::before {
-
       @media (min-width: $breakpoint-md) {
         content: '';
         display: flex;
@@ -202,7 +197,6 @@
     }
 
     &::after {
-
       @media (min-width: $breakpoint-md) {
         content: '';
         position: absolute;
@@ -249,16 +243,12 @@
     align-items: flex-start;
     flex-direction: column;
     gap: 0.5rem;
-    padding: 1rem;
+    padding: 1.5rem;
     border: 0.0625rem solid $color-border;
     border-radius: 1rem;
 
     @include dark-mode {
       border-color: $color-border-dark;
-    }
-
-    @media (min-width: $breakpoint-md) {
-      padding: 1.5rem;
     }
 
     @media (min-width: $breakpoint-lg) {
@@ -319,7 +309,8 @@
 }
 
 svg.skeleton {
-  g, path {
+  g,
+  path {
     opacity: 0;
   }
 }

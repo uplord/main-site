@@ -11,7 +11,7 @@
   gap: 1rem;
 
   @media (min-width: $breakpoint-md) {
-    grid-template-columns: 2fr 3fr; 
+    grid-template-columns: 2fr 3fr;
     gap: 2rem;
   }
 
@@ -20,13 +20,11 @@
   }
 
   &.reverse {
-
     @media (min-width: $breakpoint-md) {
-      grid-template-columns: 3fr 2fr; 
+      grid-template-columns: 3fr 2fr;
     }
 
     .image {
-      
       @media (min-width: $breakpoint-md) {
         order: 1;
       }

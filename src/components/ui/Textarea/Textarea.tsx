@@ -1,8 +1,8 @@
 'use client'
 
+import clsx from 'clsx'
 import React, { useRef } from 'react'
 
-import clsx from 'clsx'
 import styles from '@/components/ui/Input/input.module.scss'
 
 export type TextareaProps = {
@@ -22,7 +22,7 @@ export type TextareaProps = {
 }
 
 export const Textarea = ({
-  placeholder = '', 
+  placeholder = '',
   name,
   id,
   value,
@@ -42,19 +42,17 @@ export const Textarea = ({
 
   return (
     <div className={clsx(styles.field, !placeholder && styles['no-label'])}>
-      <div className={clsx(
+      <div
+        className={clsx(
           styles.outer,
           className,
           (isDisabled || isLoading || isSkeleton) && styles['is-disabled'],
-          (isLoading && !isSkeleton) && styles['is-loading'],
+          isLoading && !isSkeleton && styles['is-loading'],
           isSkeleton && styles['is-skeleton'],
           isError && styles['is-error'],
         )}
-        onClick={handleFocus}
-      >
-        {(isLoading && !isSkeleton) && (
-          <div className={styles.loading}></div>
-        )}
+        onClick={handleFocus}>
+        {isLoading && !isSkeleton && <div className={styles.loading}></div>}
 
         <div className={clsx(styles.inner)}>
           <textarea
@@ -71,14 +69,9 @@ export const Textarea = ({
 
           <span className={styles.placeholder}>{placeholder}</span>
         </div>
-
       </div>
 
-      {(helper) && (
-        <div className={styles.helper}>
-          {helper}
-        </div>
-      )}
+      {helper && <div className={styles.helper}>{helper}</div>}
     </div>
   )
 }

@@ -36,7 +36,8 @@
     width: fit-content;
     scale: 1;
     border: 0.0625rem solid transparent;
-    transition: background-color 0.2s ease-in-out,
+    transition:
+      background-color 0.2s ease-in-out,
       color 0.2s ease-in-out,
       border-color 0.2s ease-in-out,
       scale 0.2s ease-in-out;
@@ -103,7 +104,7 @@
         animation: loading-dark 1s infinite;
       }
     }
-  
+
     .content {
       opacity: 0;
     }
@@ -113,12 +114,12 @@
     background-color: $color-skeleton;
     border-color: $color-skeleton;
     animation: pulse 1.5s infinite ease-in-out;
-    
+
     @include dark-mode {
       background-color: $color-skeleton-dark;
       border-color: $color-skeleton-dark;
     }
-  
+
     .content {
       opacity: 0;
     }
@@ -126,7 +127,6 @@
 }
 
 .size {
-
   &-md {
     padding: 0.71875rem 1.4375rem;
     border-radius: 1.5rem;
@@ -142,7 +142,7 @@
     }
 
     .content {
-      height: 1.4375rem; 
+      height: 1.4375rem;
     }
   }
 
@@ -165,13 +165,12 @@
     }
 
     .content {
-      height: 1.0625rem; 
+      height: 1.0625rem;
     }
   }
 }
 
 .variant {
-
   &-primary {
     background-color: $color-primary;
     color: $color-light;
@@ -238,7 +237,6 @@
     color: $color-light;
 
     @include dark-mode {
-
       &.has-hover:not(.is-disabled) {
         background-color: color.change($color-light, $alpha: 0.1);
         color: $color-light;
@@ -292,44 +290,66 @@ $color-loading-03-dark: color.change($color-light, $alpha: 0.35);
 
 @keyframes loading {
   0% {
-    box-shadow: 0.875rem 0 $color-loading-01, -0.875rem 0 $color-loading-03;
+    box-shadow:
+      0.875rem 0 $color-loading-01,
+      -0.875rem 0 $color-loading-03;
     background: $color-loading-02;
   }
   33% {
-    box-shadow: 0.875rem 0 $color-loading-02, -0.875rem 0 $color-loading-01;
+    box-shadow:
+      0.875rem 0 $color-loading-02,
+      -0.875rem 0 $color-loading-01;
     background: $color-loading-03;
   }
   66% {
-    box-shadow: 0.875rem 0 $color-loading-03, -0.875rem 0 $color-loading-02;
+    box-shadow:
+      0.875rem 0 $color-loading-03,
+      -0.875rem 0 $color-loading-02;
     background: $color-loading-01;
   }
   100% {
-    box-shadow: 0.875rem 0 $color-loading-01, -0.875rem 0 $color-loading-03;
+    box-shadow:
+      0.875rem 0 $color-loading-01,
+      -0.875rem 0 $color-loading-03;
     background: $color-loading-02;
   }
 }
 
 @keyframes loading-dark {
   0% {
-    box-shadow: 0.875rem 0 $color-loading-01-dark, -0.875rem 0 $color-loading-03-dark;
+    box-shadow:
+      0.875rem 0 $color-loading-01-dark,
+      -0.875rem 0 $color-loading-03-dark;
     background: $color-loading-02-dark;
   }
   33% {
-    box-shadow: 0.875rem 0 $color-loading-02-dark, -0.875rem 0 $color-loading-01-dark;
+    box-shadow:
+      0.875rem 0 $color-loading-02-dark,
+      -0.875rem 0 $color-loading-01-dark;
     background: $color-loading-03-dark;
   }
   66% {
-    box-shadow: 0.875rem 0 $color-loading-03-dark, -0.875rem 0 $color-loading-02-dark;
+    box-shadow:
+      0.875rem 0 $color-loading-03-dark,
+      -0.875rem 0 $color-loading-02-dark;
     background: $color-loading-01-dark;
   }
   100% {
-    box-shadow: 0.875rem 0 $color-loading-01-dark, -0.875rem 0 $color-loading-03-dark;
+    box-shadow:
+      0.875rem 0 $color-loading-01-dark,
+      -0.875rem 0 $color-loading-03-dark;
     background: $color-loading-02-dark;
   }
 }
 
 @keyframes pulse {
-  0% { opacity: 0.6; }
-  50% { opacity: 1; }
-  100% { opacity: 0.6; }
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
 }
