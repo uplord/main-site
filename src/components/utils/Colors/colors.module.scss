@@ -5,8 +5,8 @@
 }
 
 .block {
-  width: 100%;
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 0.5rem;
 }
@@ -15,10 +15,12 @@
   @include text-xl;
   @include text-semibold;
 
-  color: $color-heading;
+  & {
+    color: $color-heading;
 
-  @include dark-mode {
-    color: $color-heading-dark;
+    @include dark-mode {
+      color: $color-heading-dark;
+    }
   }
 }
 
@@ -26,17 +28,19 @@
   @include text-lg;
   @include text-normal;
 
-  color: $color-text;
+  & {
+    color: $color-text;
 
-  @include dark-mode {
-    color: $color-text-dark;
+    @include dark-mode {
+      color: $color-text-dark;
+    }
   }
 }
 
 .colors {
   display: grid;
-  grid-template-columns: 1fr;
   gap: 1.5rem;
+  grid-template-columns: 1fr;
 
   @media (min-width: $breakpoint-sm) {
     grid-template-columns: 1fr 1fr;
@@ -56,30 +60,32 @@
 }
 
 .color {
-  width: 100%;
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 0.5rem;
 }
 
 .background {
   width: 100%;
-  aspect-ratio: 19 / 8;
   border-radius: 0.5rem;
+  aspect-ratio: 19 / 8;
 }
 
 .text {
   @include text-sm;
   @include text-semibold;
 
-  color: $color-text;
-  display: flex;
-  justify-content: space-between;
-  gap: 0.5rem;
-  padding: 0 0.5rem;
+  & {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+    color: $color-text;
+    gap: 0.5rem;
 
-  @include dark-mode {
-    color: $color-text-dark;
+    @include dark-mode {
+      color: $color-text-dark;
+    }
   }
 }
 
@@ -103,9 +109,11 @@
   0% {
     opacity: 0.6;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0.6;
   }

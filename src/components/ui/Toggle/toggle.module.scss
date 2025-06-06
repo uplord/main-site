@@ -5,9 +5,9 @@
 
   &.skeleton {
     .checkbox + label {
-      transition: opacity 0.3s ease-in-out;
-      background-color: $color-nav;
       animation: pulse 1.5s infinite alternate;
+      background-color: $color-nav;
+      transition: opacity 0.3s ease-in-out;
 
       @include dark-mode {
         background-color: $color-skeleton-dark;
@@ -29,16 +29,16 @@
     display: none;
 
     & + label {
-      background-color: $color-nav;
       width: 5rem;
       height: 2.5rem;
       border-radius: 2.5rem;
+      background-color: $color-nav;
 
       @include dark-mode {
         background-color: $color-nav-dark;
       }
 
-      &:before {
+      &::before {
         display: none;
       }
     }
@@ -46,13 +46,13 @@
 
   span {
     position: absolute;
-    left: 0.25rem;
+    z-index: 1;
     top: 0.25rem;
+    left: 0.25rem;
     width: 2rem;
     height: 2rem;
-    background-color: #ffc514;
     border-radius: 1rem;
-    z-index: 1;
+    background-color: #ffc514;
     pointer-events: none;
 
     @include dark-mode {
@@ -65,9 +65,11 @@
   0% {
     opacity: 0.6;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0.6;
   }

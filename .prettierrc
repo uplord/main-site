@@ -9,9 +9,26 @@
   "bracketSameLine": true,
   "singleAttributePerLine": true,
   "endOfLine": "lf",
-  "plugins": ["@trivago/prettier-plugin-sort-imports"],
-  "importOrder": ["<THIRD_PARTY_MODULES>", "(@/)|(^[./])"],
-  "importOrderParserPlugins": ["importAttributes", "jsx", "typescript"],
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports"
+  ],
+  "importOrder": [
+    "<THIRD_PARTY_MODULES>",
+    "(@/)|(^[./])"
+  ],
+  "importOrderParserPlugins": [
+    "importAttributes",
+    "jsx",
+    "typescript"
+  ],
   "importOrderSeparation": true,
-  "importOrderGroupNamespaceSpecifiers": true
+  "importOrderGroupNamespaceSpecifiers": true,
+  "overrides": [
+    {
+      "files": "*.scss",
+      "options": {
+        "parser": "scss"
+      }
+    }
+  ]
 }

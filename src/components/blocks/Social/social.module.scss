@@ -7,10 +7,10 @@
   }
 
   .icon {
+    padding: 0.5rem;
+    border-radius: 0 0.5rem 0.5rem;
     background: $color-primary;
     color: $color-light;
-    padding: 0.5rem;
-    border-radius: 0 0.5rem 0.5rem 0.5rem;
     transition: all 0.3s ease;
 
     @media (hover: hover) {

@@ -17,12 +17,12 @@
   align-items: flex-start;
 
   &.is-disabled .input {
-    background: $color-disabled;
     border-color: transparent;
+    background: $color-disabled;
 
     @include dark-mode {
-      background: $color-disabled-dark;
       border-color: transparent;
+      background: $color-disabled-dark;
     }
 
     & + label {
@@ -42,8 +42,8 @@
 
   &.is-skeleton .input {
     border-color: transparent;
-    background-color: $color-skeleton;
     animation: pulse 1.5s infinite ease-in-out;
+    background-color: $color-skeleton;
 
     @include dark-mode {
       background-color: $color-skeleton-dark;
@@ -52,7 +52,7 @@
     &:checked {
       border-color: transparent;
 
-      & + label:before {
+      & + label::before {
         display: none;
       }
     }
@@ -61,10 +61,10 @@
       .label,
       .total,
       .content {
-        background-color: $color-skeleton;
-        animation: pulse 1.5s infinite alternate;
         height: 1.5rem;
         border-radius: 0.25rem;
+        animation: pulse 1.5s infinite alternate;
+        background-color: $color-skeleton;
 
         @include dark-mode {
           background-color: $color-skeleton-dark;
@@ -115,20 +115,20 @@
 }
 
 .input {
+  width: 1.5rem;
+  height: 1.5rem;
   padding: 0;
   border: 0;
-  appearance: none;
-  height: 1.5rem;
-  width: 1.5rem;
-  aspect-ratio: 1;
-  background-color: $color-bg;
   border: 0.0625rem solid $color-border;
   border-radius: 0.25rem;
+  appearance: none;
+  aspect-ratio: 1;
+  background-color: $color-bg;
   transition: all 0.2s ease-in-out;
 
   @include dark-mode {
-    background-color: $color-bg-dark;
     border-color: $color-border-dark;
+    background-color: $color-bg-dark;
   }
 
   .radio & {
@@ -136,15 +136,15 @@
   }
 
   &:checked {
-    background: $color-dark;
     border-color: $color-dark;
+    background: $color-dark;
 
     @include dark-mode {
-      background: $color-light;
       border-color: $color-light;
+      background: $color-light;
     }
 
-    & + label:before {
+    & + label::before {
       opacity: 1;
     }
   }
@@ -181,36 +181,36 @@
 
     & {
       flex: 1;
-      margin: 0;
       padding-left: 0.75rem;
+      margin: 0;
     }
 
-    &:before {
-      content: '';
+    &::before {
       position: absolute;
       top: 0.1875rem;
       left: 0.5rem;
-      height: 0.875rem;
       width: 0.5rem;
-      border-bottom: 0.1875rem solid $color-light;
+      height: 0.875rem;
       border-right: 0.1875rem solid $color-light;
-      transform: rotate(45deg);
+      border-bottom: 0.1875rem solid $color-light;
+      content: '';
       opacity: 0;
       pointer-events: none;
+      transform: rotate(45deg);
 
       @include dark-mode {
-        border-bottom-color: $color-dark;
         border-right-color: $color-dark;
+        border-bottom-color: $color-dark;
       }
 
       .radio & {
         top: 0.5rem;
         left: 0.5rem;
-        height: 0.5rem;
         width: 0.5rem;
-        background: $color-light;
+        height: 0.5rem;
         border: 0;
         border-radius: 0.25rem;
+        background: $color-light;
         transform: none;
 
         @include dark-mode {
@@ -223,10 +223,10 @@
 
 .title {
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
-  gap: 0.25rem;
+  justify-content: space-between;
   color: $color-text;
+  gap: 0.25rem;
 
   @include dark-mode {
     color: $color-text-dark;
@@ -246,8 +246,8 @@
   @include text-normal;
 
   & {
-    color: $color-placeholder;
     margin-top: 0.25rem;
+    color: $color-placeholder;
 
     @include dark-mode {
       color: $color-placeholder-dark;
@@ -268,9 +268,11 @@
   0% {
     opacity: 0.6;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0.6;
   }

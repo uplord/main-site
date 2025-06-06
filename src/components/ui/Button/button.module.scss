@@ -2,8 +2,8 @@
 
 .group {
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
+  align-items: center;
   gap: 1rem;
 
   &.justify-center {
@@ -30,19 +30,19 @@
   & {
     z-index: 5;
     display: inline-flex;
+    width: fit-content;
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
-    width: fit-content;
-    scale: 1;
     border: 0.0625rem solid transparent;
+    scale: 1;
+    text-decoration: none;
     transition:
       background-color 0.2s ease-in-out,
       color 0.2s ease-in-out,
       border-color 0.2s ease-in-out,
       scale 0.2s ease-in-out;
     white-space: nowrap;
-    text-decoration: none;
   }
 
   @media (hover) and (pointer: fine) {
@@ -69,36 +69,36 @@
   }
 
   &.is-disabled {
-    background-color: $color-disabled;
     border-color: transparent;
+    background-color: $color-disabled;
     color: $color-disabled;
 
     @include dark-mode {
-      background-color: $color-disabled-dark;
       border-color: transparent;
+      background-color: $color-disabled-dark;
       color: $color-disabled-dark;
     }
   }
 
   &.is-loading:not(.is-skeleton) {
-    background-color: $color-disabled;
     border-color: transparent;
+    background-color: $color-disabled;
 
     @include dark-mode {
-      background-color: $color-disabled-dark;
       border-color: transparent;
+      background-color: $color-disabled-dark;
     }
 
-    &:after {
-      content: '';
+    &::after {
       position: absolute;
-      left: 50%;
       top: 50%;
-      transform: translate(-50%, -50%);
+      left: 50%;
       width: 0.5rem;
-      aspect-ratio: 1;
       border-radius: 50%;
       animation: loading 1s infinite;
+      aspect-ratio: 1;
+      content: '';
+      transform: translate(-50%, -50%);
 
       @include dark-mode {
         animation: loading-dark 1s infinite;
@@ -111,13 +111,13 @@
   }
 
   &.is-skeleton {
-    background-color: $color-skeleton;
     border-color: $color-skeleton;
     animation: pulse 1.5s infinite ease-in-out;
+    background-color: $color-skeleton;
 
     @include dark-mode {
-      background-color: $color-skeleton-dark;
       border-color: $color-skeleton-dark;
+      background-color: $color-skeleton-dark;
     }
 
     .content {
@@ -130,11 +130,10 @@
   &-md {
     padding: 0.71875rem 1.4375rem;
     border-radius: 1.5rem;
-    // border-radius: 0.5rem;
 
     &.has-icon {
-      padding-left: 0.8125rem;
       padding-right: 0.8125rem;
+      padding-left: 0.8125rem;
 
       span {
         width: 1.25rem;
@@ -151,13 +150,12 @@
 
     & {
       padding: 0.65625rem 0.9375rem;
-      // border-radius: 0.5rem;
       border-radius: 1.25rem;
     }
 
     &.has-icon {
-      padding-left: 0.5625rem;
       padding-right: 0.5625rem;
+      padding-left: 0.5625rem;
 
       span {
         width: 1.25rem;
@@ -192,14 +190,14 @@
   }
 
   &-outline {
-    background-color: $color-light;
     border-color: color.mix($color-dark, $color-light, 25%);
+    background-color: $color-light;
     color: $color-dark;
 
     @include dark-mode {
       &:not(.is-disabled) {
-        background-color: $color-dark;
         border-color: color.mix($color-light, $color-dark, 30%);
+        background-color: $color-dark;
         color: $color-light;
       }
     }
@@ -283,62 +281,67 @@
 $color-loading-01: color.change($color-dark, $alpha: 0.15);
 $color-loading-02: color.change($color-dark, $alpha: 0.25);
 $color-loading-03: color.change($color-dark, $alpha: 0.35);
-
 $color-loading-01-dark: color.change($color-light, $alpha: 0.15);
 $color-loading-02-dark: color.change($color-light, $alpha: 0.25);
 $color-loading-03-dark: color.change($color-light, $alpha: 0.35);
 
 @keyframes loading {
   0% {
+    background: $color-loading-02;
     box-shadow:
       0.875rem 0 $color-loading-01,
       -0.875rem 0 $color-loading-03;
-    background: $color-loading-02;
   }
+
   33% {
+    background: $color-loading-03;
     box-shadow:
       0.875rem 0 $color-loading-02,
       -0.875rem 0 $color-loading-01;
-    background: $color-loading-03;
   }
+
   66% {
+    background: $color-loading-01;
     box-shadow:
       0.875rem 0 $color-loading-03,
       -0.875rem 0 $color-loading-02;
-    background: $color-loading-01;
   }
+
   100% {
+    background: $color-loading-02;
     box-shadow:
       0.875rem 0 $color-loading-01,
       -0.875rem 0 $color-loading-03;
-    background: $color-loading-02;
   }
 }
 
 @keyframes loading-dark {
   0% {
+    background: $color-loading-02-dark;
     box-shadow:
       0.875rem 0 $color-loading-01-dark,
       -0.875rem 0 $color-loading-03-dark;
-    background: $color-loading-02-dark;
   }
+
   33% {
+    background: $color-loading-03-dark;
     box-shadow:
       0.875rem 0 $color-loading-02-dark,
       -0.875rem 0 $color-loading-01-dark;
-    background: $color-loading-03-dark;
   }
+
   66% {
+    background: $color-loading-01-dark;
     box-shadow:
       0.875rem 0 $color-loading-03-dark,
       -0.875rem 0 $color-loading-02-dark;
-    background: $color-loading-01-dark;
   }
+
   100% {
+    background: $color-loading-02-dark;
     box-shadow:
       0.875rem 0 $color-loading-01-dark,
       -0.875rem 0 $color-loading-03-dark;
-    background: $color-loading-02-dark;
   }
 }
 
@@ -346,9 +349,11 @@ $color-loading-03-dark: color.change($color-light, $alpha: 0.35);
   0% {
     opacity: 0.6;
   }
+
   50% {
     opacity: 1;
   }
+
   100% {
     opacity: 0.6;
   }
