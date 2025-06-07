@@ -38,7 +38,7 @@ export const Footer = ({
               {subtext && <div className={styles.subtext}>{subtext}</div>}
             </div>
           ) : (
-            <div>{leading}</div>
+            <>{leading}</>
           )}
         </div>
       )}
