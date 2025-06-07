@@ -9,6 +9,7 @@ export type HeaderProps = {
   leading?: React.ReactNode
   trailing?: React.ReactNode
   hasBorder?: boolean
+  sheet?: boolean
 }
 
 export const Header = ({
@@ -17,10 +18,11 @@ export const Header = ({
   leading,
   trailing,
   hasBorder = true,
+  sheet = false,
 }: HeaderProps) => {
   return (
-    <div className={clsx(styles.header, hasBorder && styles.border)}>
-      {leading && <div className={styles.left}>{leading}</div>}
+    <div className={clsx(styles.header, hasBorder && styles.border, sheet && styles.sheet)}>
+      {!sheet && leading && <div className={styles.left}>{leading}</div>}
 
       {(title || subtext) && (
         <div className={styles.top}>

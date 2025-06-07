@@ -15,6 +15,7 @@ export type ModalProps = {
   modal: NiceModalHandler
   headerProps?: HeaderProps
   footerProps?: FooterProps
+  sheet?: boolean
   mobileDraggable?: boolean
   backdropClose?: boolean
   bottomSheet?: boolean
@@ -25,6 +26,7 @@ export const Modal = ({
   modal,
   headerProps,
   footerProps,
+  sheet = false,
   mobileDraggable = false,
   backdropClose = true,
   bottomSheet = false,
@@ -44,11 +46,27 @@ export const Modal = ({
     }
   }
 
+  const getInitialStyle = () => {
+    const base = { opacity: 0 }
+    if (sheet && !isMobile) {
+      return { ...base, translateX: 'calc(100% + 0.5rem)' }
+    }
+    return base
+  }
+
+  const getAnimateStyle = () => {
+    const base = { opacity: 1 }
+    if (sheet && !isMobile) {
+      return { ...base, translateX: 0 }
+    }
+    return base
+  }
+
   return (
     <AnimatePresence onExitComplete={() => modal.remove()}>
       {modal.visible && (
         <motion.div
-          className={`${styles.backdrop} ${bottomSheet && styles['bottom-sheet']}`}
+          className={`${styles.backdrop} ${bottomSheet && styles['bottom-sheet']} ${sheet && !isMobile && styles.sheet}`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -85,9 +103,10 @@ export const Modal = ({
           ) : (
             <motion.div
               className={`${styles.main}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              onDragEnd={handleDragEnd}
+              initial={getInitialStyle()}
+              animate={getAnimateStyle()}
+              exit={getInitialStyle()}
               transition={{ duration: 0.4, ease: 'easeInOut' }}>
               {headerProps && <Header {...headerProps} />}
               <div className={styles.scroll}>

@@ -76,6 +76,17 @@ $background-surface-dark: $color-dark;
   }
 }
 
+.sheet {
+  place-items: end;
+  padding: 0.5rem;
+
+  .main {
+    height: 100%;
+    max-height: 100%;
+    max-width: 1080px;
+  }
+}
+
 .drag {
   position: relative;
   display: flex;
@@ -138,6 +149,28 @@ $background-surface-dark: $color-dark;
     }
   }
 
+  &.sheet {
+
+    @media (min-width: $breakpoint-md) {
+      padding: 1.25rem 1.5rem 0;
+      border-bottom: 0;
+    }
+
+    .top {
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: none;
+    }
+
+    .title {
+
+      @media (min-width: $breakpoint-md) {
+        @include text-xl;
+      }
+    }
+  }
+
   .top {
     position: absolute;
     top: 50%;
@@ -147,7 +180,7 @@ $background-surface-dark: $color-dark;
 
   .title {
     @include text-md;
-    @include text-semibold;
+    @include text-bold;
 
     & {
       color: $color-heading;
@@ -230,7 +263,7 @@ $background-surface-dark: $color-dark;
 
   .title {
     @include text-sm;
-    @include text-semibold;
+    @include text-bold;
 
     & {
       color: $color-heading;
@@ -274,6 +307,7 @@ $background-surface-dark: $color-dark;
   overflow: scroll;
   padding: 1.5rem;
   scrollbar-width: none;
+  flex: 1;
 
   &::-webkit-scrollbar {
     display: none;

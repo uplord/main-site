@@ -95,6 +95,84 @@ export const ButtonOpen: StoryObj<ButtonProps> = {
   ],
 }
 
+const SheetModal = NiceModal.create((props: ModalProps) => {
+  const modal = useModal()
+  return (
+    <Modal
+      {...props}
+      modal={modal}
+      sheet
+      headerProps={{
+        title: 'Sheet modal',
+        trailing: (
+          <Button
+            leadingIcon="X"
+            variant="anchor"
+            size="sm"
+            className={styles.anchor}
+            onClick={() => modal.hide()}
+          />
+        ),
+        hasBorder: true,
+        sheet: true,
+      }}
+      footerProps={{
+        title: 'Title',
+        subtext: 'Subtext',
+        leading: (
+          <Button
+            label="Back"
+            variant="anchor"
+            size="md"
+            className={styles.anchor}
+            onClick={() => modal.hide()}
+          />
+        ),
+        trailing: (
+          <Button
+            label="Submit"
+            variant="primary"
+            size="md"
+            onClick={() => modal.hide()}
+          />
+        ),
+        fullWidth: false,
+        hasBorder: true,
+        hasShadow: false,
+      }}
+      bottomSheet
+      mobileDraggable>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula tempor gravida.
+        Integer ac ligula luctus, consectetur nunc non, sagittis ipsum. Suspendisse vitae mattis
+        leo. Maecenas a felis nec tortor molestie semper. Donec fermentum diam sollicitudin, ornare
+        neque a, egestas quam. Pellentesque et nisl vitae enim scelerisque eleifend eu quis ipsum.
+        Suspendisse potenti. Nulla in augue at odio imperdiet dapibus et nec risus. Nam elementum mi
+        ut tellus bibendum, nec scelerisque urna blandit. Duis egestas risus neque, rutrum ultrices
+        dui vehicula vitae.
+      </p>
+    </Modal>
+  )
+})
+
+export const Sheet: StoryObj<ButtonProps> = {
+  args: {
+    label: 'Open',
+    variant: 'primary',
+    size: 'md',
+    onClick: () => NiceModal.show(SheetModal),
+  },
+  parameters: { controls: { disable: true } },
+  render: (args) => <Button {...args} />,
+  decorators: [
+    (Story) => (
+      <div className="padding">
+        <Story />
+      </div>
+    ),
+  ],
+}
+
 const MobileBottomModal = NiceModal.create((props: ModalProps) => {
   const modal = useModal()
   return (
