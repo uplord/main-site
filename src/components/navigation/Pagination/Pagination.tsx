@@ -3,7 +3,6 @@ import { useMediaQuery } from 'react-responsive'
 
 import { ButtonGroup, Button } from '@/components/ui/Button'
 import { Select } from '@/components/ui/Select'
-import { Size, Variant } from '@/types/system'
 
 export type PaginationProps = {
   totalPages: number
@@ -42,37 +41,40 @@ export const Pagination = ({
         <ButtonGroup justify="center">
           <Button
             leadingIcon="ChevronLeft"
-            size={Size.Small}
-            variant={Variant.Outline}
+            size="sm"
+            variant="outline"
             onClick={handlePrev}
             isDisabled={currentPage === 1}
+            aria-label="Previous page"
           />
           {pageNumbers.map((page) => (
             <Button
               key={page}
               label={String(page)}
-              size={Size.Small}
-              variant={page === currentPage ? Variant.Primary : Variant.Text}
+              size="sm"
+              variant={page === currentPage ? 'primary' : 'text'}
               onClick={() => setCurrentPage(page)}
               isIcon
             />
           ))}
           <Button
             leadingIcon="ChevronRight"
-            size={Size.Small}
-            variant={Variant.Outline}
+            size="sm"
+            variant="outline"
             onClick={handleNext}
             isDisabled={currentPage === totalPages}
+            aria-label="Next page"
           />
         </ButtonGroup>
       ) : (
         <ButtonGroup justify="center">
           <Button
             leadingIcon="ChevronLeft"
-            size={Size.Small}
-            variant={Variant.Outline}
+            size="sm"
+            variant="outline"
             onClick={handlePrev}
             isDisabled={currentPage === 1}
+            aria-label="Previous page"
           />
           <Select
             name="pageSize"
@@ -85,10 +87,11 @@ export const Pagination = ({
           />
           <Button
             leadingIcon="ChevronRight"
-            size={Size.Small}
-            variant={Variant.Outline}
+            size="sm"
+            variant="outline"
             onClick={handleNext}
             isDisabled={currentPage === totalPages}
+            aria-label="Next page"
           />
         </ButtonGroup>
       )}

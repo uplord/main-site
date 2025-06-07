@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs'
 
 import { Button, ButtonGroup, ButtonProps } from './Button'
 import { IconOptions } from '@/lib/icons'
-import { Variant, Size } from '@/types/system'
+import { VariantType } from '@/types/system'
 
 const meta: Meta<ButtonProps> = {
   title: 'UI/Button',
@@ -11,8 +11,8 @@ const meta: Meta<ButtonProps> = {
     label: '',
     href: '',
     target: '',
-    size: Size.Medium,
-    variant: Variant.Default,
+    size: 'md',
+    variant: 'default',
     leadingIcon: null,
     trailingIcon: null,
     block: false,
@@ -30,13 +30,13 @@ const meta: Meta<ButtonProps> = {
       control: {
         type: 'select',
       },
-      options: [Size.Small, Size.Medium],
+      options: ['sm', 'md'],
     },
     variant: {
       control: {
         type: 'select',
       },
-      options: Object.values(Variant),
+      options: VariantType,
     },
     leadingIcon: {
       control: {
@@ -74,8 +74,8 @@ type Story = StoryObj<ButtonProps>
 export const Main: Story = {
   args: {
     label: 'Button',
-    size: Size.Medium,
-    variant: Variant.Primary,
+    size: 'md',
+    variant: 'primary',
   },
   render: (args: ButtonProps) => (
     <ButtonGroup>
@@ -86,9 +86,10 @@ export const Main: Story = {
 
 export const Icon: Story = {
   args: {
-    size: Size.Medium,
-    variant: Variant.Primary,
+    size: 'md',
+    variant: 'primary',
     leadingIcon: 'ChevronDown',
+    'aria-label': 'Icon',
   },
   render: (args: ButtonProps) => (
     <ButtonGroup>
@@ -99,8 +100,8 @@ export const Icon: Story = {
 
 export const Links: Story = {
   args: {
-    size: Size.Medium,
-    variant: Variant.Primary,
+    size: 'md',
+    variant: 'primary',
   },
   argTypes: {
     href: {
@@ -160,23 +161,23 @@ export const Variants: Story = {
     <ButtonGroup>
       <Button
         {...args}
-        variant={Variant.Default}
+        variant="default"
       />
       <Button
         {...args}
-        variant={Variant.Primary}
+        variant="primary"
       />
       <Button
         {...args}
-        variant={Variant.Success}
+        variant="success"
       />
       <Button
         {...args}
-        variant={Variant.Outline}
+        variant="outline"
       />
       <Button
         {...args}
-        variant={Variant.Text}
+        variant="text"
       />
     </ButtonGroup>
   ),
@@ -184,7 +185,7 @@ export const Variants: Story = {
 
 export const Default: Story = {
   args: {
-    variant: Variant.Default,
+    variant: 'default',
   },
   argTypes: {
     variant: {
@@ -203,7 +204,7 @@ export const Default: Story = {
 
 export const Primary: Story = {
   args: {
-    variant: Variant.Primary,
+    variant: 'primary',
   },
   argTypes: {
     variant: {
@@ -222,7 +223,7 @@ export const Primary: Story = {
 
 export const Success: Story = {
   args: {
-    variant: Variant.Success,
+    variant: 'success',
   },
   argTypes: {
     variant: {
@@ -241,7 +242,7 @@ export const Success: Story = {
 
 export const Outline: Story = {
   args: {
-    variant: Variant.Outline,
+    variant: 'outline',
   },
   argTypes: {
     variant: {
@@ -260,7 +261,7 @@ export const Outline: Story = {
 
 export const Text: Story = {
   args: {
-    variant: Variant.Text,
+    variant: 'text',
   },
   argTypes: {
     variant: {
@@ -320,122 +321,136 @@ const TestButtons = (args: ButtonProps) => {
         <Button
           {...args}
           leadingIcon="ChevronDown"
+          aria-label="Icon"
         />
         <Button
           {...args}
           leadingIcon="ChevronDown"
           className="hover"
+          aria-label="Icon"
         />
         <Button
           {...args}
           leadingIcon="ChevronDown"
           className="hover active"
+          aria-label="Icon"
         />
         <Button
           {...args}
           leadingIcon="ChevronDown"
           className="focus-visible"
+          aria-label="Icon"
         />
         <Button
           {...args}
           leadingIcon="ChevronDown"
           isLoading
+          aria-label="Icon"
         />
         <Button
           {...args}
           leadingIcon="ChevronDown"
           isDisabled
+          aria-label="Icon"
         />
         <Button
           {...args}
           leadingIcon="ChevronDown"
           isSkeleton
+          aria-label="Icon"
         />
       </ButtonGroup>
       <ButtonGroup>
         <Button
           {...args}
           label="Label"
-          size={Size.Small}
+          size="sm"
         />
         <Button
           {...args}
           label="Label"
-          size={Size.Small}
+          size="sm"
           className="hover"
         />
         <Button
           {...args}
           label="Label"
-          size={Size.Small}
+          size="sm"
           className="hover active"
         />
         <Button
           {...args}
           label="Label"
-          size={Size.Small}
+          size="sm"
           className="focus-visible"
         />
         <Button
           {...args}
           label="Label"
-          size={Size.Small}
+          size="sm"
           isLoading
         />
         <Button
           {...args}
           label="Label"
-          size={Size.Small}
+          size="sm"
           isDisabled
         />
         <Button
           {...args}
           label="Label"
-          size={Size.Small}
+          size="sm"
           isSkeleton
         />
       </ButtonGroup>
       <ButtonGroup>
         <Button
           {...args}
-          size={Size.Small}
+          size="sm"
           leadingIcon="ChevronDown"
+          aria-label="Icon"
         />
         <Button
           {...args}
-          size={Size.Small}
+          size="sm"
           leadingIcon="ChevronDown"
           className="hover"
+          aria-label="Icon"
         />
         <Button
           {...args}
-          size={Size.Small}
+          size="sm"
           leadingIcon="ChevronDown"
           className="hover active"
+          aria-label="Icon"
         />
         <Button
           {...args}
-          size={Size.Small}
+          size="sm"
           leadingIcon="ChevronDown"
           className="focus-visible"
+          aria-label="Icon"
         />
         <Button
           {...args}
-          size={Size.Small}
+          size="sm"
           leadingIcon="ChevronDown"
           isLoading
+          aria-label="Icon"
         />
         <Button
           {...args}
-          size={Size.Small}
+          size="sm"
           leadingIcon="ChevronDown"
           isDisabled
+          aria-label="Icon"
         />
         <Button
           {...args}
-          size={Size.Small}
+          size="sm"
           leadingIcon="ChevronDown"
           isSkeleton
+          aria-label="Icon"
         />
       </ButtonGroup>
     </>

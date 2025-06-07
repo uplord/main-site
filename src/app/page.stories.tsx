@@ -15,6 +15,9 @@ const meta: Meta<typeof Banner> = {
   args: {
     hasHeader: true,
   },
+  parameters: {
+    backgrounds: { disable: true },
+  },
 }
 
 type PageProps = {

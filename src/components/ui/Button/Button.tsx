@@ -7,7 +7,7 @@ import React from 'react'
 
 import styles from './button.module.scss'
 import { IconProps } from '@/components/utils/Icon'
-import { Variant, Size } from '@/types/system'
+import { VariantType } from '@/types/system'
 
 const Icon = dynamic(() => import('@/components/utils/Icon').then((mod) => mod.Icon))
 
@@ -15,8 +15,8 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   label?: string
   href?: string
   target?: '_blank' | '_self' | ''
-  size: Size.Small | Size.Medium
-  variant: Variant
+  size: 'sm' | 'md'
+  variant: VariantType
   leadingIcon?: IconProps['name']
   trailingIcon?: IconProps['name']
   block?: boolean
@@ -26,13 +26,14 @@ export interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   isLoading?: boolean
   isSkeleton?: boolean
   hasHover?: boolean
+  ariaLabel?: string
 }
 
 export const Button = ({
   label,
   href,
   target,
-  size = Size.Medium,
+  size = 'md',
   variant,
   leadingIcon,
   trailingIcon,
@@ -51,7 +52,7 @@ export const Button = ({
         {leadingIcon && (
           <Icon
             name={leadingIcon}
-            size={Size.Medium}
+            size="md"
             className={styles.icon}
           />
         )}
@@ -59,7 +60,7 @@ export const Button = ({
         {trailingIcon && (
           <Icon
             name={trailingIcon}
-            size={Size.Medium}
+            size="md"
             className={styles.icon}
           />
         )}
@@ -112,7 +113,8 @@ export const Button = ({
         if (restProps.onClick) {
           restProps.onClick(e)
         }
-      }}>
+      }}
+      {...restProps}>
       {content}
     </button>
   )

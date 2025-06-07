@@ -11,7 +11,7 @@ const meta: Meta<IconProps> = {
   component: IconComponent,
   args: {
     name: 'Home',
-    size: Size.Large,
+    size: 'lg',
     className: '',
   },
   argTypes: {

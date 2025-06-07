@@ -6,7 +6,6 @@ import React, { useRef, useState } from 'react'
 import styles from './input.module.scss'
 import { Button, ButtonProps } from '@/components/ui/Button'
 import { Icon, IconProps } from '@/components/utils/Icon'
-import { Variant, Size } from '@/types/system'
 
 export type InputProps = {
   type: 'text' | 'email' | 'password' | 'number'
@@ -23,7 +22,7 @@ export type InputProps = {
   trailingIcon?: IconProps['name']
   trailingFunction?: () => void
   trailingText?: string
-  button?: Omit<ButtonProps, 'size'> & { size?: Size.Small }
+  button?: Omit<ButtonProps, 'size'> & { size?: 'sm' }
 
   isDisabled?: boolean
   isLoading?: boolean
@@ -112,7 +111,7 @@ export const Input = ({
             className={clsx(styles['icon-wrap'], leadingFunction && styles.click)}>
             <Icon
               name={leadingIcon}
-              size={Size.Medium}
+              size="md"
               className={styles.icon}
             />
           </div>
@@ -144,7 +143,7 @@ export const Input = ({
             className={clsx(styles['icon-wrap'], styles.click)}>
             <Icon
               name={!isPasswordVisible ? 'EyeOff' : 'Eye'}
-              size={Size.Medium}
+              size="md"
               className={styles.icon}
             />
           </div>
@@ -159,7 +158,7 @@ export const Input = ({
             )}>
             <Icon
               name={trailingIcon}
-              size={Size.Medium}
+              size="md"
               className={styles.icon}
             />
           </div>
@@ -168,8 +167,8 @@ export const Input = ({
         {button && (
           <Button
             {...button}
-            size={Size.Small}
-            variant={button.variant || Variant.Primary}
+            size="sm"
+            variant={button.variant || 'primary'}
             className={styles.button}
             isDisabled={isDisabled || isLoading || isSkeleton}
             onClick={handleButtonClick}

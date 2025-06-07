@@ -5,7 +5,6 @@ import React, { useRef } from 'react'
 
 import styles from '@/components/ui/Input/input.module.scss'
 import { Icon } from '@/components/utils/Icon'
-import { Size } from '@/types/system'
 
 type Option = { value: string | number; label: string }
 
@@ -80,7 +79,7 @@ export const Select = ({
         <div className={styles['icon-wrap']}>
           <Icon
             name="ChevronDown"
-            size={Size.Medium}
+            size="md"
             className={styles.icon}
           />
         </div>

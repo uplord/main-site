@@ -179,11 +179,11 @@ $background-surface-dark: $color-dark;
   }
 
   .left .anchor {
-    margin-left: -0.875rem;
+    margin: -0.5625rem 0 -0.5625rem -0.875rem;
   }
 
   .right .anchor {
-    margin-right: -0.875rem;
+    margin: -0.5625rem -0.875rem -0.5625rem 0;
   }
 }
 

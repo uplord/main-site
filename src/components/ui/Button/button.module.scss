@@ -230,6 +230,21 @@
     }
   }
 
+  &-anchor {
+    background-color: transparent;
+    color: $color-dark;
+
+    @include dark-mode {
+      &:not(.is-disabled) {
+        color: $color-light;
+      }
+    }
+
+    &.has-hover:hover:not(.is-disabled) {
+      text-decoration: underline;
+    }
+  }
+
   &-default {
     background-color: color.change($color-dark, $alpha: 0.2);
     color: $color-light;

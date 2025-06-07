@@ -31,8 +31,8 @@ export const Timeline = ({ id }: TimelineProps) => {
       className={styles.timeline}>
       <div className={styles.container}>
         <div className={styles.intro}>
-          <h3 className={skeletonClass}>My timeline</h3>
-          <h2 className={skeletonClass}>Explore key roles and milestones over the years</h2>
+          <h2 className={skeletonClass}>My timeline</h2>
+          <h3 className={skeletonClass}>Explore key roles and milestones over the years</h3>
         </div>
 
         <div className={styles.list}>
@@ -56,7 +56,7 @@ export const Timeline = ({ id }: TimelineProps) => {
                   </div>
                 </div>
                 <div className={styles.right}>
-                  <h3 className={skeletonClass}>{item.location}</h3>
+                  <h4 className={skeletonClass}>{item.location}</h4>
                   <h5 className={skeletonClass}>{item.role}</h5>
                   {item.description.map((paragraph, i) => (
                     <p

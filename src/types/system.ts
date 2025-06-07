@@ -1,3 +1,13 @@
+export type VariantType =
+  | 'default'
+  | 'text'
+  | 'primary'
+  | 'success'
+  | 'outline'
+  | 'white'
+  | 'black'
+  | 'anchor'
+
 export enum Variant {
   Default = 'default',
   Text = 'text',
@@ -8,13 +18,7 @@ export enum Variant {
   Black = 'black',
 }
 
-export type ImageProps = {
-  src: string
-  alt: string
-  sizes: string
-  width: number
-  height: number
-}
+export type SizeType = 'sm' | 'md' | 'lg' | 'xl'
 
 export enum Size {
   Small = 'sm',
@@ -23,12 +27,10 @@ export enum Size {
   ExtraLarge = 'xl',
 }
 
-export type SizeType = Size.Small | Size.Medium | Size.Large | Size.ExtraLarge
-
-// export const isProd = () => {
-//   process.env.ENVIRONMENT === 'production'
-// }
-
-// export const isDev = () => {
-//   process.env.ENVIRONMENT === 'development'
-// }
+export type ImageProps = {
+  src: string
+  alt: string
+  sizes: string
+  width: number
+  height: number
+}

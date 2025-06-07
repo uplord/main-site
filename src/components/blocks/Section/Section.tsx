@@ -4,7 +4,6 @@ import React from 'react'
 import styles from './style.module.scss'
 import { Button, ButtonGroup } from '@/components/ui/Button'
 import { useMounted } from '@/lib/useMounted'
-import { Size, Variant } from '@/types/system'
 
 export type SectionProps = {
   id?: string
@@ -49,8 +48,8 @@ export const Section = ({ id }: SectionProps) => {
               <Button
                 href="mailto:michael@uplord.co.uk"
                 label="Get in touch"
-                variant={Variant.Primary}
-                size={Size.Medium}
+                variant="primary"
+                size="md"
                 isSkeleton={!mounted}
               />
             </ButtonGroup>

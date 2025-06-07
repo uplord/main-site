@@ -6,7 +6,6 @@ import { FormikInput } from '../FormikInput'
 import { Input, InputProps } from './Input'
 import styles from './input.module.scss'
 import { IconOptions } from '@/lib/icons'
-import { Variant } from '@/types/system'
 
 const meta: Meta<InputProps> = {
   title: 'UI/Input',
@@ -120,7 +119,7 @@ export const All: Story = {
     trailingText: 'dollars',
     button: {
       label: 'Button',
-      variant: Variant.Primary,
+      variant: 'primary',
       onClick: () => handleButtonClick(),
     },
     helper: 'Optional helper text',
@@ -306,7 +305,7 @@ const InputStates = (args: InputProps) => {
         placeholder="Button"
         button={{
           label: 'Button',
-          variant: Variant.Primary,
+          variant: 'primary',
           onClick: () => handleButtonClick(),
         }}
         helper="Button"

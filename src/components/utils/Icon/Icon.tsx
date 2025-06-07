@@ -2,7 +2,7 @@ import * as icons from 'lucide-react'
 import { LucideIcon } from 'lucide-react'
 import React from 'react'
 
-import { Size, SizeType } from '@/types/system'
+import { SizeType } from '@/types/system'
 
 type AvailableIcons = keyof typeof icons
 
@@ -22,15 +22,15 @@ export function Icon({ name, size, strokeWidth = 2, className = '' }: IconProps)
 
   let iconSize = 20
 
-  if (size === Size.Small) {
+  if (size === 'sm') {
     iconSize = 16
   }
 
-  if (size === Size.Large) {
+  if (size === 'lg') {
     iconSize = 24
   }
 
-  if (size === Size.ExtraLarge) {
+  if (size === 'xl') {
     iconSize = 28
   }
 

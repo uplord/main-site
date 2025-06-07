@@ -59,7 +59,11 @@ const preview: Preview = {
     (Story, context) => {
       const theme = context.globals.backgrounds.value || 'light'
 
-      const excludedStories = ['blocks-header--default', 'blocks-banner--with-header']
+      const excludedStories = [
+        'pages-home--default',
+        'blocks-header--default',
+        'blocks-banner--with-header',
+      ]
       const isExcluded = excludedStories.includes(context.id)
 
       return (
@@ -76,22 +80,6 @@ const preview: Preview = {
       )
     },
   ],
-}
-
-export const globalTypes = {
-  theme: {
-    name: 'Theme',
-    description: 'Global theme for components',
-    defaultValue: 'light',
-    toolbar: {
-      icon: 'circlehollow',
-      items: [
-        { value: 'light', title: 'Light' },
-        { value: 'dark', title: 'Dark' },
-        { value: 'system', title: 'System' },
-      ],
-    },
-  },
 }
 
 export default preview

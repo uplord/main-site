@@ -2,12 +2,12 @@
 
 import { NiceModalHandler } from '@ebay/nice-modal-react'
 import { motion, AnimatePresence, useDragControls } from 'framer-motion'
+import { head } from 'framer-motion/client'
 import React, { useRef, useState, useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
 
-import { Content } from './inc/Content'
-import { Footer, FooterProps } from './inc/Footer'
-import { Header, HeaderProps } from './inc/Header'
+import { Footer, FooterProps } from './_components/Footer'
+import { Header, HeaderProps } from './_components/Header'
 import styles from './modal.module.scss'
 
 export type ModalProps = {
@@ -75,12 +75,7 @@ export const Modal = ({
                 className={styles.drag}
                 onPointerDown={(event) => controls.start(event)}
                 style={{ touchAction: 'none' }}>
-                {headerProps && (
-                  <Header
-                    {...headerProps}
-                    modal={modal}
-                  />
-                )}
+                {headerProps && <Header {...headerProps} />}
                 <div className={styles.scroll}>
                   <div className={styles.content}>{children}</div>
                 </div>
@@ -94,12 +89,11 @@ export const Modal = ({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4, ease: 'easeInOut' }}>
-              <Content
-                headerProps={headerProps}
-                footerProps={footerProps}
-                modal={modal}>
-                {children}
-              </Content>
+              {headerProps && <Header {...headerProps} />}
+              <div className={styles.scroll}>
+                <div className={styles.content}>{children}</div>
+              </div>
+              {footerProps && <Footer {...footerProps} />}
             </motion.div>
           )}
         </motion.div>

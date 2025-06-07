@@ -8,7 +8,6 @@ import styles from './style.module.scss'
 import { Social } from '@/components/blocks/Social'
 import { Button, ButtonGroup } from '@/components/ui/Button'
 import { useMounted } from '@/lib/useMounted'
-import { Size, Variant } from '@/types/system'
 
 export type BannerProps = {
   id?: string
@@ -57,8 +56,8 @@ export const Banner = ({ id, hasHeader = false }: BannerProps) => {
               <Button
                 href="mailto:michael@uplord.co.uk"
                 label="Get in touch"
-                variant={Variant.Primary}
-                size={Size.Medium}
+                variant="primary"
+                size="md"
                 isSkeleton={!mounted}
                 className={!mounted ? clsx(styles.skeleton, styles.button) : ''}
               />
@@ -66,8 +65,8 @@ export const Banner = ({ id, hasHeader = false }: BannerProps) => {
                 label="Download CV"
                 href="/michael-allen-cv.pdf"
                 target="_blank"
-                variant={Variant.Default}
-                size={Size.Medium}
+                variant="default"
+                size="md"
                 isSkeleton={!mounted}
                 className={!mounted ? clsx(styles.skeleton, styles.button) : ''}
               />

@@ -27,7 +27,7 @@
     gap: 0.5rem;
   }
 
-  h3 {
+  h2 {
     @include text-lg;
     @include text-bold;
 
@@ -44,7 +44,7 @@
     }
   }
 
-  h2 {
+  h3 {
     @include text-xl;
     @include text-bold;
 
@@ -256,7 +256,7 @@
     }
   }
 
-  h3 {
+  h4 {
     @include text-md;
     @include text-bold;
 
