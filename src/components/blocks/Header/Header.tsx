@@ -61,8 +61,9 @@ export const Header = ({ id }: HeaderProps) => {
               value=""
               onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                 const isChecked = event.target.checked
+                const newTheme = isChecked ? 'dark' : 'light'
                 setDarkMode(isChecked)
-                setTheme(isChecked ? 'dark' : 'light')
+                setTheme(newTheme)
               }}
               checked={darkMode}
               className={styles.toggle}

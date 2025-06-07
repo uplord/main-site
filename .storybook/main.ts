@@ -10,7 +10,7 @@ const config: StorybookConfig = {
     '@chromatic-com/storybook',
     '@storybook/addon-styling-webpack',
     'storybook-addon-pseudo-states',
-    '@storybook/addon-docs'
+    '@storybook/addon-docs',
   ],
   framework: {
     name: '@storybook/nextjs',
@@ -18,19 +18,45 @@ const config: StorybookConfig = {
   },
   staticDirs: ['../public'],
   webpackFinal: async (config) => {
-    // Remove existing SVG loader
-    const fileLoaderRule = config.module?.rules?.find((rule) =>
-      rule && typeof rule === 'object' && 'test' in rule && rule.test instanceof RegExp && rule.test.test('.svg')
+    const fileLoaderRule = config.module?.rules?.find(
+      (rule) =>
+        rule &&
+        typeof rule === 'object' &&
+        'test' in rule &&
+        rule.test instanceof RegExp &&
+        rule.test.test('.svg'),
     )
 
     if (fileLoaderRule) {
       fileLoaderRule.exclude = /\.svg$/i
     }
 
-    // Add SVGR loader for SVGs
     config.module?.rules?.push({
       test: /\.svg$/,
-      use: ['@svgr/webpack'],
+      use: [
+        {
+          loader: '@svgr/webpack',
+          options: {
+            svgo: true,
+            svgoConfig: {
+              plugins: [
+                {
+                  name: 'preset-default',
+                  params: {
+                    overrides: {
+                      removeViewBox: false,
+                      cleanupIds: false,
+                      inlineStyles: false,
+                      minifyStyles: false,
+                      mergeStyles: false,
+                    },
+                  },
+                },
+              ],
+            },
+          },
+        },
+      ],
     })
 
     return config

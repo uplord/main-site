@@ -1,7 +1,9 @@
-import React from 'react'
 import type { Preview } from '@storybook/nextjs'
-import { Inter, Nunito } from 'next/font/google'
 import { clsx } from 'clsx'
+import { Inter, Nunito } from 'next/font/google'
+import React from 'react'
+
+import { ThemeProvider } from '../src/context/ThemeProvider'
 import './preview.scss'
 import '@/styles/index.scss'
 
@@ -20,22 +22,23 @@ const nunito = Nunito({
 const preview: Preview = {
   parameters: {
     layout: 'fullscreen',
-
     controls: {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
     },
-
     backgrounds: {
-      values: [
-        { name: 'Dark', value: '#0d0d0d' },
-        { name: 'Light', value: '#fff' },
-      ],
-      default: 'Light',
+      options: {
+        dark: { name: 'Dark', value: '#0d0d0d' },
+        light: { name: 'Light', value: '#fff' },
+      },
     },
-
+    options: {
+      storySort: {
+        order: ['Components', 'Styleguide', 'Blocks', 'Navigation', 'UI', 'Utils'],
+      },
+    },
     pseudo: {
       hover: '.hover',
       focus: '.focus',
@@ -43,30 +46,52 @@ const preview: Preview = {
       focusWithin: '.focus-within',
       active: '.active',
     },
-
-    options: {
-      storySort: {
-        order: ['Components', 'Styleguide', 'Blocks', 'Navigation', 'UI', 'Utils'],
-      }
-    },
-
     chromatic: {
       disableSnapshot: true,
     },
   },
+
+  initialGlobals: {
+    theme: window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
+  },
+
   decorators: [
     (Story, context) => {
-      const backgrounds = context.parameters.backgrounds?.values
-      const userBackground = context.userGlobals.backgrounds?.value
+      const theme = context.globals.backgrounds.value || 'light'
 
-      const colorName = backgrounds?.find(color => color.value.toLowerCase() === userBackground?.toLowerCase())?.name.toLowerCase() || 'light'
+      const excludedStories = ['blocks-header--default', 'blocks-banner--with-header']
+      const isExcluded = excludedStories.includes(context.id)
+
       return (
-        <div className={clsx('body', colorName, inter.className, nunito.className)}>
-          <Story />
-        </div>
+        <ThemeProvider
+          attribute="class"
+          enableSystem
+          defaultTheme="system"
+          disableTransitionOnChange
+          {...(!isExcluded && { forcedTheme: theme })}>
+          <div className={clsx(inter.className, nunito.className)}>
+            <Story />
+          </div>
+        </ThemeProvider>
       )
     },
   ],
+}
+
+export const globalTypes = {
+  theme: {
+    name: 'Theme',
+    description: 'Global theme for components',
+    defaultValue: 'light',
+    toolbar: {
+      icon: 'circlehollow',
+      items: [
+        { value: 'light', title: 'Light' },
+        { value: 'dark', title: 'Dark' },
+        { value: 'system', title: 'System' },
+      ],
+    },
+  },
 }
 
 export default preview

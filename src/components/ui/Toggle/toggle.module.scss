@@ -19,12 +19,6 @@
     }
   }
 
-  &.checked {
-    .checkbox + label {
-      background-color: green;
-    }
-  }
-
   .checkbox {
     display: none;
 
