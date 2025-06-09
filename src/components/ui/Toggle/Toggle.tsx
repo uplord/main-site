@@ -17,6 +17,7 @@ export const Toggle = ({ ...props }: ToggleProps) => {
         styles.toggle,
         props.isSkeleton && styles.skeleton,
         props.checked && styles.checked,
+        props.className,
       )}>
       <motion.span
         animate={{ x: props.checked ? 40 : 0 }}

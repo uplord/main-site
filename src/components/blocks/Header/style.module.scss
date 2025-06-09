@@ -4,35 +4,10 @@
   position: sticky;
   top: 0;
   z-index: 10;
-  background-color: $color-header;
   color: $color-header-text;
-
-  @include dark-mode {
-    background-color: $color-header-dark;
-  }
 
   &.is-home {
     margin-bottom: -4.875rem;
-  }
-
-  &.scrolled {
-    background: transparent;
-    backdrop-filter: saturate(180%) blur(20px);
-
-    &:before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      background: $color-nav;
-      z-index: -1;
-
-      @include dark-mode {
-        background: rgb(0, 0, 0, 0.6);
-      }
-    }
   }
 }
 
@@ -45,6 +20,28 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.9375rem 0;
+  top: 0.5rem;
+  backdrop-filter: saturate(180%) blur(20px);
+  margin: 0.5rem -0.5rem;
+  padding: 0.4375rem 0.5rem;
+  border-radius: 0.5rem;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: $color-nav;
+    background: rgb(0, 0, 0, 0.3);
+    z-index: -1;
+    border-radius: 0.5rem;
+
+    @include dark-mode {
+      background: rgb(255, 255, 255, 0.1);
+    }
+  }
 }
 
 .logo {
@@ -101,10 +98,10 @@
   & {
     display: none;
     border-radius: 1.5rem;
-    background-color: $color-nav;
+    background: rgb(0, 0, 0, 0.2);
 
     @include dark-mode {
-      background-color: $color-nav-dark;
+      background: rgb(0, 0, 0, 0.4);
     }
   }
 

@@ -79,7 +79,10 @@
       "eslint --fix"
     ],
     "*.json": "prettier --write",
-    "*.scss": "prettier --write",
+    "*.scss": [
+      "prettier --write",
+      "stylelint --fix"
+    ],
     "*.html": "prettier --write"
   },
   "experimental": {

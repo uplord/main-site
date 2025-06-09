@@ -26,10 +26,10 @@
       width: 5rem;
       height: 2.5rem;
       border-radius: 2.5rem;
-      background-color: $color-nav;
+      background: rgb(0, 0, 0, 0.2);
 
       @include dark-mode {
-        background-color: $color-nav-dark;
+        background: rgb(0, 0, 0, 0.4);
       }
 
       &::before {
@@ -61,7 +61,7 @@
 .sun {
   display: block;
   color: $color-dark;
-  
+
   @include dark-mode {
     display: none;
   }
@@ -69,7 +69,7 @@
 
 .moon {
   display: none;
-  
+
   @include dark-mode {
     display: block;
   }
