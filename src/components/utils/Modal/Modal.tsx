@@ -2,7 +2,6 @@
 
 import { NiceModalHandler } from '@ebay/nice-modal-react'
 import { motion, AnimatePresence, useDragControls } from 'framer-motion'
-import { head } from 'framer-motion/client'
 import React, { useRef, useState, useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
 

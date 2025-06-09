@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs'
 
 import { Button, ButtonGroup, ButtonProps } from './Button'
 import { IconOptions } from '@/lib/icons'
-import { VariantType } from '@/types/system'
+import { Variant } from '@/types/system'
 
 const meta: Meta<ButtonProps> = {
   title: 'UI/Button',
@@ -36,7 +36,7 @@ const meta: Meta<ButtonProps> = {
       control: {
         type: 'select',
       },
-      options: VariantType,
+      options: Object.values(Variant),
     },
     leadingIcon: {
       control: {
