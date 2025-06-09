@@ -6,6 +6,7 @@ import React from 'react'
 
 import styles from './toggle.module.scss'
 import { Checkbox, CheckboxProps } from '@/components/ui/Checkbox'
+import { Icon } from '@/components/utils/Icon'
 
 export type ToggleProps = {} & CheckboxProps
 
@@ -19,7 +20,18 @@ export const Toggle = ({ ...props }: ToggleProps) => {
       )}>
       <motion.span
         animate={{ x: props.checked ? 40 : 0 }}
-        transition={props.isSkeleton ? { duration: 0 } : { duration: 0.2 }}></motion.span>
+        transition={props.isSkeleton ? { duration: 0 } : { duration: 0.2 }}>
+        <Icon
+          name="Sun"
+          size="md"
+          className={styles.sun}
+        />
+        <Icon
+          name="Moon"
+          size="md"
+          className={styles.moon}
+        />
+      </motion.span>
       <Checkbox
         {...props}
         className={clsx(styles.checkbox, props.className)}

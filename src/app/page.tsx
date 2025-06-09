@@ -14,10 +14,13 @@ export default function Home() {
     <div className={styles.page}>
       <Header />
       <main className={styles.main}>
-        <Banner hasHeader />
-        <Section />
-        <Projects />
-        <Timeline />
+        <Banner
+          id="banner"
+          hasHeader
+        />
+        <Section id="about-me" />
+        <Projects id="projects" />
+        <Timeline id="timeline" />
         <Stack />
       </main>
       <Footer />

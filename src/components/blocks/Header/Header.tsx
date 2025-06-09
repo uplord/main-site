@@ -42,16 +42,16 @@ export const Header = ({ id }: HeaderProps) => {
                 <Link href="/">Home</Link>
               </li>
               <li>
-                <Link href="/">About me</Link>
+                <Link href="/#about-me">About me</Link>
               </li>
               <li>
-                <Link href="/">Projects</Link>
+                <Link href="/#projects">Projects</Link>
               </li>
               <li>
-                <Link href="/">Timeline</Link>
+                <Link href="/#timeline">Timeline</Link>
               </li>
               <li>
-                <Link href="/">Contact</Link>
+                <Link href="mailto:michael@uplord.co.uk">Contact</Link>
               </li>
             </ul>
           </div>

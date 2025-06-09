@@ -1,5 +1,14 @@
 .projects {
   position: relative;
+  scroll-margin-top: 3rem;
+
+  @media (min-width: $breakpoint-md) {
+    scroll-margin-top: 4rem;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    scroll-margin-top: 8rem;
+  }
 
   h2 {
     @include text-xl;

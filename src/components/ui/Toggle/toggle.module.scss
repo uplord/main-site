@@ -43,8 +43,11 @@
     z-index: 1;
     top: 0.25rem;
     left: 0.25rem;
+    display: flex;
     width: 2rem;
     height: 2rem;
+    align-items: center;
+    justify-content: center;
     border-radius: 1rem;
     background-color: #ffc514;
     pointer-events: none;
@@ -52,6 +55,23 @@
     @include dark-mode {
       background-color: #74c0fc;
     }
+  }
+}
+
+.sun {
+  display: block;
+  color: $color-dark;
+  
+  @include dark-mode {
+    display: none;
+  }
+}
+
+.moon {
+  display: none;
+  
+  @include dark-mode {
+    display: block;
   }
 }
 
