@@ -1,7 +1,8 @@
 @use 'sass:color';
 
 .header {
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 10;
   background-color: $color-header;
   color: $color-header-text;
@@ -12,6 +13,26 @@
 
   &.is-home {
     margin-bottom: -4.875rem;
+  }
+
+  &.scrolled {
+    background: transparent;
+    backdrop-filter: saturate(180%) blur(20px);
+
+    &:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background: $color-nav;
+      z-index: -1;
+
+      @include dark-mode {
+        background: rgb(0, 0, 0, 0.6);
+      }
+    }
   }
 }
 
