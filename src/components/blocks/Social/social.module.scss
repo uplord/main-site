@@ -7,6 +7,7 @@
   }
 
   .icon {
+    position: relative;
     padding: 0.5rem;
     border-radius: 0 0.5rem 0.5rem;
     background: $color-primary;
@@ -17,6 +18,10 @@
       &:hover {
         scale: 1.1;
       }
+    }
+
+    &.glass::after {
+      @include glass;
     }
 
     &:focus {

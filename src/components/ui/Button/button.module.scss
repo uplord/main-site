@@ -124,6 +124,14 @@
       opacity: 0;
     }
   }
+
+  &:not(.is-skeleton)::after {
+    @include glass;
+
+    & {
+      inset: -1px;
+    }
+  }
 }
 
 .size {

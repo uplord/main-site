@@ -50,11 +50,16 @@
     width: 100%;
     max-width: 250px;
     justify-content: flex-start;
+    border-radius: 1rem;
     aspect-ratio: 1;
 
     @media (min-width: $breakpoint-md) {
       max-width: 520px;
       justify-content: center;
+    }
+
+    &.glass::after {
+      @include glass;
     }
   }
 

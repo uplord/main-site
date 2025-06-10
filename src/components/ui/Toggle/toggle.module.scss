@@ -22,14 +22,18 @@
   .checkbox {
     display: none;
 
+    &.glass + label::after {
+      @include glass;
+    }
+
     & + label {
       width: 5rem;
       height: 2.5rem;
       border-radius: 2.5rem;
-      background: rgb(0, 0, 0, 0.2);
+      background: rgb(0 0 0 / 20%);
 
       @include dark-mode {
-        background: rgb(0, 0, 0, 0.4);
+        background: rgb(0 0 0 / 40%);
       }
 
       &::before {
@@ -54,6 +58,10 @@
 
     @include dark-mode {
       background-color: #74c0fc;
+    }
+
+    &.glass::after {
+      @include glass;
     }
   }
 }

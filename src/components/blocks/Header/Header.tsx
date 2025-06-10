@@ -29,14 +29,17 @@ export const Header = ({ id }: HeaderProps) => {
       id={id}
       className={clsx(styles.header, styles['is-home'])}>
       <div className={styles.container}>
-        <div className={styles.top}>
+        <div className={clsx(styles.top, mounted && styles.glass)}>
           <Link
             href="/"
             className={clsx(styles.logo)}>
             <span className={clsx(styles.icon, !mounted && styles.skeleton)}>M</span>
-            <span className={clsx(styles.title, !mounted && styles.skeleton)}>TheMichael</span>
+            <span
+              className={clsx(styles.title, !mounted && styles.skeleton, mounted && styles.glass)}>
+              TheMichael
+            </span>
           </Link>
-          <div className={clsx(styles.nav, !mounted && styles.skeleton)}>
+          <div className={clsx(styles.nav, !mounted && styles.skeleton, mounted && styles.glass)}>
             <ul>
               <li>
                 <Link href="/">Home</Link>

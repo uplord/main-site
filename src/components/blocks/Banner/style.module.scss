@@ -8,7 +8,7 @@
 
   .social {
     position: absolute;
-    z-index: 1;
+    z-index: 110;
     bottom: -1rem;
     left: 50%;
     display: none;
@@ -71,11 +71,16 @@
   .image-wrap {
     position: relative;
     width: 140px;
+    border-radius: 1rem;
     aspect-ratio: 1;
 
     @media (min-width: $breakpoint-md) {
       width: 100%;
       max-width: 500px;
+    }
+
+    &.glass::after {
+      @include glass;
     }
   }
 

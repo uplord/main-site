@@ -7,10 +7,12 @@ import React from 'react'
 import styles from './toggle.module.scss'
 import { Checkbox, CheckboxProps } from '@/components/ui/Checkbox'
 import { Icon } from '@/components/utils/Icon'
+import { useMounted } from '@/lib/useMounted'
 
 export type ToggleProps = {} & CheckboxProps
 
 export const Toggle = ({ ...props }: ToggleProps) => {
+  const mounted = useMounted()
   return (
     <div
       className={clsx(
@@ -21,7 +23,8 @@ export const Toggle = ({ ...props }: ToggleProps) => {
       )}>
       <motion.span
         animate={{ x: props.checked ? 40 : 0 }}
-        transition={props.isSkeleton ? { duration: 0 } : { duration: 0.2 }}>
+        transition={props.isSkeleton ? { duration: 0 } : { duration: 0.2 }}
+        className={clsx(mounted && styles.glass)}>
         <Icon
           name="Sun"
           size="md"
@@ -35,7 +38,7 @@ export const Toggle = ({ ...props }: ToggleProps) => {
       </motion.span>
       <Checkbox
         {...props}
-        className={clsx(styles.checkbox, props.className)}
+        className={clsx(styles.checkbox, props.className, mounted && styles.glass)}
       />
     </div>
   )

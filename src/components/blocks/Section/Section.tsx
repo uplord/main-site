@@ -1,3 +1,4 @@
+import clsx from 'clsx'
 import Image from 'next/image'
 import React from 'react'
 
@@ -20,7 +21,7 @@ export const Section = ({ id }: SectionProps) => {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.image}>
-            <div className={styles['image-wrap']}>
+            <div className={clsx(styles['image-wrap'], mounted && styles.glass)}>
               {mounted ? (
                 <Image
                   src="/ellie.png"
