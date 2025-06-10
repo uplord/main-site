@@ -44,11 +44,11 @@
 
   @media (max-width: $breakpoint-md - 1) {
     height: 640px;
-    min-height: 100dvh;
+    min-height: 100vh;
   }
 
   .header & {
-    padding-top: 4.875rem;
+    padding-top: 5.875rem;
   }
 }
 
