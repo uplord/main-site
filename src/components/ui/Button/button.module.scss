@@ -25,7 +25,7 @@
 
 .button {
   @include text-md;
-  @include text-bold;
+  @include text-semibold;
 
   & {
     z-index: 5;
@@ -125,11 +125,31 @@
     }
   }
 
-  &:not(.is-skeleton)::after {
-    @include glass;
+  // &:not(.is-skeleton)::after {
+  //   @include glass;
 
-    & {
-      inset: -1px;
+  //   & {
+  //     inset: -1px;
+  //   }
+  // }
+
+  &:not(.is-skeleton)::after {
+    position: absolute;
+    z-index: 1;
+    border-radius: inherit;
+    box-shadow:
+      inset 1px 1px 0 rgb(255 255 255 / 20%),
+      inset 0 0 1px rgb(255 255 255 / 60%),
+      0 1px 1px rgb(0 0 0 / 20%),
+      0 0 5px rgb(0 0 0 / 10%);
+    content: '';
+    inset: -1px;
+    pointer-events: none;
+
+    @include dark-mode {
+      box-shadow:
+        inset 1px 1px 0 rgb(255 255 255 / 10%),
+        inset 0 0 1px rgb(255 255 255 / 60%);
     }
   }
 }

@@ -264,17 +264,3 @@ $color-tooltip-text-dark: #000;
     opacity: 0.6;
   }
 }
-
-@mixin glass {
-  position: absolute;
-  z-index: 1;
-  border: 1px solid rgb(0 0 0 / 20%);
-  border-radius: inherit;
-  content: '';
-  inset: 0;
-  pointer-events: none;
-
-  @include dark-mode {
-    border: 1px solid rgb(255 255 255 / 10%);
-  }
-}

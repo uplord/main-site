@@ -16,7 +16,8 @@
 }
 
 .top {
-  top: 0.5rem;
+  position: relative;
+  top: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -24,14 +25,14 @@
   padding: 0.4375rem 0.5rem;
   border-radius: 0.5rem;
   margin: 0.5rem -0.5rem;
-  backdrop-filter: saturate(180%) blur(10px);
 
   &::before {
     position: absolute;
     z-index: -1;
     border-radius: 0.5rem;
-    background: $color-nav;
-    background: rgb(0 0 0 / 30%);
+    backdrop-filter: blur(4px);
+    background: $color-info;
+    background: color.mix($color-dark, color.change($color-info, $alpha: 0.8), 30%);
     content: '';
     inset: 0;
 
@@ -41,7 +42,23 @@
   }
 
   &.glass::after {
-    @include glass;
+    position: absolute;
+    z-index: 1;
+    border-radius: inherit;
+    box-shadow:
+      inset 1px 1px 0 rgb(255 255 255 / 20%),
+      inset 0 0 1px rgb(255 255 255 / 60%),
+      0 1px 1px rgb(0 0 0 / 20%),
+      0 0 5px rgb(0 0 0 / 10%);
+    content: '';
+    inset: 0;
+    pointer-events: none;
+
+    @include dark-mode {
+      box-shadow:
+        inset 1px 1px 0 rgb(255 255 255 / 10%),
+        inset 0 0 1px rgb(255 255 255 / 60%);
+    }
   }
 }
 
@@ -74,7 +91,23 @@
       color: $color-light;
 
       &.glass::after {
-        @include glass;
+        position: absolute;
+        z-index: 1;
+        border-radius: inherit;
+        box-shadow:
+          inset 1px 1px 0 rgb(255 255 255 / 20%),
+          inset 0 0 1px rgb(255 255 255 / 60%),
+          0 1px 1px rgb(0 0 0 / 20%),
+          0 0 5px rgb(0 0 0 / 10%);
+        content: '';
+        inset: 0;
+        pointer-events: none;
+
+        @include dark-mode {
+          box-shadow:
+            inset 1px 1px 0 rgb(255 255 255 / 10%),
+            inset 0 0 1px rgb(255 255 255 / 60%);
+        }
       }
     }
 
@@ -112,7 +145,23 @@
     }
 
     &.glass::after {
-      @include glass;
+      position: absolute;
+      z-index: 1;
+      border-radius: inherit;
+      box-shadow:
+        inset 1px 1px 0 rgb(255 255 255 / 20%),
+        inset 0 0 1px rgb(255 255 255 / 60%),
+        0 1px 1px rgb(0 0 0 / 20%),
+        0 0 5px rgb(0 0 0 / 10%);
+      content: '';
+      inset: 0;
+      pointer-events: none;
+
+      @include dark-mode {
+        box-shadow:
+          inset 1px 1px 0 rgb(255 255 255 / 10%),
+          inset 0 0 1px rgb(255 255 255 / 60%);
+      }
     }
   }
 
