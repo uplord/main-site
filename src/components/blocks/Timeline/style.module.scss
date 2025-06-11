@@ -2,14 +2,14 @@
 
 .timeline {
   position: relative;
-  scroll-margin-top: 1.5rem + 4.875rem;
+  scroll-margin-top: 1.5rem + $header-height;
 
   @media (min-width: $breakpoint-md) {
-    scroll-margin-top: 2rem + 4.875rem;
+    scroll-margin-top: 2rem + $header-height;
   }
 
   @media (min-width: $breakpoint-lg) {
-    scroll-margin-top: 4rem + 4.875rem;
+    scroll-margin-top: 4rem + $header-height;
   }
 }
 

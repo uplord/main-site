@@ -9,7 +9,7 @@
   color: $color-header-text;
 
   &.is-home {
-    margin-bottom: -4.875rem;
+    margin-bottom: -$header-height;
   }
 
   &::before {
@@ -99,10 +99,12 @@
   & {
     position: relative;
     display: none;
+    border: 0.0625rem solid rgb(255 255 255 / 20%);
     border-radius: 1.5rem;
     background: rgb(0 0 0 / 20%);
 
     @include dark-mode {
+      border: 0.0625rem solid $color-border-dark;
       background: rgb(255 255 255 / 10%);
     }
   }
