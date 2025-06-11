@@ -57,13 +57,13 @@
 
   & {
     display: flex;
-    padding: 0 1.5rem;
+    padding: 0 1rem;
 
     @media (min-width: $breakpoint-md) {
       flex-basis: 50%;
       justify-content: flex-end;
       order: 1;
-      padding-right: 1.5rem;
+      padding-right: 1rem;
       padding-left: 3rem;
     }
   }
@@ -104,7 +104,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1rem 1.5rem 0;
+    padding: 1rem 1rem 0;
     gap: 0.5rem;
     text-align: center;
   }
@@ -112,7 +112,7 @@
   @media (min-width: $breakpoint-md) {
     flex-basis: 50%;
     align-items: flex-start;
-    padding: 4rem 1.5rem;
+    padding: 4rem 1rem;
     text-align: left;
   }
 

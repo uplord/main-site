@@ -12,7 +12,7 @@ $background-surface-dark: $color-dark;
   display: grid;
   width: 100dvw;
   height: 100dvh;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   place-items: center;
 
   &--close-button {
@@ -134,11 +134,11 @@ $background-surface-dark: $color-dark;
   min-height: 3rem;
   align-items: center;
   justify-content: space-between;
-  padding: 0.25rem 1.5rem;
+  padding: 0.25rem 1rem;
   text-align: center;
 
   @media (min-width: $breakpoint-md) {
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 1rem;
   }
 
   &.border {
@@ -151,7 +151,7 @@ $background-surface-dark: $color-dark;
 
   &.sheet {
     @media (min-width: $breakpoint-md) {
-      padding: 1.25rem 1.5rem 0;
+      padding: 1.25rem 1rem 0;
       border-bottom: 0;
     }
 
@@ -222,7 +222,7 @@ $background-surface-dark: $color-dark;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.5rem max(env(safe-area-inset-bottom), 1rem);
+  padding: 1rem 1rem max(env(safe-area-inset-bottom), 1rem);
   gap: 0.5rem;
   text-align: center;
 
@@ -293,18 +293,18 @@ $background-surface-dark: $color-dark;
   }
 
   .left .anchor {
-    margin-left: -1.5rem;
+    margin-left: -1rem;
   }
 
   .right .anchor {
-    margin-right: -1.5rem;
+    margin-right: -1rem;
   }
 }
 
 .scroll {
   overflow: scroll;
   flex: 1;
-  padding: 1.5rem;
+  padding: 1rem;
   scrollbar-width: none;
 
   &::-webkit-scrollbar {

@@ -148,13 +148,14 @@
 
 .left {
   position: relative;
+  padding: 0 1rem;
 
   @media (min-width: $breakpoint-md) {
     position: sticky;
     z-index: 1;
     top: 1rem;
     min-width: 260px;
-    padding-left: 2rem;
+    padding: 0 0 0 2rem;
   }
 
   .dot {
@@ -252,12 +253,13 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 1.5rem;
+    padding: 1rem;
     border: 0.0625rem solid $color-border;
     border-radius: 1rem;
     gap: 0.5rem;
 
     @include dark-mode {
+      padding: 1.5rem;
       border-color: $color-border-dark;
     }
 
