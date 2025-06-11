@@ -23,8 +23,7 @@ export const Toggle = ({ ...props }: ToggleProps) => {
       )}>
       <motion.span
         animate={{ x: props.checked ? 40 : 0 }}
-        transition={props.isSkeleton ? { duration: 0 } : { duration: 0.2 }}
-        className={clsx(mounted && styles.glass)}>
+        transition={props.isSkeleton ? { duration: 0 } : { duration: 0.2 }}>
         <Icon
           name="Sun"
           size="md"
@@ -38,7 +37,7 @@ export const Toggle = ({ ...props }: ToggleProps) => {
       </motion.span>
       <Checkbox
         {...props}
-        className={clsx(styles.checkbox, props.className, mounted && styles.glass)}
+        className={clsx(styles.checkbox, props.className)}
       />
     </div>
   )

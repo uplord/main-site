@@ -21,12 +21,7 @@ export const Social = ({ className, isMounted = false }: SocialProps) => {
       <a
         href="https://www.linkedin.com/in/themichael/"
         target="_blank"
-        className={clsx(
-          styles.icon,
-          styles.linkedin,
-          !mounted && styles.skeleton,
-          mounted && styles.glass,
-        )}
+        className={clsx(styles.icon, styles.linkedin, !mounted && styles.skeleton)}
         aria-label="Linkedin">
         <LinkedinIcon
           width="20"
@@ -36,12 +31,7 @@ export const Social = ({ className, isMounted = false }: SocialProps) => {
       <a
         href="https://www.instagram.com/michael.adam.allen/"
         target="_blank"
-        className={clsx(
-          styles.icon,
-          styles.instagram,
-          !mounted && styles.skeleton,
-          mounted && styles.glass,
-        )}
+        className={clsx(styles.icon, styles.instagram, !mounted && styles.skeleton)}
         aria-label="Instagram">
         <InstagramIcon
           width="20"
@@ -51,12 +41,7 @@ export const Social = ({ className, isMounted = false }: SocialProps) => {
       <a
         href="https://github.com/uplord/"
         target="_blank"
-        className={clsx(
-          styles.icon,
-          styles.github,
-          !mounted && styles.skeleton,
-          mounted && styles.glass,
-        )}
+        className={clsx(styles.icon, styles.github, !mounted && styles.skeleton)}
         aria-label="GitHub">
         <GithubIcon
           width="20"
@@ -65,12 +50,7 @@ export const Social = ({ className, isMounted = false }: SocialProps) => {
       </a>
       <a
         href="mailto:michael@uplord.co.uk"
-        className={clsx(
-          styles.icon,
-          styles.default,
-          !mounted && styles.skeleton,
-          mounted && styles.glass,
-        )}
+        className={clsx(styles.icon, styles.default, !mounted && styles.skeleton)}
         aria-label="Email">
         <EmailIcon
           width="20"

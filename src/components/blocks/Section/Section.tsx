@@ -21,7 +21,7 @@ export const Section = ({ id }: SectionProps) => {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.image}>
-            <div className={clsx(styles['image-wrap'], mounted && styles.glass)}>
+            <div className={clsx(styles['image-wrap'])}>
               {mounted ? (
                 <Image
                   src="/ellie.png"

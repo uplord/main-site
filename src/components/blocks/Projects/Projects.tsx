@@ -31,7 +31,7 @@ export const Projects = ({ id }: ProjectsProps) => {
               className={clsx(styles.item)}>
               {mounted ? (
                 <div
-                  className={clsx(styles.image, mounted && styles.glass)}
+                  className={clsx(styles.image)}
                   style={{ backgroundColor: project.bgColor, color: project.textColor }}>
                   <Image
                     src={project.img}
