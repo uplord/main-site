@@ -29,7 +29,7 @@
       background: rgb(0 0 0 / 20%);
 
       @include dark-mode {
-        background: rgb(0 0 0 / 40%);
+        background: rgb(255 255 255 / 10%);
       }
 
       &::before {
