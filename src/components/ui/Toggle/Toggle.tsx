@@ -7,12 +7,10 @@ import React from 'react'
 import styles from './toggle.module.scss'
 import { Checkbox, CheckboxProps } from '@/components/ui/Checkbox'
 import { Icon } from '@/components/utils/Icon'
-import { useMounted } from '@/lib/useMounted'
 
 export type ToggleProps = {} & CheckboxProps
 
 export const Toggle = ({ ...props }: ToggleProps) => {
-  const mounted = useMounted()
   return (
     <div
       className={clsx(
