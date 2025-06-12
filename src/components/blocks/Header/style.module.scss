@@ -3,15 +3,24 @@
 .header {
   position: sticky;
   z-index: 200;
-  top: 0;
-  padding-top: env(safe-area-inset-top);
-  border-bottom: 0.0625rem solid rgb(255 255 255 / 20%);
-  margin-top: -env(safe-area-inset-top);
+  bottom: 0;
+  padding-bottom: env(safe-area-inset-top);
+  border-top: 0.0625rem solid rgb(255 255 255 / 20%);
   background: $color-info;
   color: $color-header-text;
 
+  @media (min-width: $breakpoint-md) {
+    top: 0;
+    bottom: auto;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: 0;
+    border-top: 0;
+    border-bottom: 0.0625rem solid rgb(255 255 255 / 20%);
+    margin-top: -env(safe-area-inset-top);
+  }
+
   @include dark-mode {
-    border-bottom: 0.0625rem solid $color-border-dark;
+    border-bottom-color: $color-border-dark;
     background: $color-header-dark;
   }
 
