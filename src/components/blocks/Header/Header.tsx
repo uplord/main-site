@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 
 import styles from './style.module.scss'
 import { Toggle } from '@/components/ui/Toggle'
+import { useScroll } from '@/lib/scrollUtils'
 import { useMounted } from '@/lib/useMounted'
 
 export type HeaderProps = {
@@ -17,6 +18,7 @@ export const Header = ({ id }: HeaderProps) => {
   const { resolvedTheme, setTheme } = useTheme()
   const [darkMode, setDarkMode] = useState(false)
   const mounted = useMounted()
+  const isScrolled = useScroll()
 
   useEffect(() => {
     if (resolvedTheme) {
@@ -27,7 +29,7 @@ export const Header = ({ id }: HeaderProps) => {
   return (
     <div
       id={id}
-      className={clsx(styles.header, styles['is-home'])}>
+      className={clsx(styles.header, styles['is-home'], isScrolled && styles.scrolled)}>
       <div className={styles.container}>
         <div className={clsx(styles.top)}>
           <Link
