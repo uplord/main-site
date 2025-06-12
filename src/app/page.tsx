@@ -1,7 +1,5 @@
 'use client'
 
-import { useMediaQuery } from 'react-responsive'
-
 import styles from '@/app/page.module.scss'
 import { Banner } from '@/components/blocks/Banner'
 import { Footer } from '@/components/blocks/Footer'
@@ -12,11 +10,9 @@ import { Stack } from '@/components/blocks/Stack'
 import { Timeline } from '@/components/blocks/Timeline'
 
 export default function Home() {
-  const isMobile = useMediaQuery({ maxWidth: 743 })
-
   return (
     <div className={styles.page}>
-      {!isMobile && <Header />}
+      <Header />
       <main className={styles.main}>
         <Banner
           id="banner"
@@ -28,7 +24,6 @@ export default function Home() {
         <Stack />
       </main>
       <Footer />
-      {isMobile && <Header />}
     </div>
   )
 }
