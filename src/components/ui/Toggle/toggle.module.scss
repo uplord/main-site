@@ -12,6 +12,7 @@
 
       @include dark-mode {
         background-color: $color-skeleton-dark;
+        outline: 0;
       }
     }
 
@@ -31,8 +32,8 @@
       outline: 0.0625rem solid rgb(255 255 255 / 20%);
 
       @include dark-mode {
-        border: 0.0625rem solid $color-border-dark;
         background: rgb(255 255 255 / 10%);
+        outline-color: $color-border-dark;
       }
 
       &::before {
