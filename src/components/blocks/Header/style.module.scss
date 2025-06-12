@@ -5,26 +5,18 @@
   z-index: 200;
   top: 0;
   padding-top: env(safe-area-inset-top);
+  border-bottom: 0.0625rem solid rgb(255 255 255 / 20%);
   margin-top: -env(safe-area-inset-top);
+  background: $color-info;
   color: $color-header-text;
+
+  @include dark-mode {
+    border-bottom: 0.0625rem solid $color-border-dark;
+    background: $color-header-dark;
+  }
 
   &.is-home {
     margin-bottom: -$header-height;
-  }
-
-  &::before {
-    position: absolute;
-    z-index: -1;
-    border-bottom: 0.0625rem solid rgb(255 255 255 / 20%);
-    background: $color-info;
-    content: '';
-    inset: 0;
-
-    @include dark-mode {
-      border-bottom: 0.0625rem solid $color-border-dark;
-      background: rgb(255 255 255 / 10%);
-      background-color: $color-header-dark;
-    }
   }
 }
 
@@ -104,8 +96,8 @@
     outline: 0.0625rem solid rgb(255 255 255 / 20%);
 
     @include dark-mode {
-      border: 0.0625rem solid $color-border-dark;
       background: rgb(255 255 255 / 10%);
+      outline: 0.0625rem solid $color-border-dark;
     }
   }
 

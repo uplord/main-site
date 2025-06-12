@@ -1,10 +1,6 @@
 @use './forward' as *;
 @use './normalize';
 
-html {
-  overflow-y: scroll;
-}
-
 .light {
   background: $color-light;
   color: $color-text;
@@ -18,9 +14,15 @@ html {
 body {
   background: $color-light;
   color: $color-text;
+  overflow-y: scroll;
 
   @include dark-mode {
     background: $color-dark;
     color: $color-text-dark;
   }
+}
+
+.stop-scroll {
+  position: relative;
+  overflow: hidden;
 }

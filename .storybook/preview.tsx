@@ -36,7 +36,16 @@ const preview: Preview = {
     },
     options: {
       storySort: {
-        order: ['Components', 'Styleguide', 'Blocks', 'Navigation', 'UI', 'Utils'],
+        order: [
+          'Components',
+          'Styleguide',
+          'Blocks',
+          'Navigation',
+          'UI',
+          'Utils',
+          'Modals',
+          'Pages',
+        ],
       },
     },
     pseudo: {

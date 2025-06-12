@@ -40,8 +40,6 @@ const ButtonOpenModal = NiceModal.create((props: ModalProps) => {
         hasBorder: true,
       }}
       footerProps={{
-        title: 'Title',
-        subtext: 'Subtext',
         leading: (
           <Button
             label="Back"

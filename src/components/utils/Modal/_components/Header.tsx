@@ -1,7 +1,9 @@
 import clsx from 'clsx'
 import React from 'react'
+import { useMediaQuery } from 'react-responsive'
 
 import styles from '../modal.module.scss'
+import { ButtonProps } from '@/components/ui/Button'
 
 export type HeaderProps = {
   title?: string
@@ -12,6 +14,10 @@ export type HeaderProps = {
   sheet?: boolean
 }
 
+const isAnchorButton = (node: React.ReactNode): node is React.ReactElement<ButtonProps> => {
+  return React.isValidElement(node) && (node as React.ReactElement<any>).props?.variant === 'anchor'
+}
+
 export const Header = ({
   title = '',
   subtext = '',
@@ -20,9 +26,20 @@ export const Header = ({
   hasBorder = true,
   sheet = false,
 }: HeaderProps) => {
+  const isMobile = useMediaQuery({ maxWidth: 743 })
+  const hasAnchorLeading = isAnchorButton(leading)
+  const hasAnchorTrailing = isAnchorButton(trailing)
+
   return (
-    <div className={clsx(styles.header, hasBorder && styles.border, sheet && styles.sheet)}>
-      {!sheet && leading && <div className={styles.left}>{leading}</div>}
+    <div
+      className={clsx(
+        styles.header,
+        hasBorder && styles.border,
+        sheet && !isMobile && styles.sheet,
+      )}>
+      {!sheet && leading && !isMobile && (
+        <div className={clsx(styles.left, hasAnchorLeading && styles.anchor)}>{leading}</div>
+      )}
 
       {(title || subtext) && (
         <div className={styles.top}>
@@ -31,7 +48,9 @@ export const Header = ({
         </div>
       )}
 
-      {trailing && <div className={styles.right}>{trailing}</div>}
+      {trailing && (
+        <div className={clsx(styles.right, hasAnchorTrailing && styles.anchor)}>{trailing}</div>
+      )}
     </div>
   )
 }

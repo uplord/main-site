@@ -48,7 +48,7 @@ export const Modal = ({
   const getInitialStyle = () => {
     const base = { opacity: 0 }
     if (sheet && !isMobile) {
-      return { ...base, translateX: 'calc(100% + 0.5rem)' }
+      return { ...base, translateX: 'calc(100% + 0.5rem)', opacity: 1 }
     }
     return base
   }
@@ -56,7 +56,7 @@ export const Modal = ({
   const getAnimateStyle = () => {
     const base = { opacity: 1 }
     if (sheet && !isMobile) {
-      return { ...base, translateX: 0 }
+      return { ...base, translateX: 0, opacity: 1 }
     }
     return base
   }
@@ -65,12 +65,12 @@ export const Modal = ({
     <AnimatePresence onExitComplete={() => modal.remove()}>
       {modal.visible && (
         <motion.div
-          className={`${styles.backdrop} ${bottomSheet && styles['bottom-sheet']} ${sheet && !isMobile && styles.sheet}`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.6 }}>
+          className={`${styles.backdrop} ${bottomSheet && styles['bottom-sheet']} ${sheet && !isMobile && styles.sheet}`}>
           <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.6 }}
             onClick={() => backdropClose && modal.hide()}
             className={styles['backdrop--close-button']}
           />

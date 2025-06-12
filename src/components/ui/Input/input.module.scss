@@ -23,7 +23,7 @@
   padding: 0.96875rem;
   border: 0.0625rem solid $color-border;
   border-radius: 0.5rem;
-  background-color: $color-bg;
+  background-color: transparent;
   gap: 0.5rem;
   line-height: 1.4375rem;
   outline: 0.125rem solid transparent;
@@ -36,7 +36,6 @@
 
   @include dark-mode {
     border-color: $color-border-dark;
-    background-color: $color-bg-dark;
   }
 
   @media (hover: hover) {

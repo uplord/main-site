@@ -8,7 +8,7 @@ import { Button, ButtonProps } from '@/components/ui/Button'
 import { Icon, IconProps } from '@/components/utils/Icon'
 
 export type InputProps = {
-  type: 'text' | 'email' | 'password' | 'number'
+  type?: 'text' | 'email' | 'password' | 'number'
   placeholder?: string
   name: string
   id?: string
@@ -28,6 +28,8 @@ export type InputProps = {
   isLoading?: boolean
   isSkeleton?: boolean
   isError?: boolean
+
+  autoComplete?: string
 
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
@@ -55,6 +57,8 @@ export const Input = ({
   isError = false,
 
   onChange,
+
+  ...props
 }: InputProps) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const [isPasswordVisible, setIsPasswordVisible] = useState(false)
@@ -131,6 +135,7 @@ export const Input = ({
             placeholder=" "
             required
             disabled={isDisabled || isLoading || isSkeleton}
+            {...props}
           />
           <span className={styles.placeholder}>{placeholder}</span>
         </div>
