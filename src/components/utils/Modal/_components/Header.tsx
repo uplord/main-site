@@ -15,7 +15,7 @@ export type HeaderProps = {
 }
 
 const isAnchorButton = (node: React.ReactNode): node is React.ReactElement<ButtonProps> => {
-  return React.isValidElement(node) && (node as React.ReactElement<any>).props?.variant === 'anchor'
+  return React.isValidElement<ButtonProps>(node) && node.props?.variant === 'anchor'
 }
 
 export const Header = ({
