@@ -21,7 +21,6 @@
 
   &.scrolled {
     border-bottom-color: rgb(255 255 255 / 20%);
-    box-shadow: rgb(0 0 0 / 20%) 0 0.25rem 0.75rem 0;
 
     @include dark-mode {
       border-bottom-color: $color-border-dark;
@@ -102,7 +101,6 @@
     display: none;
     border-radius: 1.5rem;
     background: rgb(0 0 0 / 20%);
-    box-shadow: inset rgb(0 0 0 / 20%) 0 0.0625rem 1rem 0;
     outline: 0.0625rem solid rgb(255 255 255 / 20%);
 
     @include dark-mode {
@@ -112,7 +110,6 @@
   }
 
   &.skeleton {
-    box-shadow: none;
     outline: 0;
 
     @include light-mode {
