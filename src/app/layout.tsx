@@ -1,4 +1,5 @@
 import { Inter, Nunito } from 'next/font/google'
+import 'uplord-ui/dist/uplord-ui.css'
 
 import NiceModalProvider from '@/context/NiceModalProvider'
 import { ThemeProvider } from '@/context/ThemeProvider'

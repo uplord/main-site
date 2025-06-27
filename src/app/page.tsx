@@ -1,18 +1,23 @@
 'use client'
 
+import { useTheme } from 'next-themes'
+import { Header, Footer, Banner, Projects, Section, Stack, Timeline } from 'uplord-ui'
+
 import styles from '@/app/page.module.scss'
-import { Banner } from '@/components/blocks/Banner'
-import { Footer } from '@/components/blocks/Footer'
-import { Header } from '@/components/blocks/Header'
-import { Projects } from '@/components/blocks/Projects'
-import { Section } from '@/components/blocks/Section'
-import { Stack } from '@/components/blocks/Stack'
-import { Timeline } from '@/components/blocks/Timeline'
 
 export default function Home() {
+  const { resolvedTheme, setTheme } = useTheme()
+
+  const handleToggleTheme = (theme: 'dark' | 'light') => {
+    setTheme(theme)
+  }
+
   return (
     <div className={styles.page}>
-      <Header />
+      <Header
+        theme={resolvedTheme}
+        onToggleTheme={handleToggleTheme}
+      />
       <main className={styles.main}>
         <Banner
           id="banner"
