@@ -16,6 +16,7 @@ export default function Home() {
     <div className={styles.page}>
       <Header
         id="header"
+        isHome
         theme={resolvedTheme}
         onToggleTheme={handleToggleTheme}
       />
