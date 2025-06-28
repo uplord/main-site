@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "chromatic": "chromatic --exit-zero-on-changes",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -25,7 +24,7 @@
     "react-transition-group": "^4.4.5",
     "resend": "^4.1.2",
     "stylelint-config-idiomatic-order": "^10.0.0",
-    "uplord-ui": "^0.0.8",
+    "uplord-ui": "^0.0.9",
     "yup": "^1.6.1"
   },
   "devDependencies": {
@@ -37,7 +36,6 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "chromatic": "^11.25.2",
     "clsx": "^2.1.1",
     "css-loader": "^7.1.2",
     "eslint": "^9",
