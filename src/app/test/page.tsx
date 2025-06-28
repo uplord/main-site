@@ -6,9 +6,9 @@ import { useTheme } from 'next-themes'
 import dynamic from 'next/dynamic'
 import React, { FC } from 'react'
 import { Header, Example, Button } from 'uplord-ui'
+import { useMounted } from 'uplord-ui/lib'
 
 import styles from '../page.module.scss'
-import { useMounted } from '@/lib/useMounted'
 
 const ContactFormModal = dynamic(() => import('@/components/modals/ContactForm'), { ssr: false })
 

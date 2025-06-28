@@ -1,9 +1,9 @@
 import NiceModal, { NiceModalHocProps, useModal } from '@ebay/nice-modal-react'
 import { FC, useState } from 'react'
 import { Modal, Input, Textarea, Button } from 'uplord-ui'
+import { useModalData } from 'uplord-ui/lib'
 
 import styles from './contact-form.module.scss'
-import { useModalData } from '@/lib/useModalData'
 
 export const ContactFormModal: FC<NiceModalHocProps> = NiceModal.create(() => {
   useModalData()
