@@ -25,7 +25,7 @@
     "react-transition-group": "^4.4.5",
     "resend": "^4.1.2",
     "stylelint-config-idiomatic-order": "^10.0.0",
-    "uplord-ui": "^0.0.6",
+    "uplord-ui": "^0.0.7",
     "yup": "^1.6.1"
   },
   "devDependencies": {
@@ -85,6 +85,9 @@
     ]
   },
   "compilerOptions": {
-    "typeRoots": ["./src/types", "./node_modules/@types"]
+    "typeRoots": [
+      "./src/types",
+      "./node_modules/@types"
+    ]
   }
 }
