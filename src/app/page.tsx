@@ -15,6 +15,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <Header
+        id="header"
         theme={resolvedTheme}
         onToggleTheme={handleToggleTheme}
       />
@@ -26,7 +27,7 @@ export default function Home() {
         <Section id="about-me" />
         <Projects id="projects" />
         <Timeline id="timeline" />
-        <Stack />
+        <Stack id="stack" />
       </main>
       <Footer />
     </div>

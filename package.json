@@ -25,7 +25,7 @@
     "react-transition-group": "^4.4.5",
     "resend": "^4.1.2",
     "stylelint-config-idiomatic-order": "^10.0.0",
-    "uplord-ui": "^0.0.3",
+    "uplord-ui": "^0.0.6",
     "yup": "^1.6.1"
   },
   "devDependencies": {
@@ -83,5 +83,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "compilerOptions": {
+    "typeRoots": ["./src/types", "./node_modules/@types"]
   }
 }
