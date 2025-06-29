@@ -9,7 +9,7 @@ import { useModalData, useMounted } from 'uplord-ui/lib'
 
 import styles from '../page.module.scss'
 
-export const ContactFormModal: FC<NiceModalHocProps> = NiceModal.create(() => {
+const ContactFormModal: FC<NiceModalHocProps> = NiceModal.create(() => {
   useModalData()
   const modal = useModal()
 
