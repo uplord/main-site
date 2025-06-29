@@ -1,16 +1,48 @@
 'use client'
 
-import NiceModal from '@ebay/nice-modal-react'
+import NiceModal, { NiceModalHocProps, useModal } from '@ebay/nice-modal-react'
 import { clsx } from 'clsx'
 import { useTheme } from 'next-themes'
-import dynamic from 'next/dynamic'
 import React, { FC } from 'react'
-import { Header, Example, Button } from 'uplord-ui'
-import { useMounted } from 'uplord-ui/lib'
+import { Header, Example, Button, Modal, ContactForm } from 'uplord-ui'
+import { useModalData, useMounted } from 'uplord-ui/lib'
 
 import styles from '../page.module.scss'
 
-const ContactFormModal = dynamic(() => import('@/components/modals/ContactForm'), { ssr: false })
+export const ContactFormModal: FC<NiceModalHocProps> = NiceModal.create(() => {
+  useModalData()
+  const modal = useModal()
+
+  return (
+    <Modal
+      modal={modal}
+      headerProps={{
+        title: 'Get in touch',
+        trailing: (
+          <Button
+            leadingIcon="X"
+            size="sm"
+            variant="anchor"
+            onClick={() => modal.hide()}
+          />
+        ),
+      }}
+      footerProps={{
+        trailing: (
+          <Button
+            label="Submit"
+            size="md"
+            variant="primary"
+            onClick={() => console.log('Submit')}
+          />
+        ),
+      }}
+      mobileDraggable
+      bottomSheet>
+      <ContactForm />
+    </Modal>
+  )
+})
 
 export default function TestPage() {
   const mounted = useMounted()
@@ -30,7 +62,7 @@ export default function TestPage() {
       <main className={styles.main}>
         <div className={styles.section}>
           <div className={styles.container}>
-            <Example />
+            <Example isSkeleton={!mounted} />
             <Button
               label="Get in touch"
               variant="success"
