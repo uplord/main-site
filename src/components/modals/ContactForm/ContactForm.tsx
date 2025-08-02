@@ -74,7 +74,7 @@ export const ContactForm = ({ setSubmitForm, setIsDisabled }: ContactFormProps) 
           } catch (err) {
             setIsDisabled(true)
             const errors: Record<string, string> = {}
-            if (err.inner) {
+            if (err instanceof yup.ValidationError) {
               err.inner.forEach((e: yup.ValidationError) => {
                 if (e.path) errors[e.path] = e.message
               })
