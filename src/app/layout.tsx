@@ -1,3 +1,4 @@
+import type { Viewport } from 'next'
 import { Inter, Nunito } from 'next/font/google'
 import 'uplord-ui/dist/uplord-ui.css'
 
@@ -16,6 +17,13 @@ const nunito = Nunito({
   weight: ['400', '500', '600', '700'],
   display: 'swap',
 })
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  minimumScale: 1,
+  initialScale: 1,
+  viewportFit: 'cover',
+}
 
 export const metadata = {
   title: 'Michael Allen - Front End Developer',
@@ -36,12 +44,6 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning>
-      <head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, viewport-fit=cover"
-        />
-      </head>
       <body
         className={`${inter.className} ${nunito.className}`}
         suppressHydrationWarning>
