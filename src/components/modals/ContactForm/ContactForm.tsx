@@ -54,6 +54,7 @@ export const ContactForm = ({ setSubmitForm, setIsDisabled }: ContactFormProps) 
       const result = await response.json()
       console.log('reCAPTCHA result:', result)
       console.log('Form values:', values)
+      setIsDisabled(false)
     } catch (error) {
       setIsDisabled(false)
       console.error('Error submitting form:', error)
@@ -67,12 +68,12 @@ export const ContactForm = ({ setSubmitForm, setIsDisabled }: ContactFormProps) 
         initialValues={{ fullName: '', email: '', message: '' }}
         validationSchema={validationSchema}
         validate={(values) => {
+          setIsDisabled(true)
           try {
             validationSchema.validateSync(values, { abortEarly: false })
-            setIsDisabled(false)
             return {}
           } catch (err) {
-            setIsDisabled(true)
+            setIsDisabled(false)
             const errors: Record<string, string> = {}
             if (err instanceof yup.ValidationError) {
               err.inner.forEach((e: yup.ValidationError) => {
