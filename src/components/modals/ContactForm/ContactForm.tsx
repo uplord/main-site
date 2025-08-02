@@ -1,3 +1,5 @@
+'use client'
+
 import * as yup from 'yup'
 import { Formik, Form, Field, FormikProps } from 'formik'
 import { useEffect, useRef } from 'react'
@@ -73,7 +75,6 @@ export const ContactForm = ({ setSubmitForm, setIsDisabled }: ContactFormProps) 
             validationSchema.validateSync(values, { abortEarly: false })
             return {}
           } catch (err) {
-            setIsDisabled(false)
             const errors: Record<string, string> = {}
             if (err instanceof yup.ValidationError) {
               err.inner.forEach((e: yup.ValidationError) => {
@@ -81,6 +82,8 @@ export const ContactForm = ({ setSubmitForm, setIsDisabled }: ContactFormProps) 
               })
             }
             return errors
+          } finally {
+            setIsDisabled(false)
           }
         }}
         onSubmit={handleSubmit}>

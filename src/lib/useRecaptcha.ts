@@ -4,16 +4,15 @@ export const useRecaptcha = (siteKey: string) => {
   useEffect(() => {
     if (!siteKey) return
 
-    const loadScript = () => {
-      if (window.grecaptcha) return
+    const scriptSrc = `https://www.google.com/recaptcha/api.js?render=${siteKey}`
+    const alreadyLoaded = document.querySelector(`script[src="${scriptSrc}"]`)
 
-      const script = document.createElement('script')
-      script.src = `https://www.google.com/recaptcha/api.js?render=${siteKey}`
-      script.async = true
-      script.defer = true
-      document.head.appendChild(script)
-    }
+    if (alreadyLoaded) return
 
-    loadScript()
+    const script = document.createElement('script')
+    script.src = scriptSrc
+    script.async = true
+    script.defer = true
+    document.head.appendChild(script)
   }, [siteKey])
 }

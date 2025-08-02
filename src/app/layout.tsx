@@ -20,8 +20,8 @@ const nunito = Nunito({
 
 export const viewport: Viewport = {
   width: 'device-width',
-  minimumScale: 1,
   initialScale: 1,
+  minimumScale: 1,
   viewportFit: 'cover',
 }
 
@@ -44,6 +44,12 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning>
+      <head>
+        <meta
+          name="theme-color"
+          content="#000000"
+        />
+      </head>
       <body
         className={`${inter.className} ${nunito.className}`}
         suppressHydrationWarning>

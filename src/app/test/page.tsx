@@ -19,7 +19,7 @@ export default function TestPage() {
   }
 
   return (
-    <div className={styles.page}>
+    <div className={clsx(styles.page, 'page')}>
       <Header
         id="header"
         theme={resolvedTheme}
