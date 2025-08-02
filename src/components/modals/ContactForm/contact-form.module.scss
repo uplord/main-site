@@ -1,5 +1,24 @@
+@use 'uplord-ui/styles/forward' as *;
+
 .section {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+p.small {
+  @include text-sm;
+  @include text-normal;
+
+  & {
+    color: $color-text;
+
+    @include dark-mode {
+      color: $color-text-dark;
+    }
+  }
+
+  a {
+    color: $color-primary;
+  }
 }
