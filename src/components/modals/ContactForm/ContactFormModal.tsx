@@ -2,6 +2,7 @@
 
 import NiceModal, { NiceModalHocProps, useModal } from '@ebay/nice-modal-react'
 import React, { FC, useEffect, useState } from 'react'
+import { useMediaQuery } from 'react-responsive'
 import { Button, Modal } from 'uplord-ui'
 
 import styles from './contact-form.module.scss'
@@ -11,6 +12,7 @@ export const ContactFormModal: FC<NiceModalHocProps> = NiceModal.create(() => {
   const modal = useModal()
   const [submitForm, setSubmitForm] = useState<(() => void) | null>(null)
   const [isDisabled, setIsDisabled] = useState<boolean>(false)
+  const isMobile = useMediaQuery({ maxWidth: 743 })
 
   useEffect(() => {
     document.body.classList.add('stop-scroll')
@@ -48,7 +50,7 @@ export const ContactFormModal: FC<NiceModalHocProps> = NiceModal.create(() => {
           />
         ),
       }}
-      mobileDraggable
+      fullscreen={isMobile ? true : ''}
       bottomSheet>
       <ContactForm
         setSubmitForm={setSubmitForm}
