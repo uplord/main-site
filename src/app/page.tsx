@@ -53,7 +53,7 @@ export default function Home() {
       {isClient && isMobile && (
         <Navbar className={styles.nav}>
           <Button
-            href="#banner"
+            href="/"
             size="md"
             variant="anchor"
             className={styles.button}
