@@ -1,12 +1,31 @@
 'use client'
 
 import { useTheme } from 'next-themes'
-import { Header, Footer, Banner, Projects, Section, Stack, Timeline } from 'uplord-ui'
+import { useEffect, useState } from 'react'
+import { useMediaQuery } from 'react-responsive'
+import {
+  Header,
+  Navbar,
+  Footer,
+  Button,
+  Icon,
+  Banner,
+  Projects,
+  Section,
+  Stack,
+  Timeline,
+} from 'uplord-ui'
 
 import styles from '@/app/page.module.scss'
 
 export default function Home() {
   const { resolvedTheme, setTheme } = useTheme()
+  const isMobile = useMediaQuery({ maxWidth: 743 })
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   const handleToggleTheme = (theme: 'dark' | 'light') => {
     setTheme(theme)
@@ -31,6 +50,75 @@ export default function Home() {
         <Stack id="stack" />
       </main>
       <Footer />
+      {isClient && isMobile && (
+        <Navbar className={styles.nav}>
+          <Button
+            href="#banner"
+            size="md"
+            variant="anchor"
+            className={styles.button}
+            hasPadding={false}>
+            <Icon
+              name="Home"
+              size="lg"
+              strokeWidth={1}
+            />
+            <span>Home</span>
+          </Button>
+          <Button
+            href="#about-me"
+            size="md"
+            variant="anchor"
+            className={styles.button}
+            hasPadding={false}>
+            <Icon
+              name="User"
+              size="lg"
+              strokeWidth={1}
+            />
+            <span>About me</span>
+          </Button>
+          <Button
+            href="#projects"
+            size="md"
+            variant="anchor"
+            className={styles.button}
+            hasPadding={false}>
+            <Icon
+              name="FileText"
+              size="lg"
+              strokeWidth={1}
+            />
+            <span>Projects</span>
+          </Button>
+          <Button
+            href="#timeline"
+            size="md"
+            variant="anchor"
+            className={styles.button}
+            hasPadding={false}>
+            <Icon
+              name="ChartNoAxesGantt"
+              size="lg"
+              strokeWidth={1}
+            />
+            <span>Timeline</span>
+          </Button>
+          <Button
+            href="mailto:michael@uplord.co.uk"
+            size="md"
+            variant="anchor"
+            className={styles.button}
+            hasPadding={false}>
+            <Icon
+              name="Mail"
+              size="lg"
+              strokeWidth={1}
+            />
+            <span>Contact</span>
+          </Button>
+        </Navbar>
+      )}
     </div>
   )
 }

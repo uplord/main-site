@@ -33,3 +33,49 @@
   flex-direction: column;
   gap: 1rem;
 }
+
+.nav {
+  position: sticky;
+  z-index: 1000;
+  bottom: 0;
+  padding: 0 0.75rem;
+  padding-bottom: env(safe-area-inset-bottom);
+  background-color: #104a92;
+
+  @include dark-mode {
+    background-color: #191919;
+  }
+
+  .button {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 0.71875rem 0;
+    color: $color-light;
+    gap: 0.25rem;
+
+    @include dark-mode {
+      color: $color-heading-dark;
+    }
+
+    @media (hover) and (pointer: fine) {
+      &:hover {
+        color: $color-light;
+        cursor: pointer;
+      }
+    }
+
+    span {
+      @include text-xs;
+      @include text-normal;
+
+      & {
+        color: $color-light;
+
+        @include dark-mode {
+          color: $color-text-dark;
+        }
+      }
+    }
+  }
+}
