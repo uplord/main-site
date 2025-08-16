@@ -2,8 +2,6 @@
 
 import { clsx } from 'clsx'
 import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
-import { useMediaQuery } from 'react-responsive'
 import {
   Header,
   Navbar,
@@ -19,16 +17,12 @@ import {
 
 import styles from '@/app/page.module.scss'
 import { useScroll } from '@/lib/scrollUtils'
+import { useMounted } from '@/lib/useMounted'
 
 export default function Home() {
   const { resolvedTheme, setTheme } = useTheme()
-  const isMobile = useMediaQuery({ maxWidth: 743 })
-  const [isClient, setIsClient] = useState(false)
+  const mounted = useMounted()
   const isScrolled = useScroll()
-
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
 
   const handleToggleTheme = (theme: 'dark' | 'light') => {
     setTheme(theme)
@@ -53,70 +47,69 @@ export default function Home() {
         <Stack id="stack" />
       </main>
       <Footer />
-      {isClient && isMobile && (
-        <Navbar className={clsx(styles.nav, isScrolled && styles.scroll)}>
-          <Button
-            href="/"
-            size="md"
-            variant="anchor"
-            className={styles.button}
-            hasPadding={false}>
-            <Icon
-              name="Home"
-              size="lg"
-            />
-            <span>Home</span>
-          </Button>
-          <Button
-            href="#about-me"
-            size="md"
-            variant="anchor"
-            className={styles.button}
-            hasPadding={false}>
-            <Icon
-              name="User"
-              size="lg"
-            />
-            <span>About me</span>
-          </Button>
-          <Button
-            href="#projects"
-            size="md"
-            variant="anchor"
-            className={styles.button}
-            hasPadding={false}>
-            <Icon
-              name="FileText"
-              size="lg"
-            />
-            <span>Projects</span>
-          </Button>
-          <Button
-            href="#timeline"
-            size="md"
-            variant="anchor"
-            className={styles.button}
-            hasPadding={false}>
-            <Icon
-              name="ChartNoAxesGantt"
-              size="lg"
-            />
-            <span>Timeline</span>
-          </Button>
-          <Button
-            href="mailto:michael@uplord.co.uk"
-            size="md"
-            variant="anchor"
-            className={styles.button}
-            hasPadding={false}>
-            <Icon
-              name="Mail"
-              size="lg"
-            />
-            <span>Contact</span>
-          </Button>
-        </Navbar>
-      )}
+      <Navbar
+        className={clsx(styles.nav, isScrolled && styles.scroll, !mounted && styles.skeleton)}>
+        <Button
+          href="/"
+          size="md"
+          variant="anchor"
+          className={styles.button}
+          hasPadding={false}>
+          <Icon
+            name="Home"
+            size="lg"
+          />
+          <span>Home</span>
+        </Button>
+        <Button
+          href="#about-me"
+          size="md"
+          variant="anchor"
+          className={styles.button}
+          hasPadding={false}>
+          <Icon
+            name="User"
+            size="lg"
+          />
+          <span>About me</span>
+        </Button>
+        <Button
+          href="#projects"
+          size="md"
+          variant="anchor"
+          className={styles.button}
+          hasPadding={false}>
+          <Icon
+            name="FileText"
+            size="lg"
+          />
+          <span>Projects</span>
+        </Button>
+        <Button
+          href="#timeline"
+          size="md"
+          variant="anchor"
+          className={styles.button}
+          hasPadding={false}>
+          <Icon
+            name="ChartNoAxesGantt"
+            size="lg"
+          />
+          <span>Timeline</span>
+        </Button>
+        <Button
+          href="mailto:michael@uplord.co.uk"
+          size="md"
+          variant="anchor"
+          className={styles.button}
+          hasPadding={false}>
+          <Icon
+            name="Mail"
+            size="lg"
+          />
+          <span>Contact</span>
+        </Button>
+      </Navbar>
     </div>
   )
 }
