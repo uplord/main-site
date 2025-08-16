@@ -1,5 +1,6 @@
 'use client'
 
+import { clsx } from 'clsx'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
@@ -17,11 +18,13 @@ import {
 } from 'uplord-ui'
 
 import styles from '@/app/page.module.scss'
+import { useScroll } from '@/lib/scrollUtils'
 
 export default function Home() {
   const { resolvedTheme, setTheme } = useTheme()
   const isMobile = useMediaQuery({ maxWidth: 743 })
   const [isClient, setIsClient] = useState(false)
+  const isScrolled = useScroll()
 
   useEffect(() => {
     setIsClient(true)
@@ -51,7 +54,7 @@ export default function Home() {
       </main>
       <Footer />
       {isClient && isMobile && (
-        <Navbar className={styles.nav}>
+        <Navbar className={clsx(styles.nav, isScrolled && styles.scroll)}>
           <Button
             href="/"
             size="md"
