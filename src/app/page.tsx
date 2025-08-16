@@ -17,12 +17,15 @@ import {
 
 import styles from '@/app/page.module.scss'
 import { useScroll } from '@/lib/scrollUtils'
+import { useActiveSection } from '@/lib/useActiveSection'
 import { useMounted } from '@/lib/useMounted'
 
-export default function Home() {
+export default function HomePage() {
   const { resolvedTheme, setTheme } = useTheme()
   const mounted = useMounted()
   const isScrolled = useScroll()
+
+  const activeId = useActiveSection(['banner', 'about-me', 'projects', 'timeline'])
 
   const handleToggleTheme = (theme: 'dark' | 'light') => {
     setTheme(theme)
@@ -53,7 +56,7 @@ export default function Home() {
           href="/"
           size="md"
           variant="anchor"
-          className={styles.button}
+          className={clsx(styles.button, activeId === 'banner' && mounted && styles.active)}
           hasPadding={false}>
           <Icon
             name="Home"
@@ -65,7 +68,7 @@ export default function Home() {
           href="#about-me"
           size="md"
           variant="anchor"
-          className={styles.button}
+          className={clsx(styles.button, activeId === 'about-me' && mounted && styles.active)}
           hasPadding={false}>
           <Icon
             name="User"
@@ -77,7 +80,7 @@ export default function Home() {
           href="#projects"
           size="md"
           variant="anchor"
-          className={styles.button}
+          className={clsx(styles.button, activeId === 'projects' && mounted && styles.active)}
           hasPadding={false}>
           <Icon
             name="FileText"
@@ -89,7 +92,7 @@ export default function Home() {
           href="#timeline"
           size="md"
           variant="anchor"
-          className={styles.button}
+          className={clsx(styles.button, activeId === 'timeline' && mounted && styles.active)}
           hasPadding={false}>
           <Icon
             name="ChartNoAxesGantt"
