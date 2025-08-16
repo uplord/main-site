@@ -64,7 +64,6 @@ export default function Home() {
             <Icon
               name="Home"
               size="lg"
-              strokeWidth={1}
             />
             <span>Home</span>
           </Button>
@@ -77,7 +76,6 @@ export default function Home() {
             <Icon
               name="User"
               size="lg"
-              strokeWidth={1}
             />
             <span>About me</span>
           </Button>
@@ -90,7 +88,6 @@ export default function Home() {
             <Icon
               name="FileText"
               size="lg"
-              strokeWidth={1}
             />
             <span>Projects</span>
           </Button>
@@ -103,7 +100,6 @@ export default function Home() {
             <Icon
               name="ChartNoAxesGantt"
               size="lg"
-              strokeWidth={1}
             />
             <span>Timeline</span>
           </Button>
@@ -116,7 +112,6 @@ export default function Home() {
             <Icon
               name="Mail"
               size="lg"
-              strokeWidth={1}
             />
             <span>Contact</span>
           </Button>
