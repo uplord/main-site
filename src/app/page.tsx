@@ -2,6 +2,7 @@
 
 import { clsx } from 'clsx'
 import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import {
   Header,
@@ -22,7 +23,12 @@ import { useScroll } from '@/lib/scrollUtils'
 export default function Home() {
   const { resolvedTheme, setTheme } = useTheme()
   const isMobile = useMediaQuery({ maxWidth: 743 })
+  const [isClient, setIsClient] = useState(false)
   const isScrolled = useScroll()
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   const handleToggleTheme = (theme: 'dark' | 'light') => {
     setTheme(theme)
@@ -47,7 +53,7 @@ export default function Home() {
         <Stack id="stack" />
       </main>
       <Footer />
-      {isMobile && (
+      {isClient && isMobile && (
         <Navbar className={clsx(styles.nav, isScrolled && styles.scroll)}>
           <Button
             href="/"
