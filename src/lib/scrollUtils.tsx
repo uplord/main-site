@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 export function useScroll() {
-  const [isScrolled, setIsScrolled] = useState(window.scrollY > 0 ? true : false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
