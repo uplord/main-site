@@ -4,7 +4,7 @@ import NiceModal from '@ebay/nice-modal-react'
 import { clsx } from 'clsx'
 import { useTheme } from 'next-themes'
 import React, { FC } from 'react'
-import { Header, Example, Button } from 'uplord-ui'
+import { Header, Button } from 'uplord-ui'
 import { useMounted } from 'uplord-ui/lib'
 
 import styles from '@/app/(main)/page.module.scss'
@@ -28,7 +28,6 @@ export default function TestPage() {
       <main className={styles.main}>
         <div className={styles.section}>
           <div className={styles.container}>
-            <Example isSkeleton={!mounted} />
             <Button
               label="Get in touch"
               variant="success"
