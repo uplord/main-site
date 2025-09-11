@@ -13,11 +13,15 @@
 
 body {
   color: $color-text;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   @include dark-mode {
     color: $color-text-dark;
   }
+}
+
+.admin {
+  background: $color-dark;
 }
 
 .stop-scroll {

@@ -1,0 +1,94 @@
+@use 'uplord-ui/styles/forward' as *;
+
+.header {
+  @include text-md;
+  @include text-bold;
+
+  & {
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    min-height: 4.375rem;
+    padding: 0.9375rem 1.5rem 0.875rem;
+    border-bottom: 0.0625rem solid $color-border;
+    background-color: $color-light;
+
+    @media (max-width: ($breakpoint-md - 1)) {
+      display: none;
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      padding: 0.9375rem 3rem 0.875rem;
+    }
+  }
+
+  .content {
+    display: flex;
+    width: 100%;
+    max-width: 1600px;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+.dropdown {
+  position: relative;
+
+  &.open .container {
+    display: grid;
+  }
+
+  .container {
+    position: absolute;
+    z-index: 10;
+    top: 100%;
+    right: 0;
+    display: none;
+    min-width: 17.5rem;
+    padding: 0.5rem 1rem;
+    border: 0.0625rem solid $color-border;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    background-color: $color-light;
+
+    li {
+      width: 100%;
+      border-bottom: 0.0625rem solid $color-border;
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+
+  .button {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0.5rem 0;
+    border-radius: 0;
+
+    @media (hover) and (pointer: fine) {
+      &:active {
+        scale: 1;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

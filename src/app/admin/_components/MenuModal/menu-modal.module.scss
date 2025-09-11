@@ -1,0 +1,43 @@
+@use 'uplord-ui/styles/forward' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+
+    &.bottom {
+      border-top: 0.0625rem solid $color-border;
+      margin-top: auto;
+
+      .button {
+        &:last-child {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .button {
+    @include text-md;
+    @include text-normal;
+
+    & {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      padding: 1rem 0;
+      border-radius: 0;
+      border-bottom: 0.0625rem solid $color-border;
+      appearance: none;
+      gap: 1rem;
+      text-align: left;
+    }
+
+    .icon {
+      margin-left: auto;
+    }
+  }
+}

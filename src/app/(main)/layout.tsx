@@ -1,22 +1,11 @@
+import { clsx } from 'clsx'
 import type { Viewport } from 'next'
-import { Inter, Nunito } from 'next/font/google'
 import 'uplord-ui/dist/uplord-ui.css'
 
+import { inter, nunito } from '@/app/fonts'
 import NiceModalProvider from '@/context/NiceModalProvider'
 import { ThemeProvider } from '@/context/ThemeProvider'
 import '@/styles/index.scss'
-
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-})
-
-const nunito = Nunito({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  display: 'swap',
-})
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -51,7 +40,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.className} ${nunito.className}`}
+        className={clsx(inter.className, nunito.className)}
         suppressHydrationWarning>
         <ThemeProvider
           attribute="class"

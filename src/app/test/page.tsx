@@ -7,7 +7,7 @@ import React, { FC } from 'react'
 import { Header, Example, Button } from 'uplord-ui'
 import { useMounted } from 'uplord-ui/lib'
 
-import styles from '../page.module.scss'
+import styles from '@/app/(main)/page.module.scss'
 import { ContactFormModal } from '@/components/modals/ContactForm'
 
 export default function TestPage() {

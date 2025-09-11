@@ -1,0 +1,160 @@
+@use 'uplord-ui/styles/forward' as *;
+@use 'sass:color';
+
+$color-border-02: color.mix($color-border, $color-light, 50%);
+
+.table {
+  overflow: auto hidden;
+  border: 0.0625rem solid $color-border;
+  border-radius: 0.5rem;
+
+  @media (max-width: ($breakpoint-md - 1)) {
+    border-width: 0.0625rem 0;
+    border-radius: 0;
+    margin: 0 -1rem;
+
+    &:first-child {
+      border-top: 0;
+      margin-top: -1rem;
+    }
+
+    &:last-child {
+      border-bottom: 0;
+      margin-bottom: -1rem;
+    }
+  }
+
+  table {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  thead {
+    @media (max-width: ($breakpoint-md - 1)) {
+      display: none;
+    }
+
+    tr {
+      background-color: $color-block;
+    }
+  }
+
+  tbody {
+    tr {
+      @media (max-width: ($breakpoint-md - 1)) {
+        position: relative;
+        display: block;
+        padding-right: 2.5rem;
+        border-bottom: 0.0625rem solid $color-border-02;
+
+        &:last-child {
+          border-bottom: 0;
+        }
+
+        td {
+          padding-top: 0.75rem;
+
+          &:nth-child(2) {
+            padding-top: 1.25rem;
+          }
+
+          &:last-child {
+            padding-bottom: 1.25rem;
+          }
+        }
+      }
+    }
+  }
+
+  tr:last-child td {
+    border-bottom: 0;
+  }
+
+  th,
+  td {
+    @include text-md;
+    @include text-normal;
+
+    & {
+      white-space: nowrap;
+    }
+  }
+
+  th {
+    @include text-sm;
+    @include text-bold;
+
+    & {
+      padding: 0.75rem 1rem;
+      border-bottom: 0.0625rem solid $color-border-02;
+      color: $color-heading;
+      text-align: left;
+    }
+  }
+
+  td {
+    padding: 1.25rem 1rem;
+    border-bottom: 0.0625rem solid $color-border-02;
+    color: $color-text;
+
+    @media (max-width: ($breakpoint-md - 1)) {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-bottom: 0;
+      border-bottom: 0;
+      white-space: initial;
+
+      &[scope='checkbox'] {
+        position: absolute;
+        top: 1.25rem;
+        right: 1rem;
+        width: auto;
+        padding: 0;
+
+        &::before,
+        &::after {
+          display: none;
+        }
+      }
+
+      &::before {
+        @include text-bold;
+
+        & {
+          position: relative;
+          z-index: 1;
+          width: 40%;
+          padding-right: 1rem;
+          margin-right: 1rem;
+          color: $color-heading;
+          content: attr(data-title);
+        }
+      }
+
+      &::after {
+        position: absolute;
+        z-index: 0;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 40%;
+        border-right: 0.0625rem solid $color-border-02;
+        background-color: $color-block;
+        content: '';
+      }
+
+      span {
+        width: 60%;
+      }
+    }
+  }
+
+  a {
+    color: $color-primary;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

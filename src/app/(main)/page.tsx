@@ -2,6 +2,7 @@
 
 import { clsx } from 'clsx'
 import { useTheme } from 'next-themes'
+import { useEffect, useRef, useState } from 'react'
 import {
   Header,
   Navbar,
@@ -15,21 +16,46 @@ import {
   Timeline,
 } from 'uplord-ui'
 
-import styles from '@/app/page.module.scss'
+import styles from './page.module.scss'
 import { useScroll } from '@/lib/scrollUtils'
-import { useActiveSection } from '@/lib/useActiveSection'
 import { useMounted } from '@/lib/useMounted'
 
 export default function HomePage() {
   const { resolvedTheme, setTheme } = useTheme()
   const mounted = useMounted()
   const isScrolled = useScroll()
+  const [activeSection, setActiveSection] = useState<string | null>(null)
 
-  const activeId = useActiveSection(['banner', 'about-me', 'projects', 'timeline'])
+  const sectionsRef = useRef<Record<string, HTMLElement | null>>({})
 
   const handleToggleTheme = (theme: 'dark' | 'light') => {
     setTheme(theme)
   }
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id)
+          }
+        })
+      },
+      {
+        root: null,
+        rootMargin: '0px 0px -80% 0px',
+        threshold: 0,
+      },
+    )
+
+    Object.values(sectionsRef.current).forEach((section) => {
+      if (section) observer.observe(section)
+    })
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
 
   return (
     <div className={styles.page}>
@@ -38,16 +64,40 @@ export default function HomePage() {
         isHome
         theme={resolvedTheme}
         onToggleTheme={handleToggleTheme}
+        activeSection={activeSection}
       />
       <main className={styles.main}>
         <Banner
           id="banner"
           hasHeader
+          ref={(el: HTMLElement | null) => {
+            sectionsRef.current['banner'] = el
+          }}
         />
-        <Section id="about-me" />
-        <Projects id="projects" />
-        <Timeline id="timeline" />
-        <Stack id="stack" />
+        <Section
+          id="about-me"
+          ref={(el: HTMLElement | null) => {
+            sectionsRef.current['about-me'] = el
+          }}
+        />
+        <Projects
+          id="projects"
+          ref={(el: HTMLElement | null) => {
+            sectionsRef.current['projects'] = el
+          }}
+        />
+        <Timeline
+          id="timeline"
+          ref={(el: HTMLElement | null) => {
+            sectionsRef.current['timeline'] = el
+          }}
+        />
+        <Stack
+          id="stack"
+          ref={(el: HTMLElement | null) => {
+            sectionsRef.current['stack'] = el
+          }}
+        />
       </main>
       <Footer />
       <Navbar
@@ -56,7 +106,7 @@ export default function HomePage() {
           href="/"
           size="md"
           variant="anchor"
-          className={clsx(styles.button, activeId === 'banner' && mounted && styles.active)}
+          className={clsx(styles.button, activeSection === 'banner' && mounted && styles.active)}
           hasPadding={false}>
           <Icon
             name="Home"
@@ -68,7 +118,7 @@ export default function HomePage() {
           href="#about-me"
           size="md"
           variant="anchor"
-          className={clsx(styles.button, activeId === 'about-me' && mounted && styles.active)}
+          className={clsx(styles.button, activeSection === 'about-me' && mounted && styles.active)}
           hasPadding={false}>
           <Icon
             name="User"
@@ -80,7 +130,7 @@ export default function HomePage() {
           href="#projects"
           size="md"
           variant="anchor"
-          className={clsx(styles.button, activeId === 'projects' && mounted && styles.active)}
+          className={clsx(styles.button, activeSection === 'projects' && mounted && styles.active)}
           hasPadding={false}>
           <Icon
             name="FileText"
@@ -92,7 +142,7 @@ export default function HomePage() {
           href="#timeline"
           size="md"
           variant="anchor"
-          className={clsx(styles.button, activeId === 'timeline' && mounted && styles.active)}
+          className={clsx(styles.button, activeSection === 'timeline' && mounted && styles.active)}
           hasPadding={false}>
           <Icon
             name="ChartNoAxesGantt"

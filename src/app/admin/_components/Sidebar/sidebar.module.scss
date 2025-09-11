@@ -1,0 +1,118 @@
+@use 'uplord-ui/styles/forward' as *;
+
+.sidebar {
+  padding: 1.25rem 1.5rem;
+
+  @media (min-width: $breakpoint-md) {
+    padding: 1rem 1.5rem 1rem 0.5rem;
+  }
+
+  &.shown .desktop .button span {
+    display: block;
+  }
+
+  .mobile {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    @media (min-width: $breakpoint-md) {
+      display: none;
+    }
+
+    .left {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+
+      .title {
+        @include text-md;
+        @include text-bold;
+
+        & {
+          color: $color-light;
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+  }
+
+  .desktop {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+
+    @media (max-width: ($breakpoint-md - 1)) {
+      display: none;
+    }
+
+    .navigation {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .menu {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .bottom {
+      margin-top: auto;
+    }
+
+    .button {
+      width: 100%;
+      justify-content: flex-start;
+      padding: 0.5625rem;
+      gap: 1rem;
+
+      span {
+        display: none;
+      }
+    }
+  }
+}
+
+.logo {
+  @include text-lg;
+  @include text-semibold;
+
+  & {
+    font-family: $font-heading;
+
+    @media (min-width: $breakpoint-md) {
+      padding-bottom: 1rem;
+      border-bottom: 0.0625rem solid $color-border-dark;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .icon {
+    @include text-xl;
+
+    & {
+      position: relative;
+      display: flex;
+      width: 2.5rem;
+      height: 2.5rem;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0 0.5rem 0.5rem;
+      background-color: $color-primary;
+      color: $color-light;
+    }
+  }
+}
