@@ -24,7 +24,7 @@
     "react-transition-group": "^4.4.5",
     "resend": "^4.1.2",
     "stylelint-config-idiomatic-order": "^10.0.0",
-    "uplord-ui": "^0.1.7",
+    "uplord-ui": "^0.1.8",
     "yup": "^1.6.1"
   },
   "devDependencies": {
