@@ -16,6 +16,7 @@ import {
 } from 'uplord-ui'
 
 import styles from './page.module.scss'
+import { bannerData, sectionData, projectsData, timelineData } from '@/data/data'
 import { useScroll } from '@/lib/scrollUtils'
 import { useActiveSection } from '@/lib/useActiveSection'
 import { useMounted } from '@/lib/useMounted'
@@ -43,11 +44,20 @@ export default function HomePage() {
       <main className={styles.main}>
         <Banner
           id="banner"
-          hasHeader
+          data={bannerData()}
         />
-        <Section id="about-me" />
-        <Projects id="projects" />
-        <Timeline id="timeline" />
+        <Section
+          id="about-me"
+          data={sectionData()}
+        />
+        <Projects
+          id="projects"
+          data={projectsData()}
+        />
+        <Timeline
+          id="timeline"
+          data={timelineData()}
+        />
         <Stack id="stack" />
       </main>
       <Footer />
