@@ -30,7 +30,6 @@ export default function LoginPage() {
                 id="email"
                 placeholder="Email address"
                 autoComplete="off"
-                onChange={(e) => console.log('value', e.target.value)}
               />
               <Input
                 type="password"
@@ -38,7 +37,6 @@ export default function LoginPage() {
                 id="password"
                 placeholder="Password"
                 autoComplete="off"
-                onChange={(e) => console.log('value', e.target.value)}
               />
               <Button
                 label="Submit"
