@@ -57,6 +57,7 @@ export default function HomePage() {
         <Timeline
           id="timeline"
           data={timelineData()}
+          hasHeader
         />
         <Stack id="stack" />
       </main>
