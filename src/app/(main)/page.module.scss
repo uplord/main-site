@@ -1,4 +1,5 @@
 @use 'uplord-ui/styles/forward' as *;
+@use 'sass:color';
 
 .main {
   display: flex;
@@ -94,7 +95,8 @@
       background-color: $color-dark;
 
       .button.active {
-        color: $color-primary;
+        background-color: color.mix($color-dark, $color-light, 90%);
+        color: $color-light;
 
         span {
           color: inherit;
@@ -111,7 +113,8 @@
           color: $color-heading;
 
           &.active {
-            color: $color-primary;
+            background-color: color.mix($color-light, $color-dark, 90%);
+            color: $color-dark;
 
             span {
               color: inherit;
@@ -133,7 +136,9 @@
           color: $color-light;
 
           &.active {
-            color: $color-primary;
+            min-height: initial;
+            background-color: color.mix($color-info, $color-dark, 70%);
+            color: $color-light;
 
             span {
               color: inherit;
@@ -146,21 +151,17 @@
 
   .button {
     display: flex;
-    min-height: 70px;
     flex: 1;
     flex-direction: column;
     align-items: center;
-    padding: 0.71875rem 0;
+    padding: 0.4375rem 0;
+    border: 0;
+    margin: 0.5rem 0;
     gap: 0.25rem;
-    transition: none;
 
     span {
       @include text-xs;
       @include text-normal;
-    }
-
-    &.active span {
-      @include text-bold;
     }
   }
 }

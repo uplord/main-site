@@ -2,6 +2,7 @@
 
 import { clsx } from 'clsx'
 import { useTheme } from 'next-themes'
+import { useRouter } from 'next/navigation'
 import {
   Header,
   Navbar,
@@ -25,6 +26,7 @@ export default function HomePage() {
   const { resolvedTheme, setTheme } = useTheme()
   const mounted = useMounted()
   const isScrolled = useScroll()
+  const router = useRouter()
 
   const activeId = useActiveSection(['banner', 'about-me', 'projects', 'timeline'])
 
@@ -66,26 +68,26 @@ export default function HomePage() {
       <Navbar
         className={clsx(styles.nav, isScrolled && styles.scroll, !mounted && styles.skeleton)}>
         <Button
-          href="/"
           size="md"
           variant="anchor"
           className={clsx(styles.button, activeId === 'banner' && mounted && styles.active)}
-          hasPadding={false}>
+          hasPadding={false}
+          onClick={() => router.push('/')}>
           <Icon
             name="Home"
-            size="lg"
+            size="md"
           />
           <span>Home</span>
         </Button>
         <Button
-          href="#about-me"
           size="md"
           variant="anchor"
           className={clsx(styles.button, activeId === 'about-me' && mounted && styles.active)}
-          hasPadding={false}>
+          hasPadding={false}
+          onClick={() => router.push('/#about-me')}>
           <Icon
             name="User"
-            size="lg"
+            size="md"
           />
           <span>About me</span>
         </Button>
@@ -97,7 +99,7 @@ export default function HomePage() {
           hasPadding={false}>
           <Icon
             name="FileText"
-            size="lg"
+            size="md"
           />
           <span>Projects</span>
         </Button>
@@ -109,7 +111,7 @@ export default function HomePage() {
           hasPadding={false}>
           <Icon
             name="ChartNoAxesGantt"
-            size="lg"
+            size="md"
           />
           <span>Timeline</span>
         </Button>
@@ -121,7 +123,7 @@ export default function HomePage() {
           hasPadding={false}>
           <Icon
             name="Mail"
-            size="lg"
+            size="md"
           />
           <span>Contact</span>
         </Button>
