@@ -19,7 +19,7 @@ export const sectionData = () => ({
   title: 'About Michael Allen',
   subtitle: 'Front End Development',
   content:
-    'I’m an experienced Front End Developer with excellent collaboration, organization, and teamwork skills. Passionate about developing in HTML, CSS, and JavaScript and always open to exploring new technologies. Over the last decade, I&lsquo;ve worked with various clients, helping me hone my analytical, debugging, and problem-solving skills to create exceptional websites.',
+    'I’m an experienced Front End Developer with excellent collaboration, organization, and teamwork skills. Passionate about developing in HTML, CSS, and JavaScript and always open to exploring new technologies. Over the last decade, I’ve worked with various clients, helping me hone my analytical, debugging, and problem-solving skills to create exceptional websites.',
   image: '/ellie.png',
   buttons: [
     {
