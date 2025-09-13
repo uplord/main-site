@@ -1,32 +1,15 @@
 'use client'
 
-import { clsx } from 'clsx'
 import { useTheme } from 'next-themes'
-import { useRouter } from 'next/navigation'
-import {
-  Header,
-  Navbar,
-  Footer,
-  Button,
-  Icon,
-  Banner,
-  Projects,
-  Section,
-  Stack,
-  Timeline,
-} from 'uplord-ui'
+import { Header, Footer, Banner, Projects, Section, Stack, Timeline } from 'uplord-ui'
 
+import { Navbar } from './_components/Navbar'
 import styles from './page.module.scss'
-import { bannerData, sectionData, projectsData, timelineData } from '@/data/data'
-import { useScroll } from '@/lib/scrollUtils'
+import { data } from '@/data'
 import { useActiveSection } from '@/lib/useActiveSection'
-import { useMounted } from '@/lib/useMounted'
 
 export default function HomePage() {
   const { resolvedTheme, setTheme } = useTheme()
-  const mounted = useMounted()
-  const isScrolled = useScroll()
-  const router = useRouter()
 
   const activeId = useActiveSection(['banner', 'about-me', 'projects', 'timeline'])
 
@@ -46,88 +29,26 @@ export default function HomePage() {
       <main className={styles.main}>
         <Banner
           id="banner"
-          data={bannerData()}
+          data={data.bannerData}
           hasHeader
         />
         <Section
           id="about-me"
-          data={sectionData()}
+          data={data.sectionData}
         />
         <Projects
           id="projects"
-          data={projectsData()}
+          data={data.projectsData}
         />
         <Timeline
           id="timeline"
-          data={timelineData()}
+          data={data.timelineData}
           hasHeader
         />
         <Stack id="stack" />
       </main>
       <Footer />
-      <Navbar
-        className={clsx(styles.nav, isScrolled && styles.scroll, !mounted && styles.skeleton)}>
-        <Button
-          size="md"
-          variant="anchor"
-          className={clsx(styles.button, activeId === 'banner' && mounted && styles.active)}
-          hasPadding={false}
-          onClick={() => router.push('/')}>
-          <Icon
-            name="Home"
-            size="md"
-          />
-          <span>Home</span>
-        </Button>
-        <Button
-          size="md"
-          variant="anchor"
-          className={clsx(styles.button, activeId === 'about-me' && mounted && styles.active)}
-          hasPadding={false}
-          onClick={() => router.push('/#about-me')}>
-          <Icon
-            name="User"
-            size="md"
-          />
-          <span>About me</span>
-        </Button>
-        <Button
-          href="#projects"
-          size="md"
-          variant="anchor"
-          className={clsx(styles.button, activeId === 'projects' && mounted && styles.active)}
-          hasPadding={false}>
-          <Icon
-            name="FileText"
-            size="md"
-          />
-          <span>Projects</span>
-        </Button>
-        <Button
-          href="#timeline"
-          size="md"
-          variant="anchor"
-          className={clsx(styles.button, activeId === 'timeline' && mounted && styles.active)}
-          hasPadding={false}>
-          <Icon
-            name="ChartNoAxesGantt"
-            size="md"
-          />
-          <span>Timeline</span>
-        </Button>
-        <Button
-          href="mailto:michael@uplord.co.uk"
-          size="md"
-          variant="anchor"
-          className={styles.button}
-          hasPadding={false}>
-          <Icon
-            name="Mail"
-            size="md"
-          />
-          <span>Contact</span>
-        </Button>
-      </Navbar>
+      <Navbar activeId={activeId} />
     </div>
   )
 }

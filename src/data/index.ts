@@ -1,4 +1,4 @@
-export const bannerData = () => ({
+const bannerData = {
   title: 'Hi, I’m Michael',
   subtitle: 'A Front End Developer',
   content: 'With over a decade in the industry creating websites',
@@ -13,9 +13,9 @@ export const bannerData = () => ({
       href: '/michael-allen-cv.pdf',
     },
   ],
-})
+}
 
-export const sectionData = () => ({
+const sectionData = {
   title: 'About Michael Allen',
   subtitle: 'Front End Development',
   content:
@@ -27,9 +27,9 @@ export const sectionData = () => ({
       href: 'mailto:michael@uplord.co.uk',
     },
   ],
-})
+}
 
-export const timelineData = () => [
+const timelineData = [
   {
     date: 'Jan 2025 – Present',
     role: 'Software Engineer',
@@ -72,7 +72,7 @@ export const timelineData = () => [
   },
 ]
 
-export const projectsData = () => [
+const projectsData = [
   {
     title: 'Brewdog Now',
     description:
@@ -140,3 +140,10 @@ export const projectsData = () => [
     height: 60,
   },
 ]
+
+export const data = {
+  bannerData,
+  sectionData,
+  timelineData,
+  projectsData,
+}
