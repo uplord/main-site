@@ -45,6 +45,7 @@ export default function HomePage() {
         <Banner
           id="banner"
           data={bannerData()}
+          hasHeader
         />
         <Section
           id="about-me"
