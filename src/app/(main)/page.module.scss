@@ -1,6 +1,22 @@
 @use 'uplord-ui/styles/forward' as *;
 @use 'sass:color';
 
+.page {
+  &.fixed {
+    padding-top: 5rem;
+    padding-bottom: 4.875rem;
+
+    @media (min-width: $breakpoint-md) {
+      padding-bottom: 0;
+    }
+  }
+
+  .header {
+    position: fixed;
+    width: 100%;
+  }
+}
+
 .main {
   display: flex;
   width: 100%;

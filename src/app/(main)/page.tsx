@@ -1,5 +1,6 @@
 'use client'
 
+import clsx from 'clsx'
 import { useTheme } from 'next-themes'
 import { Header, Footer, Banner, Projects, Section, Stack, Timeline } from 'uplord-ui'
 
@@ -18,13 +19,14 @@ export default function HomePage() {
   }
 
   return (
-    <div className={styles.page}>
+    <div className={clsx(styles.page, styles.fixed)}>
       <Header
         id="header"
         isHome
         theme={resolvedTheme}
         onToggleTheme={handleToggleTheme}
         activeSection={activeId}
+        className={styles.header}
       />
       <main className={styles.main}>
         <Banner
