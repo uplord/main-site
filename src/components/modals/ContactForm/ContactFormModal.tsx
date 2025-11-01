@@ -38,6 +38,7 @@ export const ContactFormModal: FC<NiceModalHocProps> = NiceModal.create(() => {
             className={styles.close}
           />
         ),
+        fullscreen: isMobile ? true : '',
       }}
       footerProps={{
         trailing: (

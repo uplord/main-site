@@ -90,9 +90,7 @@ export default function AdminPage() {
         />
         <div className={styles.container}>
           <div className={styles.content}>
-            <Card
-              border
-              className={styles.card}>
+            <Card className={styles.card}>
               <div className={styles.row}>
                 <Button
                   label="Add new page"
@@ -102,9 +100,7 @@ export default function AdminPage() {
                 />
               </div>
             </Card>
-            <Card
-              border
-              className={styles.card}>
+            <Card className={styles.card}>
               <div className={styles.row}>
                 <div className={styles.row}>
                   <Select
