@@ -1,8 +1,6 @@
 @use 'uplord-ui/styles/forward' as *;
 @use 'sass:color';
 
-$color-border-02: color.mix($color-border, $color-light, 50%);
-
 .table {
   overflow: auto hidden;
   border: 0.0625rem solid $color-border;
@@ -35,7 +33,7 @@ $color-border-02: color.mix($color-border, $color-light, 50%);
     }
 
     tr {
-      background-color: $color-block;
+      background-color: $color-bg-02;
     }
   }
 
@@ -95,7 +93,7 @@ $color-border-02: color.mix($color-border, $color-light, 50%);
   td {
     padding: 1.25rem 1rem;
     border-bottom: 0.0625rem solid $color-border-02;
-    color: $color-text;
+    color: $color-body;
 
     @media (max-width: ($breakpoint-md - 1)) {
       position: relative;
@@ -140,7 +138,7 @@ $color-border-02: color.mix($color-border, $color-light, 50%);
         left: 0;
         width: 40%;
         border-right: 0.0625rem solid $color-border-02;
-        background-color: $color-block;
+        background-color: $color-bg-02;
         content: '';
       }
 

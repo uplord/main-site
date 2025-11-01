@@ -3,20 +3,20 @@
 
 .light {
   background: $color-light;
-  color: $color-text;
+  color: $color-body;
 }
 
 .dark {
   background: $color-dark;
-  color: $color-text-dark;
+  color: $color-body-dark;
 }
 
 body {
-  color: $color-text;
+  color: $color-body;
   overflow-y: auto;
 
   @include dark-mode {
-    color: $color-text-dark;
+    color: $color-body-dark;
   }
 }
 
