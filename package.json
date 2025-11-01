@@ -20,7 +20,7 @@
     "react-responsive": "^10.0.1",
     "react-transition-group": "^4.4.5",
     "stylelint-config-idiomatic-order": "^10.0.0",
-    "uplord-ui": "^0.1.17",
+    "uplord-ui": "^0.1.20",
     "yup": "^1.6.1"
   },
   "devDependencies": {
