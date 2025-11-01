@@ -4,7 +4,7 @@
 .page {
   &.fixed {
     padding-top: 5rem;
-    padding-bottom: 4.875rem;
+    padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 4.375rem);
 
     @media (min-width: $breakpoint-md) {
       padding-bottom: 0;
