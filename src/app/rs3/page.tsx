@@ -5,8 +5,23 @@ import { useEffect, useState } from 'react'
 
 import styles from './page.module.scss'
 
+type SkillValue = {
+  level: number
+  xp: number
+  rank: number
+  id: number
+}
+
+type RuneMetricsProfile = {
+  skillvalues: SkillValue[]
+  name: string
+  totalskill: number
+  totalxp: number
+  combatlevel: number
+}
+
 export default function TestPage() {
-  const [data, setData] = useState(null)
+  const [data, setData] = useState<RuneMetricsProfile | null>(null)
 
   useEffect(() => {
     async function load() {
@@ -16,6 +31,7 @@ export default function TestPage() {
       const json = await res.json()
       setData(json)
     }
+
     load()
   }, [])
 
@@ -24,12 +40,11 @@ export default function TestPage() {
   return (
     <div className={clsx(styles.page, 'page')}>
       <main className={styles.main}>
-        {/* Display first skillvalues entry */}
         {firstSkill && (
           <div style={{ marginTop: '20px' }}>
-            <h2>First Skill</h2>
+            <h2>Mining</h2>
             <p>
-              <strong>Skill ID:</strong> {firstSkill.id}
+              <strong>ID:</strong> {firstSkill.id}
             </p>
             <p>
               <strong>Level:</strong> {firstSkill.level}
